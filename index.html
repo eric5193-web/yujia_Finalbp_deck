@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>East Meets Feed — @Yujia</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream:   #f7f6f2;
+  --white:   #ffffff;
+  --ink:     #111111;
+  --ink-60:  rgba(17,17,17,0.6);
+  --ink-20:  rgba(17,17,17,0.12);
+  --gold:    #b8935a;
+  --gold-lt: rgba(184,147,90,0.15);
+  --rule:    rgba(17,17,17,0.1);
+}
+
+html, body {
+  width: 100%; height: 100%;
+  font-family: 'Jost', system-ui, sans-serif;
+  background: var(--cream);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══════════════════════════
+   TOP BAR
+══════════════════════════ */
+#top-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 52px;
+  background: rgba(247,246,242,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center;
+  padding: 0 40px; gap: 0;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+#top-bar.dark {
+  background: rgba(14,14,14,0.92);
+  border-bottom-color: rgba(255,255,255,0.07);
+}
+#tb-brand {
+  font-family: 'Jost', sans-serif;
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink); flex: 1;
+  transition: color 0.4s ease;
+}
+#top-bar.dark #tb-brand { color: rgba(255,255,255,0.8); }
+#tb-info {
+  font-size: 11px; font-weight: 400;
+  color: var(--ink-60); letter-spacing: 0.06em;
+  margin-right: 28px;
+  transition: color 0.4s ease;
+}
+#top-bar.dark #tb-info { color: rgba(255,255,255,0.3); }
+#mode-toggle {
+  display: flex; gap: 6px;
+}
+#mode-toggle button {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; cursor: pointer;
+  padding: 8px 20px; border-radius: 6px;
+  background: rgba(17,17,17,0.03);
+  border: 1px solid rgba(17,17,17,0.12);
+  color: var(--ink-60);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 1px 3px rgba(0,0,0,0.04);
+  transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.2s ease, background 0.2s ease,
+              border-color 0.2s ease, color 0.2s ease;
+}
+#mode-toggle button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(184,147,90,0.4);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset,
+              0 3px 12px rgba(0,0,0,0.07),
+              0 0 12px rgba(184,147,90,0.07);
+  color: var(--ink);
+}
+#mode-toggle button:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 1px 2px rgba(0,0,0,0.03);
+  transition-duration: 0.07s;
+}
+#mode-toggle button.active {
+  background: var(--ink); color: #fff;
+  border-color: var(--ink);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset,
+              0 2px 8px rgba(0,0,0,0.2);
+}
+#mode-toggle button { outline: none; }
+
+/* dark top bar overrides */
+#top-bar.dark #mode-toggle button {
+  color: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 1px 3px rgba(0,0,0,0.2);
+}
+#top-bar.dark #mode-toggle button:hover {
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(184,147,90,0.4);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset,
+              0 3px 12px rgba(0,0,0,0.25), 0 0 12px rgba(184,147,90,0.1);
+}
+#top-bar.dark #mode-toggle button.active {
+  background: #fff; color: var(--ink);
+  border-color: #fff;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.2) inset, 0 2px 8px rgba(0,0,0,0.3);
+}
+
+#progress-bar {
+  position: fixed; top: 52px; left: 0;
+  height: 2px; background: var(--gold);
+  z-index: 1001; transition: width 0.4s ease;
+}
+
+/* ══════════════════════════
+   SLIDE MODE
+══════════════════════════ */
+#slide-mode {
+  position: fixed; inset: 0; top: 52px;
+  display: flex; align-items: center; justify-content: center;
+  background: #000;
+  overflow: hidden;
+}
+#slide-mode.hidden { display: none; }
+
+#deck-wrapper {
+  position: relative;
+  width: 1080px; height: 607px;
+  transform-origin: center center;
+}
+
+.frame {
+  width: 1080px; height: 607px;
+  position: absolute; inset: 0;
+  display: none; overflow: hidden;
+}
+.frame.active { display: flex; }
+
+/* ── Section Cards ── */
+.sc {
+  align-items: flex-end;
+  padding: 64px 72px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Animated blob keyframes ── */
+@keyframes blobMorph {
+  0%,100% { border-radius: 62% 38% 28% 72% / 58% 32% 68% 42%; }
+  20%     { border-radius: 30% 65% 72% 38% / 52% 64% 28% 58%; }
+  40%     { border-radius: 52% 38% 58% 32% / 28% 54% 68% 52%; }
+  60%     { border-radius: 38% 72% 28% 64% / 72% 28% 52% 38%; }
+  80%     { border-radius: 68% 28% 52% 52% / 38% 62% 28% 72%; }
+}
+@keyframes blobDrift {
+  0%   { transform: translateZ(0) translate(  0px,   0px) scale(1.00); opacity: 0.42; }
+  20%  { transform: translateZ(0) translate(-65px, -50px) scale(1.14); opacity: 0.65; }
+  40%  { transform: translateZ(0) translate( 55px, -65px) scale(0.90); opacity: 0.28; }
+  60%  { transform: translateZ(0) translate( 72px,  45px) scale(1.10); opacity: 0.60; }
+  80%  { transform: translateZ(0) translate(-42px,  58px) scale(0.94); opacity: 0.32; }
+  100% { transform: translateZ(0) translate(  0px,   0px) scale(1.00); opacity: 0.42; }
+}
+@keyframes blobDrift2 {
+  0%   { transform: translateZ(0) translate(  0px,   0px) scale(1.00); opacity: 0.28; }
+  25%  { transform: translateZ(0) translate( 58px, -54px) scale(1.16); opacity: 0.50; }
+  50%  { transform: translateZ(0) translate(-52px, -32px) scale(0.88); opacity: 0.18; }
+  75%  { transform: translateZ(0) translate(-28px,  64px) scale(1.12); opacity: 0.46; }
+  100% { transform: translateZ(0) translate(  0px,   0px) scale(1.00); opacity: 0.28; }
+}
+
+/* blob base */
+.sc-blob, .ssh-blob {
+  position: absolute;
+  pointer-events: none;
+  filter: blur(52px);
+  will-change: transform, border-radius, opacity;
+  transform: translateZ(0);
+}
+.sc-blob.anim, .ssh-blob.anim {
+  border-radius: 62% 38% 28% 72% / 58% 32% 68% 42%;
+  animation:
+    blobMorph 8s  ease-in-out infinite,
+    blobDrift 11s ease-in-out infinite;
+}
+.sc-blob.anim2, .ssh-blob.anim2 {
+  border-radius: 30% 65% 72% 38% / 52% 64% 28% 58%;
+  animation:
+    blobMorph  11s ease-in-out infinite reverse,
+    blobDrift2 15s ease-in-out infinite;
+}
+
+.sc-overline {
+  position: absolute; top: 52px; left: 72px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.3em;
+  text-transform: uppercase; color: rgba(255,255,255,0.25);
+}
+.sc-part-num {
+  position: absolute; top: 44px; right: 64px;
+  font-family: 'Playfair Display', serif;
+  font-size: 120px; font-weight: 700;
+  color: rgba(255,255,255,0.04);
+  line-height: 1; letter-spacing: -0.04em;
+  user-select: none;
+}
+.sc-eyebrow {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 18px; position: relative; z-index: 2;
+}
+.sc-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 76px; font-weight: 200;
+  line-height: 0.9; letter-spacing: -0.04em;
+  color: #fff; position: relative; z-index: 2;
+}
+.sc-sub {
+  position: absolute; bottom: 40px; right: 72px;
+  font-size: 10px; font-weight: 400; letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.2); text-align: right;
+  line-height: 1.7; z-index: 2;
+}
+.sc-rule {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px; background: var(--gold); z-index: 2;
+}
+
+/* ── SLIDE 1: TITLE ── */
+#slide-1 {
+  background: var(--white);
+  flex-direction: row;
+  position: relative;
+}
+.s1-left {
+  width: 55%; height: 100%;
+  padding: 64px 72px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  position: relative; z-index: 2;
+}
+.s1-eyebrow {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--gold);
+}
+.s1-headline {
+  font-family: 'Jost', sans-serif;
+  font-size: 100px; font-weight: 200;
+  line-height: 0.88; letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.s1-headline em { font-style: italic; color: var(--gold); }
+.s1-meta { display: flex; flex-direction: column; gap: 7px; }
+.s1-meta-line {
+  font-size: 11px; font-weight: 400; color: var(--ink-60);
+  letter-spacing: 0.04em;
+}
+.s1-meta-line strong { color: var(--ink); font-weight: 600; }
+.s1-right {
+  flex: 1; height: 100%;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.s1-right-blob {
+  position: absolute; width: 400px; height: 400px;
+  border-radius: 50%; filter: blur(80px);
+  background: #1e3a6a; opacity: 0.5;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+}
+.s1-right-blob2 {
+  position: absolute; width: 200px; height: 200px;
+  border-radius: 50%; filter: blur(60px);
+  background: #8a6a1e; opacity: 0.3;
+  bottom: 40px; right: 40px;
+}
+.s1-right-text {
+  position: relative; z-index: 2;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; font-weight: 400; font-style: italic;
+  color: rgba(255,255,255,0.4);
+  text-align: center; padding: 0 48px; line-height: 2.2;
+  letter-spacing: 0.04em;
+}
+.s1-deco-num {
+  position: absolute; font-family: 'Jost', sans-serif;
+  font-size: 260px; font-weight: 200; letter-spacing: -0.06em;
+  color: rgba(255,255,255,0.025); line-height: 1;
+  user-select: none; z-index: 1;
+}
+
+/* ── Generic placeholder slide ── */
+.ph {
+  background: var(--white);
+  flex-direction: row;
+  position: relative; overflow: hidden;
+}
+/* subtle blob for content slides */
+.ph-blob {
+  position: absolute; border-radius: 50%; filter: blur(80px);
+  pointer-events: none; z-index: 0;
+}
+.ph-sidebar {
+  width: 180px; height: 100%;
+  border-right: 1px solid var(--rule);
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 28px;
+  position: relative; z-index: 2; flex-shrink: 0;
+}
+.ph-sidebar-top { display: flex; flex-direction: column; gap: 12px; }
+.ph-section-tag {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gold);
+}
+.ph-slide-label {
+  font-size: 9px; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-60);
+}
+.ph-slide-num-big {
+  font-family: 'Playfair Display', serif;
+  font-size: 96px; font-weight: 700; letter-spacing: -0.04em;
+  color: var(--ink-20); line-height: 1;
+  margin-top: auto;
+}
+.ph-sidebar-bottom {
+  font-size: 10px; color: var(--ink-60);
+  letter-spacing: 0.04em; line-height: 1.7;
+}
+.ph-main {
+  flex: 1; height: 100%;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 52px 64px;
+  position: relative; z-index: 2;
+}
+.ph-headline {
+  font-family: 'Jost', sans-serif;
+  font-size: 54px; font-weight: 200;
+  letter-spacing: -0.03em; line-height: 0.95;
+  color: var(--ink); margin-bottom: 32px;
+}
+.ph-rule { width: 36px; height: 1px; background: var(--gold); margin-bottom: 24px; }
+.ph-body {
+  font-size: 14px; font-weight: 400;
+  color: var(--ink-60); line-height: 1.8;
+  max-width: 440px;
+}
+.ph-tool {
+  display: inline-flex; align-items: center; margin-top: 28px;
+  padding: 8px 18px; border-radius: 4px;
+  border: 1px solid rgba(184,147,90,0.35);
+  background: rgba(184,147,90,0.04);
+  font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 1px 4px rgba(0,0,0,0.04);
+  transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.2s ease, background 0.2s ease;
+  cursor: default;
+}
+
+/* ── HUD ── */
+#hud {
+  position: fixed; bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: 6px; z-index: 500;
+}
+.hud-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(17,17,17,0.15); cursor: pointer;
+  transition: all 0.25s;
+}
+.hud-dot.is-sc { width: 6px; height: 6px; background: rgba(184,147,90,0.25); }
+.hud-dot.active { background: var(--gold); transform: scale(1.5); }
+
+/* ══════════════════════════
+   STORY MODE
+══════════════════════════ */
+#story-mode {
+  position: fixed; inset: 0; top: 52px;
+  overflow-y: auto; background: #0e0e0e;
+}
+#story-mode.hidden { display: none; }
+
+#sidenav {
+  position: fixed; top: 52px; left: 0; bottom: 0;
+  width: 192px; background: #111111;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 0; z-index: 100;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.sn-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.28em;
+  text-transform: uppercase; color: rgba(255,255,255,0.15);
+  padding: 0 28px; margin-bottom: 14px;
+}
+.sn-item {
+  display: block; padding: 9px 28px;
+  font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.35);
+  text-decoration: none; letter-spacing: 0.02em;
+  border-left: 2px solid transparent;
+  transition: all 0.2s; line-height: 1.4;
+}
+.sn-item:hover { color: rgba(255,255,255,0.7); }
+.sn-item.active {
+  color: #fff; font-weight: 500;
+  border-left-color: var(--gold);
+  background: rgba(184,147,90,0.06);
+}
+
+#story-wrap { margin-left: 192px; }
+
+/* story section header */
+.ss-header {
+  padding: 80px 80px 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: #111111;
+  position: relative; overflow: hidden;
+}
+.ssh-blob {
+  position: absolute; border-radius: 50%;
+  filter: blur(100px); pointer-events: none;
+}
+.ssh-part {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 14px; position: relative; z-index: 2;
+}
+.ssh-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 60px; font-weight: 200; letter-spacing: -0.04em;
+  color: #ffffff; line-height: 0.92;
+  position: relative; z-index: 2;
+}
+.ssh-sub {
+  font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em;
+  margin-top: 16px; position: relative; z-index: 2;
+}
+.ssh-deco {
+  position: absolute; right: 64px; bottom: -24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 200px; font-weight: 700; letter-spacing: -0.06em;
+  color: rgba(255,255,255,0.03); line-height: 1; user-select: none;
+}
+
+/* story slide row */
+.ss-slide {
+  display: grid; grid-template-columns: 180px 1fr;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: #0e0e0e;
+  transition: background 0.2s;
+}
+.ss-slide:hover { background: #141414; }
+.ss-meta {
+  border-right: 1px solid rgba(255,255,255,0.05);
+  padding: 52px 28px 52px 32px;
+  display: flex; flex-direction: column; gap: 10px;
+  align-self: flex-start;
+  position: sticky; top: 0;
+}
+.ssm-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px; font-weight: 700;
+  color: rgba(255,255,255,0.06); line-height: 1;
+}
+.ssm-title {
+  font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.75);
+  letter-spacing: 0.02em; line-height: 1.6;
+}
+.ssm-tool {
+  display: inline-flex; align-items: center;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold);
+  margin-top: 6px; padding: 6px 12px; border-radius: 4px;
+  border: 1px solid rgba(184,147,90,0.35);
+  background: rgba(184,147,90,0.06);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
+}
+.ss-body {
+  padding: 52px 72px;
+  display: flex; flex-direction: column;
+  gap: 24px;
+}
+.ss-ph {
+  font-size: 13px; color: rgba(255,255,255,0.18);
+  line-height: 2; font-style: italic; font-weight: 300;
+}
+
+/* ══════════════════════════
+   GLASS BUTTONS
+══════════════════════════ */
+.btn-glass, .btn-glass-lt {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 10px; cursor: pointer; text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border-radius: 6px; position: relative; overflow: hidden;
+  transition:
+    transform    0.18s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow   0.22s ease,
+    background   0.22s ease,
+    border-color 0.22s ease,
+    color        0.22s ease;
+  will-change: transform;
+}
+/* shimmer */
+.btn-glass::before, .btn-glass-lt::before {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(105deg,transparent 20%,rgba(255,255,255,0.1) 50%,transparent 80%);
+  transition: left 0.5s ease; pointer-events: none;
+}
+.btn-glass:hover::before, .btn-glass-lt:hover::before { left: 140%; }
+
+/* on dark backgrounds */
+.btn-glass {
+  padding: 13px 32px; color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset,
+              0 2px 12px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
+}
+.btn-glass:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(184,147,90,0.5);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset, 0 4px 24px rgba(0,0,0,0.35),
+              0 0 20px rgba(184,147,90,0.14);
+  transform: translateY(-2px);
+}
+.btn-glass:active { transform: translateY(1px) scale(0.98); transition-duration: 0.07s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+.btn-glass.gold-rim {
+  border-color: rgba(184,147,90,0.4); color: #c9a96e;
+  background: rgba(184,147,90,0.06);
+}
+.btn-glass.gold-rim:hover {
+  background: rgba(184,147,90,0.12); border-color: rgba(184,147,90,0.7);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 0 24px rgba(184,147,90,0.2);
+  color: #d4b078;
+}
+
+/* on light backgrounds */
+.btn-glass-lt {
+  padding: 13px 32px; color: var(--ink);
+  background: rgba(17,17,17,0.03);
+  border: 1px solid rgba(17,17,17,0.14);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset,
+              0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+}
+.btn-glass-lt:hover {
+  background: rgba(17,17,17,0.05); border-color: rgba(184,147,90,0.45);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 20px rgba(0,0,0,0.08),
+              0 0 16px rgba(184,147,90,0.08);
+  transform: translateY(-2px);
+}
+.btn-glass-lt:active { transform: translateY(1px) scale(0.98); transition-duration: 0.07s;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 1px 4px rgba(0,0,0,0.04); }
+.btn-glass-lt.gold {
+  color: var(--gold); border-color: rgba(184,147,90,0.35);
+  background: rgba(184,147,90,0.04);
+}
+.btn-glass-lt.gold:hover {
+  border-color: rgba(184,147,90,0.6); background: rgba(184,147,90,0.08);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 20px rgba(0,0,0,0.06),
+              0 0 20px rgba(184,147,90,0.1);
+}
+
+/* small size */
+.btn-glass.sm, .btn-glass-lt.sm {
+  padding: 8px 18px; font-size: 9px; letter-spacing: 0.18em; border-radius: 4px;
+}
+
+/* arrow icon */
+.btn-arrow-icon {
+  font-size: 12px; line-height: 1; flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.btn-glass:hover .btn-arrow-icon,
+.btn-glass-lt:hover .btn-arrow-icon { transform: translateX(3px); }
+
+/* ══════════════════════════
+   POST LINK BUTTONS
+══════════════════════════ */
+.post-links {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: 24px;
+}
+.btn-post {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 18px; border-radius: 6px;
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; text-decoration: none;
+  cursor: pointer; position: relative; overflow: hidden;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition:
+    transform    0.18s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow   0.22s ease,
+    background   0.22s ease,
+    border-color 0.22s ease;
+  will-change: transform;
+}
+.btn-post::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(105deg,transparent 20%,rgba(255,255,255,0.1) 50%,transparent 80%);
+  transition: left 0.45s ease; pointer-events: none;
+}
+.btn-post:hover::before { left: 140%; }
+.btn-post:hover { transform: translateY(-2px); }
+.btn-post:active { transform: translateY(1px) scale(0.97); transition-duration: 0.07s; }
+
+.btn-post .post-icon {
+  font-size: 13px; line-height: 1; flex-shrink: 0;
+}
+.btn-post .post-arrow {
+  font-size: 11px; opacity: 0.6;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.btn-post:hover .post-arrow { transform: translateX(3px); opacity: 1; }
+
+/* Platform variants — on light slides (all unified black) */
+.btn-post.ig, .btn-post.tt, .btn-post.xhs {
+  color: var(--ink);
+  background: rgba(17,17,17,0.03);
+  border: 1px solid rgba(17,17,17,0.22);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 2px 6px rgba(0,0,0,0.05);
+}
+.btn-post.ig:hover, .btn-post.tt:hover, .btn-post.xhs:hover {
+  background: rgba(17,17,17,0.06);
+  border-color: rgba(17,17,17,0.45);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* On dark slides / story mode */
+.btn-post.dark-bg {
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.18);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset, 0 2px 10px rgba(0,0,0,0.2);
+}
+.btn-post.dark-bg:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.35);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 4px 16px rgba(0,0,0,0.25);
+}
+
+/* ── Scroll animations ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div id="progress-bar" style="width:0%"></div>
+
+<!-- TOP BAR -->
+<div id="top-bar">
+  <div id="tb-brand">East Meets Feed &nbsp;&mdash;&nbsp; @Yujia</div>
+  <div id="tb-info"></div>
+  <div id="mode-toggle">
+    <button id="btn-slides" class="active" onclick="setMode('slides')">Slides</button>
+    <button id="btn-story" onclick="setMode('story')">Story</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     SLIDE MODE
+══════════════════════════════ -->
+<div id="slide-mode">
+<div id="deck-wrapper">
+
+  <!-- SC 1 -->
+  <div class="frame sc active" id="sc-1" style="background:#0e0e0e;">
+    <div class="sc-blob anim"  style="width:480px;height:480px;background:conic-gradient(from 200deg,#7a5010,#c9a96e,#e8c87a,#b8935a,#6a3a08);opacity:0.45;top:-120px;right:-80px;"></div>
+    <div class="sc-blob anim2" style="width:260px;height:260px;background:conic-gradient(from 40deg,#1e3a6a,#3b6abf,#6a3a8a,#1e3a6a);opacity:0.3;bottom:20px;left:60px;"></div>
+    <div class="sc-overline">East Meets Feed &nbsp;·&nbsp; @Yujia</div>
+    <div class="sc-part-num">I</div>
+    <div class="sc-eyebrow">Part One</div>
+    <div class="sc-title">The<br>Open</div>
+    <div class="sc-sub">Title &nbsp;·&nbsp; Mandate &nbsp;·&nbsp; Thesis</div>
+    <div class="sc-rule"></div>
+  </div>
+
+  <!-- SLIDE 1 -->
+  <div class="frame" id="slide-1">
+    <div class="s1-left">
+      <div class="s1-eyebrow">A Cross-Platform Brand Activation</div>
+      <div class="s1-headline">East<br><em>Meets</em><br>Feed</div>
+      <div class="s1-meta">
+        <div class="s1-meta-line">Client &nbsp;<strong>@Yujia</strong></div>
+        <div class="s1-meta-line">Team &nbsp;<strong>Maddie · Liora · Jodie · James · Jerry · Eric</strong></div>
+        <div class="s1-meta-line">NYU Social Media & Brand &nbsp;·&nbsp; Summer 2026</div>
+      </div>
+    </div>
+    <div class="s1-right">
+      <div class="s1-right-blob"></div>
+      <div class="s1-right-blob2"></div>
+      <div class="s1-deco-num">EMF</div>
+      <div class="s1-right-text">"You don't have to choose."<br>Recognition, not envy.</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="frame ph" id="slide-2">
+    <div class="ph-blob" style="width:360px;height:360px;background:rgba(184,147,90,0.08);top:-80px;right:-80px;"></div>
+    <div class="ph-sidebar">
+      <div class="ph-sidebar-top">
+        <div class="ph-section-tag">Part 01 &nbsp;·&nbsp; The Open</div>
+        <div class="ph-slide-label">Slide 02</div>
+      </div>
+      <div class="ph-slide-num-big">02</div>
+      <div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div>
+    </div>
+    <div class="ph-main">
+      <div class="ph-headline">The Client &<br>The Mandate</div>
+      <div class="ph-rule"></div>
+      <div class="ph-body">Who Yujia is, the account today, and the goal of 5,000 organic engagements. Competing to find a more radically social way.</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="frame ph" id="slide-3">
+    <div class="ph-blob" style="width:300px;height:300px;background:rgba(30,58,106,0.06);bottom:-60px;right:40px;"></div>
+    <div class="ph-sidebar">
+      <div class="ph-sidebar-top">
+        <div class="ph-section-tag">Part 01 &nbsp;·&nbsp; The Open</div>
+        <div class="ph-slide-label">Slide 03</div>
+      </div>
+      <div class="ph-slide-num-big">03</div>
+      <div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div>
+    </div>
+    <div class="ph-main">
+      <div class="ph-headline">The<br>Thesis</div>
+      <div class="ph-rule"></div>
+      <div class="ph-body">"You don't have to choose." Recognition, not envy. The Imaginarium — a life where her worlds coexist.</div>
+    </div>
+  </div>
+
+  <!-- SC 2 -->
+  <div class="frame sc" id="sc-2" style="background:#0d1525;">
+    <div class="sc-blob anim"  style="width:560px;height:560px;background:conic-gradient(from 160deg,#1e3a8a,#3b82f6,#7c3aed,#1e40af,#0a1a5a);opacity:0.4;top:-160px;right:-160px;"></div>
+    <div class="sc-blob anim2" style="width:240px;height:240px;background:conic-gradient(from 300deg,#7c3aed,#a78bfa,#3b82f6,#7c3aed);opacity:0.25;bottom:40px;left:80px;"></div>
+    <div class="sc-overline">East Meets Feed &nbsp;·&nbsp; @Yujia</div>
+    <div class="sc-part-num">II</div>
+    <div class="sc-eyebrow">Part Two</div>
+    <div class="sc-title">The<br>Insight</div>
+    <div class="sc-sub">Ethno Research &nbsp;·&nbsp; Quant &nbsp;·&nbsp; Qual &nbsp;·&nbsp; Key Insight</div>
+    <div class="sc-rule"></div>
+  </div>
+
+  <!-- SLIDES 4-7 -->
+  <div class="frame ph" id="slide-4">
+    <div class="ph-blob" style="width:320px;height:320px;background:rgba(30,58,138,0.07);top:-60px;right:-60px;"></div>
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 02 &nbsp;·&nbsp; The Insight</div><div class="ph-slide-label">Slide 04</div></div><div class="ph-slide-num-big">04</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Research<br>Approach</div><div class="ph-rule"></div><div class="ph-body">Digital ethnography via Talkwalker. Quant dashboards, qual extract, and a Reddit scrape.</div><div class="ph-tool">Tool — Ethno Research</div></div>
+  </div>
+  <div class="frame ph" id="slide-5">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 02 &nbsp;·&nbsp; The Insight</div><div class="ph-slide-label">Slide 05</div></div><div class="ph-slide-num-big">05</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Quant<br>Snapshot</div><div class="ph-rule"></div><div class="ph-body">Volume, sentiment, reach. Demographics and the English-dominant audience.</div></div>
+  </div>
+  <div class="frame ph" id="slide-6">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 02 &nbsp;·&nbsp; The Insight</div><div class="ph-slide-label">Slide 06</div></div><div class="ph-slide-num-big">06</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Qual<br>Evidence</div><div class="ph-rule"></div><div class="ph-body">The discourse-as-evidence layout. A focal post surrounded by real comments.</div></div>
+  </div>
+  <div class="frame ph" id="slide-7">
+    <div class="ph-blob" style="width:280px;height:280px;background:rgba(138,106,30,0.07);bottom:-40px;right:40px;"></div>
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 02 &nbsp;·&nbsp; The Insight</div><div class="ph-slide-label">Slide 07</div></div><div class="ph-slide-num-big">07</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">The Key<br>Insight</div><div class="ph-rule"></div><div class="ph-body">Fatigue with aspirational sameness. The hunger for recognition over envy.</div></div>
+  </div>
+
+  <!-- SC 3 -->
+  <div class="frame sc" id="sc-3" style="background:#140a05;">
+    <div class="sc-blob anim"  style="width:500px;height:500px;background:conic-gradient(from 220deg,#7a2d0a,#c2410c,#b8935a,#ea580c,#7a1a0a);opacity:0.45;top:-140px;right:-80px;"></div>
+    <div class="sc-blob anim2" style="width:240px;height:240px;background:conic-gradient(from 80deg,#b8935a,#fbbf24,#7a2d0a,#b8935a);opacity:0.2;bottom:30px;left:50px;"></div>
+    <div class="sc-overline">East Meets Feed &nbsp;·&nbsp; @Yujia</div>
+    <div class="sc-part-num">III</div>
+    <div class="sc-eyebrow">Part Three</div>
+    <div class="sc-title">The<br>Audience</div>
+    <div class="sc-sub">Overview &nbsp;·&nbsp; IG Personas &nbsp;·&nbsp; Douyin Personas &nbsp;·&nbsp; Platform Map</div>
+    <div class="sc-rule"></div>
+  </div>
+
+  <!-- SLIDES 8-11 -->
+  <div class="frame ph" id="slide-8">
+    <div class="ph-blob" style="width:300px;height:300px;background:rgba(122,45,10,0.06);top:-60px;right:40px;"></div>
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 03 &nbsp;·&nbsp; The Audience</div><div class="ph-slide-label">Slide 08</div></div><div class="ph-slide-num-big">08</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Audience<br>Overview</div><div class="ph-rule"></div><div class="ph-body">Western (IG / TikTok) vs Chinese (Douyin / RedNote). Core tier vs Growth tier.</div><div class="ph-tool">Tool — Audience Profiler</div></div>
+  </div>
+  <div class="frame ph" id="slide-9">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 03 &nbsp;·&nbsp; The Audience</div><div class="ph-slide-label">Slide 09</div></div><div class="ph-slide-num-big">09</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Instagram<br>Personas</div><div class="ph-rule"></div><div class="ph-body">The enriched IG personas — name, desire, tension.</div><div class="ph-tool">Tool — Audience Profiler</div></div>
+  </div>
+  <div class="frame ph" id="slide-10">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 03 &nbsp;·&nbsp; The Audience</div><div class="ph-slide-label">Slide 10</div></div><div class="ph-slide-num-big">10</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Douyin<br>Personas</div><div class="ph-rule"></div><div class="ph-body">The enriched Douyin personas.</div><div class="ph-tool">Tool — Audience Profiler</div></div>
+  </div>
+  <div class="frame ph" id="slide-11">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 03 &nbsp;·&nbsp; The Audience</div><div class="ph-slide-label">Slide 11</div></div><div class="ph-slide-num-big">11</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Persona to<br>Platform Map</div><div class="ph-rule"></div><div class="ph-body">Which persona engages on which platform.</div></div>
+  </div>
+
+  <!-- SC 4 -->
+  <div class="frame sc" id="sc-4" style="background:#081408;">
+    <div class="sc-blob anim"  style="width:520px;height:520px;background:conic-gradient(from 140deg,#14532d,#16a34a,#065f46,#1e3a8a,#14532d);opacity:0.45;top:-150px;right:-100px;"></div>
+    <div class="sc-blob anim2" style="width:220px;height:220px;background:conic-gradient(from 280deg,#b8935a,#16a34a,#b8935a);opacity:0.2;bottom:60px;left:70px;"></div>
+    <div class="sc-overline">East Meets Feed &nbsp;·&nbsp; @Yujia</div>
+    <div class="sc-part-num">IV</div>
+    <div class="sc-eyebrow">Part Four</div>
+    <div class="sc-title">The<br>Strategy</div>
+    <div class="sc-sub">Brand Aligner &nbsp;·&nbsp; Impact Formula &nbsp;·&nbsp; Platform Matrix &nbsp;·&nbsp; Content Pillars</div>
+    <div class="sc-rule"></div>
+  </div>
+
+  <!-- SLIDES 12-15 -->
+  <div class="frame ph" id="slide-12">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 12</div></div><div class="ph-slide-num-big">12</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Platform<br>Strategy Matrix</div><div class="ph-rule"></div><div class="ph-body">One creator, three platforms, one brand. Roles, KPIs, and content per platform.</div></div>
+  </div>
+  <div class="frame ph" id="slide-13">
+    <div class="ph-blob" style="width:280px;height:280px;background:rgba(10,58,26,0.07);top:-40px;right:60px;"></div>
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 13</div></div><div class="ph-slide-num-big">13</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Brand<br>Aligner</div><div class="ph-rule"></div><div class="ph-body">Sinek's Golden Circle, the shared why. Recognition not envy — the brief to the brand.</div><div class="ph-tool">Tool — Brand Aligner</div></div>
+  </div>
+  <div class="frame ph" id="slide-14">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 14</div></div><div class="ph-slide-num-big">14</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Impact<br>Formula</div><div class="ph-rule"></div><div class="ph-body">INSIGHT + ETHICS = IMPACT. The Yujia version and the value it creates.</div><div class="ph-tool">Tool — Impact Formula</div></div>
+  </div>
+  <div class="frame ph" id="slide-15">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 15</div></div><div class="ph-slide-num-big">15</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Content<br>Pillars</div><div class="ph-rule"></div><div class="ph-body">The core content themes that define East Meets Feed.</div></div>
+  </div>
+
+  <!-- SC 5 -->
+  <div class="frame sc" id="sc-5" style="background:#0e0814;">
+    <div class="sc-blob anim"  style="width:540px;height:540px;background:conic-gradient(from 100deg,#3b0764,#7c3aed,#1e3a8a,#9333ea,#3b0764);opacity:0.45;top:-140px;right:-100px;"></div>
+    <div class="sc-blob anim2" style="width:230px;height:230px;background:conic-gradient(from 240deg,#b8935a,#7c3aed,#c084fc,#b8935a);opacity:0.25;bottom:50px;left:80px;"></div>
+    <div class="sc-overline">East Meets Feed &nbsp;·&nbsp; @Yujia</div>
+    <div class="sc-part-num">V</div>
+    <div class="sc-eyebrow">Part Five</div>
+    <div class="sc-title">The<br>Activation</div>
+    <div class="sc-sub">Behavioral Planner &nbsp;·&nbsp; IG &nbsp;·&nbsp; Douyin &nbsp;·&nbsp; Workflow</div>
+    <div class="sc-rule"></div>
+  </div>
+
+  <!-- SLIDES 16-19 -->
+  <div class="frame ph" id="slide-16">
+    <div class="ph-blob" style="width:300px;height:300px;background:rgba(58,26,110,0.06);top:-60px;right:40px;"></div>
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 05 &nbsp;·&nbsp; The Activation</div><div class="ph-slide-label">Slide 16</div></div><div class="ph-slide-num-big">16</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Behavioral<br>Planner</div><div class="ph-rule"></div><div class="ph-body">Touchpoints and needstates from the research. Drives the unified content brief.</div><div class="ph-tool">Tool — Behavioral Planner</div></div>
+  </div>
+  <div class="frame ph" id="slide-17">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 05 &nbsp;·&nbsp; The Activation</div><div class="ph-slide-label">Slide 17</div></div><div class="ph-slide-num-big">17</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main">
+      <div class="ph-headline">Instagram<br>Content Concepts</div>
+      <div class="ph-rule"></div>
+      <div class="ph-body">The Instagram content concepts and creative direction.</div>
+      <div class="post-links">
+        <a class="btn-post ig" href="https://www.instagram.com/p/PLACEHOLDER/" target="_blank" rel="noopener">
+          <span class="post-icon">📸</span>
+          <span>IG Post 01</span>
+          <span class="post-arrow">→</span>
+        </a>
+        <a class="btn-post ig" href="https://www.instagram.com/p/PLACEHOLDER/" target="_blank" rel="noopener">
+          <span class="post-icon">📸</span>
+          <span>IG Post 02</span>
+          <span class="post-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="frame ph" id="slide-18">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 05 &nbsp;·&nbsp; The Activation</div><div class="ph-slide-label">Slide 18</div></div><div class="ph-slide-num-big">18</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Douyin<br>Content Concepts</div><div class="ph-rule"></div><div class="ph-body">The Douyin post concepts and creative direction.</div></div>
+  </div>
+  <div class="frame ph" id="slide-19">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 05 &nbsp;·&nbsp; The Activation</div><div class="ph-slide-label">Slide 19</div></div><div class="ph-slide-num-big">19</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Team Workflow &<br>Posting Cadence</div><div class="ph-rule"></div><div class="ph-body">How the team produces and posts. The calendar and cadence.</div></div>
+  </div>
+
+  <!-- SC 6 -->
+  <div class="frame sc" id="sc-6" style="background:#0a0a0a;">
+    <div class="sc-blob anim"  style="width:480px;height:480px;background:conic-gradient(from 180deg,#78350f,#b8935a,#fbbf24,#c9a96e,#78350f);opacity:0.35;top:-120px;right:-80px;"></div>
+    <div class="sc-blob anim2" style="width:260px;height:260px;background:conic-gradient(from 320deg,#1e3a8a,#b8935a,#fbbf24,#1e3a8a);opacity:0.2;bottom:40px;left:60px;"></div>
+    <div class="sc-overline">East Meets Feed &nbsp;·&nbsp; @Yujia</div>
+    <div class="sc-part-num">VI</div>
+    <div class="sc-eyebrow">Part Six</div>
+    <div class="sc-title">The<br>Results</div>
+    <div class="sc-sub">KPIs &nbsp;·&nbsp; Outcomes &nbsp;·&nbsp; Optimizations</div>
+    <div class="sc-rule"></div>
+  </div>
+
+  <!-- SLIDES 20-22 -->
+  <div class="frame ph" id="slide-20">
+    <div class="ph-blob" style="width:360px;height:360px;background:rgba(184,147,90,0.08);top:-80px;right:-40px;"></div>
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 06 &nbsp;·&nbsp; The Results</div><div class="ph-slide-label">Slide 20</div></div><div class="ph-slide-num-big">20</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">KPIs &<br>Baseline</div><div class="ph-rule"></div><div class="ph-body">The 5,000 target. Day 0 numbers per platform.</div></div>
+  </div>
+  <div class="frame ph" id="slide-21">
+    <div class="ph-blob" style="width:320px;height:320px;background:rgba(184,147,90,0.07);bottom:-60px;right:60px;"></div>
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 06 &nbsp;·&nbsp; The Results</div><div class="ph-slide-label">Slide 21</div></div><div class="ph-slide-num-big">21</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Results</div><div class="ph-rule"></div><div class="ph-body">Engagement across both platforms. Douyin carrying the number.</div></div>
+  </div>
+  <div class="frame ph" id="slide-22">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 06 &nbsp;·&nbsp; The Results</div><div class="ph-slide-label">Slide 22</div></div><div class="ph-slide-num-big">22</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Optimizations</div><div class="ph-rule"></div><div class="ph-body">The cover-CTR finding. What we changed and the lift.</div></div>
+  </div>
+
+  <!-- SC 7 -->
+  <div class="frame sc" id="sc-7" style="background:#0e0e0e;">
+    <div class="sc-blob anim"  style="width:460px;height:460px;background:conic-gradient(from 160deg,#7a5010,#c9a96e,#e8c87a,#3b82f6,#7a5010);opacity:0.4;top:-120px;right:-80px;"></div>
+    <div class="sc-blob anim2" style="width:220px;height:220px;background:conic-gradient(from 60deg,#1e3a6a,#b8935a,#7c3aed,#1e3a6a);opacity:0.25;bottom:60px;left:80px;"></div>
+    <div class="sc-overline">East Meets Feed &nbsp;·&nbsp; @Yujia</div>
+    <div class="sc-part-num">VII</div>
+    <div class="sc-eyebrow">Part Seven</div>
+    <div class="sc-title">The Road<br>Ahead</div>
+    <div class="sc-sub">Learnings &nbsp;·&nbsp; Phase 2</div>
+    <div class="sc-rule"></div>
+  </div>
+
+  <!-- SLIDES 23-24 -->
+  <div class="frame ph" id="slide-23">
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 07 &nbsp;·&nbsp; The Road Ahead</div><div class="ph-slide-label">Slide 23</div></div><div class="ph-slide-num-big">23</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Learnings &<br>Findings</div><div class="ph-rule"></div><div class="ph-body">What worked and what we learned.</div></div>
+  </div>
+  <div class="frame ph" id="slide-24">
+    <div class="ph-blob" style="width:280px;height:280px;background:rgba(184,147,90,0.07);bottom:-40px;right:40px;"></div>
+    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 07 &nbsp;·&nbsp; The Road Ahead</div><div class="ph-slide-label">Slide 24</div></div><div class="ph-slide-num-big">24</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
+    <div class="ph-main"><div class="ph-headline">Phase 2</div><div class="ph-rule"></div><div class="ph-body">Brand ads and collaborations — what is next.</div></div>
+  </div>
+
+</div><!-- /deck-wrapper -->
+<div id="hud"></div>
+</div><!-- /slide-mode -->
+
+<!-- ══════════════════════════════
+     STORY MODE
+══════════════════════════════ -->
+<div id="story-mode" class="hidden">
+  <nav id="sidenav">
+    <div class="sn-label">Contents</div>
+    <a class="sn-item active" href="#ss1">01 &nbsp; The Open</a>
+    <a class="sn-item" href="#ss2">02 &nbsp; The Insight</a>
+    <a class="sn-item" href="#ss3">03 &nbsp; The Audience</a>
+    <a class="sn-item" href="#ss4">04 &nbsp; The Strategy</a>
+    <a class="sn-item" href="#ss5">05 &nbsp; The Activation</a>
+    <a class="sn-item" href="#ss6">06 &nbsp; The Results</a>
+    <a class="sn-item" href="#ss7">07 &nbsp; The Road Ahead</a>
+  </nav>
+  <div id="story-wrap">
+
+    <!-- S1 -->
+    <div id="ss1">
+      <div class="ss-header reveal">
+        <div class="ssh-blob anim"  style="width:400px;height:400px;background:conic-gradient(from 200deg,#7a5010,#c9a96e,#e8c87a,#b8935a,#6a3a08);opacity:0.18;top:-100px;right:-60px;"></div>
+        <div class="ssh-blob anim2" style="width:200px;height:200px;background:conic-gradient(from 40deg,#1e3a6a,#3b6abf,#b8935a,#1e3a6a);opacity:0.1;bottom:0px;left:80px;"></div>
+        <div class="ssh-deco">I</div>
+        <div class="ssh-part">Part One</div>
+        <div class="ssh-title">The Open</div>
+        <div class="ssh-sub">Title &nbsp;·&nbsp; Mandate &nbsp;·&nbsp; Thesis</div>
+      </div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">01</div><div class="ssm-title">Title</div></div><div class="ss-body"><div class="ss-ph">East Meets Feed — @Yujia &nbsp;·&nbsp; NYU Social Media & Brand &nbsp;·&nbsp; Summer 2026</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">02</div><div class="ssm-title">The Client & The Mandate</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — who Yujia is, the account today, and the goal of 5,000 organic engagements.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">03</div><div class="ssm-title">The Thesis</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — "You don't have to choose." Recognition, not envy. The Imaginarium.</div></div></div>
+    </div>
+
+    <!-- S2 -->
+    <div id="ss2">
+      <div class="ss-header reveal">
+        <div class="ssh-blob anim"  style="width:480px;height:480px;background:conic-gradient(from 160deg,#1e3a8a,#3b82f6,#7c3aed,#1e40af,#0a1a5a);opacity:0.15;top:-140px;right:-80px;"></div>
+        <div class="ssh-blob anim2" style="width:200px;height:200px;background:conic-gradient(from 300deg,#7c3aed,#a78bfa,#3b82f6,#7c3aed);opacity:0.1;bottom:0;left:60px;"></div>
+        <div class="ssh-deco">II</div>
+        <div class="ssh-part">Part Two</div>
+        <div class="ssh-title">The Insight</div>
+        <div class="ssh-sub">Ethno Research &nbsp;·&nbsp; Quant &nbsp;·&nbsp; Qual &nbsp;·&nbsp; Key Insight</div>
+      </div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">04</div><div class="ssm-title">Research Approach</div><div class="ssm-tool">Tool: Ethno Research</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — digital ethnography via Talkwalker, quant + qual + Reddit scrape.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">05</div><div class="ssm-title">Quant Snapshot</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — volume, sentiment, reach, demographics.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">06</div><div class="ssm-title">Qual Evidence</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — discourse-as-evidence layout, real comments.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">07</div><div class="ssm-title">The Key Insight</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — fatigue with aspirational sameness, hunger for recognition.</div></div></div>
+    </div>
+
+    <!-- S3 -->
+    <div id="ss3">
+      <div class="ss-header reveal">
+        <div class="ssh-blob anim"  style="width:420px;height:420px;background:conic-gradient(from 220deg,#7a2d0a,#c2410c,#b8935a,#ea580c,#7a1a0a);opacity:0.15;top:-120px;right:-60px;"></div>
+        <div class="ssh-blob anim2" style="width:180px;height:180px;background:conic-gradient(from 80deg,#b8935a,#fbbf24,#7a2d0a,#b8935a);opacity:0.1;bottom:0;left:60px;"></div>
+        <div class="ssh-deco">III</div>
+        <div class="ssh-part">Part Three</div>
+        <div class="ssh-title">The Audience</div>
+        <div class="ssh-sub">Overview &nbsp;·&nbsp; IG &nbsp;·&nbsp; Douyin &nbsp;·&nbsp; Platform Map</div>
+      </div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">08</div><div class="ssm-title">Audience Overview</div><div class="ssm-tool">Tool: Audience Profiler</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — Western vs Chinese audiences, Core vs Growth tiers.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">09</div><div class="ssm-title">Instagram Personas</div><div class="ssm-tool">Tool: Audience Profiler</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — enriched IG personas.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">10</div><div class="ssm-title">Douyin Personas</div><div class="ssm-tool">Tool: Audience Profiler</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — enriched Douyin personas.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">11</div><div class="ssm-title">Persona to Platform Map</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — which persona engages on which platform.</div></div></div>
+    </div>
+
+    <!-- S4 -->
+    <div id="ss4">
+      <div class="ss-header reveal">
+        <div class="ssh-blob anim"  style="width:420px;height:420px;background:conic-gradient(from 140deg,#14532d,#16a34a,#065f46,#1e3a8a,#14532d);opacity:0.14;top:-120px;right:-60px;"></div>
+        <div class="ssh-blob anim2" style="width:180px;height:180px;background:conic-gradient(from 280deg,#b8935a,#16a34a,#b8935a);opacity:0.1;bottom:0;left:60px;"></div>
+        <div class="ssh-deco">IV</div>
+        <div class="ssh-part">Part Four</div>
+        <div class="ssh-title">The Strategy</div>
+        <div class="ssh-sub">Brand Aligner &nbsp;·&nbsp; Impact Formula &nbsp;·&nbsp; Platform Matrix &nbsp;·&nbsp; Content Pillars</div>
+      </div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">12</div><div class="ssm-title">Platform Strategy Matrix</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — one creator, three platforms, one brand.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">13</div><div class="ssm-title">Brand Aligner</div><div class="ssm-tool">Tool: Brand Aligner</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — Sinek's Golden Circle, the shared why.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">14</div><div class="ssm-title">Impact Formula</div><div class="ssm-tool">Tool: Impact Formula</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — INSIGHT + ETHICS = IMPACT.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">15</div><div class="ssm-title">Content Pillars</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — the core content themes.</div></div></div>
+    </div>
+
+    <!-- S5 -->
+    <div id="ss5">
+      <div class="ss-header reveal">
+        <div class="ssh-blob anim"  style="width:440px;height:440px;background:conic-gradient(from 100deg,#3b0764,#7c3aed,#1e3a8a,#9333ea,#3b0764);opacity:0.15;top:-130px;right:-80px;"></div>
+        <div class="ssh-blob anim2" style="width:180px;height:180px;background:conic-gradient(from 240deg,#b8935a,#7c3aed,#c084fc,#b8935a);opacity:0.1;bottom:0;left:60px;"></div>
+        <div class="ssh-deco">V</div>
+        <div class="ssh-part">Part Five</div>
+        <div class="ssh-title">The Activation</div>
+        <div class="ssh-sub">Behavioral Planner &nbsp;·&nbsp; IG &nbsp;·&nbsp; Douyin &nbsp;·&nbsp; Workflow</div>
+      </div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">16</div><div class="ssm-title">Behavioral Planner</div><div class="ssm-tool">Tool: Behavioral Planner</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — touchpoints and needstates from the research.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">17</div><div class="ssm-title">Instagram Content Concepts</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — IG content concepts.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">18</div><div class="ssm-title">Douyin Content Concepts</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — Douyin post concepts.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">19</div><div class="ssm-title">Team Workflow & Posting Cadence</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — production workflow and calendar.</div></div></div>
+    </div>
+
+    <!-- S6 -->
+    <div id="ss6">
+      <div class="ss-header reveal">
+        <div class="ssh-blob anim"  style="width:400px;height:400px;background:conic-gradient(from 180deg,#78350f,#b8935a,#fbbf24,#c9a96e,#78350f);opacity:0.16;top:-100px;right:-60px;"></div>
+        <div class="ssh-blob anim2" style="width:180px;height:180px;background:conic-gradient(from 320deg,#1e3a8a,#b8935a,#fbbf24,#1e3a8a);opacity:0.1;bottom:0;left:60px;"></div>
+        <div class="ssh-deco">VI</div>
+        <div class="ssh-part">Part Six</div>
+        <div class="ssh-title">The Results</div>
+        <div class="ssh-sub">KPIs &nbsp;·&nbsp; Outcomes &nbsp;·&nbsp; Optimizations</div>
+      </div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">20</div><div class="ssm-title">KPIs & Baseline</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — the 5,000 target and Day 0 numbers.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">21</div><div class="ssm-title">Results</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — engagement across platforms.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">22</div><div class="ssm-title">Optimizations</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — what we changed and the lift.</div></div></div>
+    </div>
+
+    <!-- S7 -->
+    <div id="ss7">
+      <div class="ss-header reveal">
+        <div class="ssh-blob anim"  style="width:400px;height:400px;background:conic-gradient(from 160deg,#7a5010,#c9a96e,#e8c87a,#3b82f6,#7a5010);opacity:0.16;top:-100px;right:-60px;"></div>
+        <div class="ssh-blob anim2" style="width:180px;height:180px;background:conic-gradient(from 60deg,#1e3a6a,#b8935a,#7c3aed,#1e3a6a);opacity:0.1;bottom:0;left:60px;"></div>
+        <div class="ssh-deco">VII</div>
+        <div class="ssh-part">Part Seven</div>
+        <div class="ssh-title">The Road Ahead</div>
+        <div class="ssh-sub">Learnings &nbsp;·&nbsp; Phase 2</div>
+      </div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">23</div><div class="ssm-title">Learnings & Findings</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — what worked and what we learned.</div></div></div>
+      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">24</div><div class="ssm-title">Phase 2</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — brand ads and collaborations.</div></div></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const DECK = [
+  {id:'sc-1',sec:1,type:'sc'},{id:'slide-1',sec:1,type:'s'},{id:'slide-2',sec:1,type:'s'},{id:'slide-3',sec:1,type:'s'},
+  {id:'sc-2',sec:2,type:'sc'},{id:'slide-4',sec:2,type:'s'},{id:'slide-5',sec:2,type:'s'},{id:'slide-6',sec:2,type:'s'},{id:'slide-7',sec:2,type:'s'},
+  {id:'sc-3',sec:3,type:'sc'},{id:'slide-8',sec:3,type:'s'},{id:'slide-9',sec:3,type:'s'},{id:'slide-10',sec:3,type:'s'},{id:'slide-11',sec:3,type:'s'},
+  {id:'sc-4',sec:4,type:'sc'},{id:'slide-12',sec:4,type:'s'},{id:'slide-13',sec:4,type:'s'},{id:'slide-14',sec:4,type:'s'},{id:'slide-15',sec:4,type:'s'},
+  {id:'sc-5',sec:5,type:'sc'},{id:'slide-16',sec:5,type:'s'},{id:'slide-17',sec:5,type:'s'},{id:'slide-18',sec:5,type:'s'},{id:'slide-19',sec:5,type:'s'},
+  {id:'sc-6',sec:6,type:'sc'},{id:'slide-20',sec:6,type:'s'},{id:'slide-21',sec:6,type:'s'},{id:'slide-22',sec:6,type:'s'},
+  {id:'sc-7',sec:7,type:'sc'},{id:'slide-23',sec:7,type:'s'},{id:'slide-24',sec:7,type:'s'},
+];
+const SEC = ['','The Open','The Insight','The Audience','The Strategy','The Activation','The Results','The Road Ahead'];
+
+let cur = 0, mode = 'slides';
+
+function scale() {
+  const s = Math.max(window.innerWidth/1080, (window.innerHeight-52)/607);
+  document.getElementById('deck-wrapper').style.transform = `scale(${s})`;
+}
+window.addEventListener('resize', scale); scale();
+
+(function buildDots() {
+  const hud = document.getElementById('hud');
+  DECK.forEach((item,i) => {
+    const d = document.createElement('div');
+    d.className = 'hud-dot'+(item.type==='sc'?' is-sc':'');
+    d.addEventListener('click', () => goTo(i));
+    hud.appendChild(d);
+  });
+})();
+
+function goTo(idx) {
+  if (idx < 0 || idx >= DECK.length) return;
+  document.getElementById(DECK[cur].id).classList.remove('active');
+  document.querySelectorAll('.hud-dot')[cur].classList.remove('active');
+  cur = idx;
+  document.getElementById(DECK[cur].id).classList.add('active');
+  document.querySelectorAll('.hud-dot')[cur].classList.add('active');
+  document.getElementById('tb-info').textContent =
+    String(cur+1).padStart(2,'0')+' / '+DECK.length+' — '+SEC[DECK[cur].sec];
+  document.getElementById('progress-bar').style.width = (cur/(DECK.length-1)*100)+'%';
+}
+
+document.addEventListener('keydown', e => {
+  if (mode!=='slides') return;
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goTo(cur+1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))        { e.preventDefault(); goTo(cur-1); }
+});
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('slide-mode').classList.toggle('hidden', m!=='slides');
+  document.getElementById('story-mode').classList.toggle('hidden', m==='slides');
+  document.getElementById('btn-slides').classList.toggle('active', m==='slides');
+  document.getElementById('btn-story').classList.toggle('active', m==='story');
+  document.getElementById('top-bar').classList.toggle('dark', m==='story');
+  if (m === 'story') {
+    // Reset all reveals so animation plays fresh each time
+    document.querySelectorAll('.reveal').forEach(el => el.classList.remove('visible'));
+    requestAnimationFrame(() => { checkReveal(); });
+  }
+}
+
+/* Scroll reveal — use scroll event on fixed container */
+function checkReveal() {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) el.classList.add('visible');
+  });
+}
+document.getElementById('story-mode').addEventListener('scroll', checkReveal);
+
+/* Story sidenav spy */
+(function initStory() {
+  const st = document.getElementById('story-mode');
+  const secs = document.querySelectorAll('#story-wrap > div');
+  const items = document.querySelectorAll('.sn-item');
+  st.addEventListener('scroll', () => {
+    let a = 0;
+    secs.forEach((s,i) => { if (s.getBoundingClientRect().top <= 160) a = i; });
+    items.forEach((it,i) => it.classList.toggle('active', i===a));
+  });
+  items.forEach(it => {
+    it.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(it.getAttribute('href'));
+      if (t) st.scrollTo({ top: t.offsetTop, behavior: 'smooth' });
+    });
+  });
+})();
+
+goTo(0);
+</script>
+</body>
+</html>
