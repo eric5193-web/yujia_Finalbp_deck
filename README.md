@@ -15,6 +15,4 @@ This site documents a 7-part social media activation strategy spanning Instagram
 - **Slides** — Fullscreen deck with keyboard navigation (← →)
 - **Story** — Scrollable long-form version with sidenav
 
-## Team
 
-Junjie Chen · Jerry Chen · Liora Huang · Jodie Jiang · Maddie Klein · Eric Wang
