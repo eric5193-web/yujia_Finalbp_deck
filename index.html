@@ -325,6 +325,11 @@ html, body {
 .p-stat  { opacity:0; transform:translateY(10px); transition:opacity 0.5s ease, transform 0.5s ease; }
 .p-quote { opacity:0; transform:translateY(8px); transition:opacity 0.6s ease, transform 0.6s ease; }
 .p-attr  { opacity:0; transform:translateX(12px); transition:opacity 0.5s ease, transform 0.5s ease; }
+@keyframes col-reveal { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+#slide-13 .map-row > * { opacity:0; }
+#slide-13.show-col-1 .map-row > *:nth-child(1) { animation: col-reveal 2s ease forwards; }
+#slide-13.show-col-2 .map-row > *:nth-child(2) { animation: col-reveal 2s ease forwards; }
+#slide-13.show-col-3 .map-row > *:nth-child(3) { animation: col-reveal 2s ease forwards; }
 #slide-9.active .p-photo, #slide-10.active .p-photo, #slide-11.active .p-photo, #slide-12.active .p-photo { opacity:1; transform:scale(1); transition-delay:0.05s; }
 #slide-9.active .p-stat:nth-child(1), #slide-10.active .p-stat:nth-child(1), #slide-11.active .p-stat:nth-child(1), #slide-12.active .p-stat:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.15s; }
 #slide-9.active .p-stat:nth-child(2), #slide-10.active .p-stat:nth-child(2), #slide-11.active .p-stat:nth-child(2), #slide-12.active .p-stat:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.25s; }
@@ -763,8 +768,8 @@ html, body {
   /* Sidenav: hide on mobile */
   #sidenav { display: none !important; }
 
-  /* Story wrap: no left padding for sidenav */
-  #story-wrap { padding-left: 0 !important; }
+  /* Story wrap: remove sidenav margin on mobile */
+  #story-wrap { margin-left: 0 !important; }
 
   /* Section headers */
   .ss-header { padding: 48px 24px 32px !important; }
@@ -1748,7 +1753,7 @@ html, body {
           <div style="padding:9px 16px;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#fff;background:var(--gold);border-left:1px solid rgba(255,255,255,0.2);">Platform</div>
           <div style="padding:9px 16px;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#fff;background:var(--gold);border-left:1px solid rgba(255,255,255,0.2);">Content Need</div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;border-bottom:1px solid var(--rule);">
+        <div class="map-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;border-bottom:1px solid var(--rule);">
           <div style="padding:10px 16px;display:flex;align-items:center;border-right:1px solid var(--rule);"><div style="font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;">Chinese Professional<br>Women in the U.S.</div></div>
           <div style="padding:10px 16px;display:flex;align-items:center;gap:10px;border-right:1px solid var(--rule);">
             <svg width="26" height="26" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:7px;"><rect width="60" height="60" fill="#FF2442"/><text x="30" y="38" text-anchor="middle" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">小红书</text></svg>
@@ -1756,7 +1761,7 @@ html, body {
           </div>
           <div style="padding:10px 16px;display:flex;align-items:center;"><div style="font-size:12px;color:rgba(17,17,17,0.55);line-height:1.5;">Recognition, practical guidance, identity stories</div></div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;border-bottom:1px solid var(--rule);background:rgba(249,248,245,0.5);">
+        <div class="map-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;border-bottom:1px solid var(--rule);background:rgba(249,248,245,0.5);">
           <div style="padding:10px 16px;display:flex;align-items:center;border-right:1px solid var(--rule);"><div style="font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;">NYC Lifestyle<br>Explorers</div></div>
           <div style="padding:10px 16px;display:flex;align-items:center;gap:10px;border-right:1px solid var(--rule);">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:6px;">
@@ -1770,7 +1775,7 @@ html, body {
           </div>
           <div style="padding:10px 16px;display:flex;align-items:center;"><div style="font-size:12px;color:rgba(17,17,17,0.55);line-height:1.5;">Visual inspiration, places to save, weekend ideas</div></div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;border-bottom:1px solid var(--rule);">
+        <div class="map-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;border-bottom:1px solid var(--rule);">
           <div style="padding:10px 16px;display:flex;align-items:center;border-right:1px solid var(--rule);"><div style="font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;">Young Cross-Cultural<br>Viewers</div></div>
           <div style="padding:10px 16px;display:flex;align-items:center;gap:10px;border-right:1px solid var(--rule);">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:6px;">
@@ -1783,7 +1788,7 @@ html, body {
           </div>
           <div style="padding:10px 16px;display:flex;align-items:center;"><div style="font-size:12px;color:rgba(17,17,17,0.55);line-height:1.5;">Quick mood, relatability, entertainment</div></div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;background:rgba(249,248,245,0.5);">
+        <div class="map-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;background:rgba(249,248,245,0.5);">
           <div style="padding:10px 16px;display:flex;align-items:center;border-right:1px solid var(--rule);"><div style="font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;">Cultural Weekend<br>Seekers</div></div>
           <div style="padding:10px 16px;display:flex;align-items:center;gap:8px;border-right:1px solid var(--rule);">
             <svg width="22" height="22" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:5px;"><rect width="60" height="60" fill="#FF2442"/><text x="30" y="38" text-anchor="middle" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">小红书</text></svg>
@@ -2655,9 +2660,11 @@ function scale() {
 window.addEventListener('resize', scale); scale();
 
 // Auto-switch to Story mode on mobile
-if (window.innerWidth <= 768) {
-  setMode('story');
+function checkMobileMode() {
+  if (window.innerWidth <= 768 && mode !== 'story') setMode('story');
 }
+checkMobileMode();
+window.addEventListener('resize', checkMobileMode);
 
 (function buildDots() {
   const hud = document.getElementById('hud');
@@ -2724,6 +2731,7 @@ function goTo(idx) {
 const SLIDE_BUILDS = { 'slide-9': '.p-attr', 'slide-10': '.p-attr', 'slide-11': '.p-attr', 'slide-12': '.p-attr' };
 let buildStep = 0;
 let buildTimers = [];
+let slide13Col = 0;
 
 function getBuildEls() {
   const id = DECK[cur].id;
@@ -2738,6 +2746,9 @@ function resetBuilds() {
   stopAutoBuilds();
   document.querySelectorAll('.p-attr').forEach(el => el.classList.remove('build-visible'));
   buildStep = 0;
+  const s13 = document.getElementById('slide-13');
+  s13.classList.remove('show-col-1','show-col-2','show-col-3');
+  slide13Col = 0;
 }
 function startAutoBuilds() {
   stopAutoBuilds();
@@ -2756,6 +2767,12 @@ function startAutoBuilds() {
   });
 }
 function advanceBuild() {
+  if (DECK[cur].id === 'slide-13') {
+    if (slide13Col >= 3) return false;
+    slide13Col++;
+    document.getElementById('slide-13').classList.add('show-col-' + slide13Col);
+    return true;
+  }
   const els = getBuildEls();
   if (!els || buildStep >= els.length) return false;
   els[buildStep].classList.add('build-visible');
@@ -2763,6 +2780,12 @@ function advanceBuild() {
   return true;
 }
 function retreatBuild() {
+  if (DECK[cur].id === 'slide-13') {
+    if (slide13Col <= 0) return false;
+    document.getElementById('slide-13').classList.remove('show-col-' + slide13Col);
+    slide13Col--;
+    return true;
+  }
   const els = getBuildEls();
   if (!els || buildStep <= 0) return false;
   buildStep--;
