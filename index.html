@@ -687,6 +687,79 @@ html, body {
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+
+  /* Top bar */
+  #top-bar { padding: 0 14px; gap: 10px; }
+  #tb-info { display: none; }
+  #hud { display: none; }
+  #progress-bar-wrap { display: none; }
+
+  /* Hide slides mode button hint on mobile */
+  #btn-slides { opacity: 0.4; pointer-events: none; }
+
+  /* Sidenav: hide on mobile */
+  #sidenav { display: none !important; }
+
+  /* Story wrap: no left padding for sidenav */
+  #story-wrap { padding-left: 0 !important; }
+
+  /* Section headers */
+  .ss-header { padding: 48px 24px 32px !important; }
+  .ssh-title  { font-size: 52px !important; letter-spacing: -0.03em !important; }
+  .ssh-part   { font-size: 10px !important; }
+  .ssh-sub    { font-size: 11px !important; }
+  .ssh-deco   { font-size: 140px !important; }
+
+  /* Story slides: stack meta on top of body */
+  .ss-slide {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  .ss-meta {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    padding: 16px 24px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 14px !important;
+    min-height: auto !important;
+  }
+  .ssm-num   { font-size: 28px !important; }
+  .ssm-title { font-size: 11px !important; }
+
+  /* Story body: remove zoom, tighter padding */
+  .ss-body {
+    padding: 28px 20px !important;
+    gap: 18px !important;
+    zoom: 1 !important;
+  }
+
+  /* Collapse all inline grid columns to single column */
+  .ss-body [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Keep the photo on slide-02 story from being 3-col */
+  .ss-slide[style] [style*="grid-template-columns:180px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Slide 4 photo wall: hide on mobile (user said fill photos later) */
+  .s4-photos { display: none !important; }
+
+  /* Story slide 01 video: smaller height */
+  #story-wrap [style*="height:340px"] { height: 220px !important; }
+}
+
+@media (max-width: 480px) {
+  .ss-header { padding: 36px 18px 24px !important; }
+  .ssh-title  { font-size: 40px !important; }
+  .ss-body    { padding: 20px 16px !important; }
+}
 </style>
 </head>
 <body>
@@ -1789,6 +1862,11 @@ function scale() {
   document.getElementById('deck-wrapper').style.transform = `scale(${s})`;
 }
 window.addEventListener('resize', scale); scale();
+
+// Auto-switch to Story mode on mobile
+if (window.innerWidth <= 768) {
+  setMode('story');
+}
 
 (function buildDots() {
   const hud = document.getElementById('hud');
