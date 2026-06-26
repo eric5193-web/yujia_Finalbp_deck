@@ -741,6 +741,12 @@ html, body {
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+.ss-reveal-row {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.ss-reveal-row.visible { opacity: 1; transform: translateY(0); }
 
 /* ── Mobile responsive ── */
 @media (max-width: 768px) {
@@ -1674,10 +1680,127 @@ html, body {
       </div>
     </div>
   </div>
-  <div class="frame ph" id="slide-13">
-    <div class="ph-blob" style="width:280px;height:280px;background:rgba(10,58,26,0.07);top:-40px;right:60px;"></div>
-    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 13</div></div><div class="ph-slide-num-big">13</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
-    <div class="ph-main"><div class="ph-headline">Brand<br>Aligner</div><div class="ph-rule"></div><div class="ph-body">Sinek's Golden Circle, the shared why. Recognition not envy — the brief to the brand.</div><div class="ph-tool">Tool — Brand Aligner</div></div>
+  <!-- SLIDE 13 — Persona to Platform Map -->
+  <div class="frame" id="slide-13" style="background:var(--white);flex-direction:row;overflow:hidden;">
+    <div class="ph-sidebar">
+      <div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 13</div></div>
+      <div class="ph-slide-num-big">13</div>
+      <div class="ph-sidebar-bottom">East Meets Feed</div>
+    </div>
+    <div style="flex:1;display:grid;grid-template-columns:400px 1fr;overflow:hidden;">
+      <!-- left: hero + platform rows -->
+      <div style="border-right:1px solid var(--rule);padding:28px 24px;display:flex;flex-direction:column;justify-content:center;gap:0;overflow:hidden;">
+        <div style="margin-bottom:20px;">
+          <div style="font-size:8px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">The Strategy</div>
+          <div style="font-family:'Playfair Display',serif;font-size:21px;font-style:italic;color:var(--ink);line-height:1.2;margin-bottom:14px;">Same Creator,<br>Different Entrances.</div>
+          <div style="background:#f7f6f2;border-left:2px solid var(--gold);padding:10px 12px;border-radius:0 3px 3px 0;margin-bottom:14px;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Mapping Logic</div>
+            <div style="font-size:11px;color:rgba(17,17,17,0.6);line-height:1.6;">Each platform should keep the same East Meets Feed identity, but meet a different audience need.</div>
+          </div>
+        </div>
+        <!-- platform rows -->
+        <div style="display:flex;flex-direction:column;border-top:1px solid var(--rule);">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);position:relative;">
+            <div style="position:absolute;left:-24px;top:0;bottom:0;width:3px;background:#ff2442;border-radius:0 2px 2px 0;"></div>
+            <svg width="28" height="28" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:7px;"><rect width="60" height="60" fill="#FF2442"/><text x="30" y="38" text-anchor="middle" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">小红书</text></svg>
+            <div style="min-width:0;">
+              <div style="font-size:11px;font-weight:600;color:#ff2442;margin-bottom:2px;">RedNote / 小红书</div>
+              <div style="font-size:10px;color:rgba(17,17,17,0.4);">Recognition + Usefulness</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);position:relative;">
+            <div style="position:absolute;left:-24px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#f09433,#bc1888);border-radius:0 2px 2px 0;"></div>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:7px;">
+              <defs><radialGradient id="ig-a" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs>
+              <rect width="24" height="24" rx="6" fill="url(#ig-a)"/>
+              <rect x="3.5" y="3.5" width="17" height="17" rx="4" stroke="white" stroke-width="1.5" fill="none"/>
+              <circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5" fill="none"/>
+              <circle cx="17" cy="7" r="1.2" fill="white"/>
+            </svg>
+            <div style="min-width:0;">
+              <div style="font-size:11px;font-weight:600;margin-bottom:2px;background:linear-gradient(90deg,#f09433,#dc2743,#bc1888);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Instagram</div>
+              <div style="font-size:10px;color:rgba(17,17,17,0.4);">Aesthetic Identity</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 0;position:relative;">
+            <div style="position:absolute;left:-24px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#25F4EE,#FE2C55);border-radius:0 2px 2px 0;"></div>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:7px;">
+              <rect width="24" height="24" rx="6" fill="#010101"/>
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="#25F4EE" transform="translate(-0.4 0)"/>
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="#FE2C55" transform="translate(0.4 0)"/>
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="white"/>
+            </svg>
+            <div style="min-width:0;">
+              <div style="font-size:11px;font-weight:600;color:var(--ink);margin-bottom:2px;">Douyin / TikTok</div>
+              <div style="font-size:10px;color:rgba(17,17,17,0.4);">Fast Emotional Discovery</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);">
+          <div style="font-size:18px;color:var(--gold);opacity:0.5;font-family:'Playfair Display',serif;line-height:1;margin-bottom:4px;">"</div>
+          <div style="font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:rgba(17,17,17,0.6);line-height:1.7;">Our platform choice follows the audience's desire: to be seen, to be inspired, or to discover quickly."</div>
+        </div>
+      </div>
+      <!-- right: mapping table -->
+      <div style="display:flex;flex-direction:column;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);flex-shrink:0;">
+          <div style="padding:9px 16px;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#fff;background:var(--gold);">Persona</div>
+          <div style="padding:9px 16px;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#fff;background:var(--gold);border-left:1px solid rgba(255,255,255,0.2);">Platform</div>
+          <div style="padding:9px 16px;font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#fff;background:var(--gold);border-left:1px solid rgba(255,255,255,0.2);">Content Need</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;border-bottom:1px solid var(--rule);">
+          <div style="padding:10px 16px;display:flex;align-items:center;border-right:1px solid var(--rule);"><div style="font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;">Chinese Professional<br>Women in the U.S.</div></div>
+          <div style="padding:10px 16px;display:flex;align-items:center;gap:10px;border-right:1px solid var(--rule);">
+            <svg width="26" height="26" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:7px;"><rect width="60" height="60" fill="#FF2442"/><text x="30" y="38" text-anchor="middle" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">小红书</text></svg>
+            <div style="font-size:12px;font-weight:500;color:#ff2442;">RedNote</div>
+          </div>
+          <div style="padding:10px 16px;display:flex;align-items:center;"><div style="font-size:12px;color:rgba(17,17,17,0.55);line-height:1.5;">Recognition, practical guidance, identity stories</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;border-bottom:1px solid var(--rule);background:rgba(249,248,245,0.5);">
+          <div style="padding:10px 16px;display:flex;align-items:center;border-right:1px solid var(--rule);"><div style="font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;">NYC Lifestyle<br>Explorers</div></div>
+          <div style="padding:10px 16px;display:flex;align-items:center;gap:10px;border-right:1px solid var(--rule);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:6px;">
+              <defs><radialGradient id="ig-b" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs>
+              <rect width="24" height="24" rx="6" fill="url(#ig-b)"/>
+              <rect x="3.5" y="3.5" width="17" height="17" rx="4" stroke="white" stroke-width="1.5" fill="none"/>
+              <circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5" fill="none"/>
+              <circle cx="17" cy="7" r="1.2" fill="white"/>
+            </svg>
+            <div style="font-size:12px;font-weight:500;background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Instagram</div>
+          </div>
+          <div style="padding:10px 16px;display:flex;align-items:center;"><div style="font-size:12px;color:rgba(17,17,17,0.55);line-height:1.5;">Visual inspiration, places to save, weekend ideas</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;border-bottom:1px solid var(--rule);">
+          <div style="padding:10px 16px;display:flex;align-items:center;border-right:1px solid var(--rule);"><div style="font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;">Young Cross-Cultural<br>Viewers</div></div>
+          <div style="padding:10px 16px;display:flex;align-items:center;gap:10px;border-right:1px solid var(--rule);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:6px;">
+              <rect width="24" height="24" rx="6" fill="#010101"/>
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="#25F4EE" transform="translate(-0.4 0)"/>
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="#FE2C55" transform="translate(0.4 0)"/>
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="white"/>
+            </svg>
+            <div style="font-size:12px;font-weight:500;color:#111;">Douyin / TikTok</div>
+          </div>
+          <div style="padding:10px 16px;display:flex;align-items:center;"><div style="font-size:12px;color:rgba(17,17,17,0.55);line-height:1.5;">Quick mood, relatability, entertainment</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;flex:1;background:rgba(249,248,245,0.5);">
+          <div style="padding:10px 16px;display:flex;align-items:center;border-right:1px solid var(--rule);"><div style="font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;">Cultural Weekend<br>Seekers</div></div>
+          <div style="padding:10px 16px;display:flex;align-items:center;gap:8px;border-right:1px solid var(--rule);">
+            <svg width="22" height="22" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:5px;"><rect width="60" height="60" fill="#FF2442"/><text x="30" y="38" text-anchor="middle" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">小红书</text></svg>
+            <span style="font-size:10px;color:rgba(17,17,17,0.3);">+</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:5px;">
+              <defs><radialGradient id="ig-c" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs>
+              <rect width="24" height="24" rx="6" fill="url(#ig-c)"/>
+              <rect x="3.5" y="3.5" width="17" height="17" rx="4" stroke="white" stroke-width="1.5" fill="none"/>
+              <circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5" fill="none"/>
+              <circle cx="17" cy="7" r="1.2" fill="white"/>
+            </svg>
+            <div style="font-size:11px;color:rgba(17,17,17,0.5);">RedNote + IG</div>
+          </div>
+          <div style="padding:10px 16px;display:flex;align-items:center;"><div style="font-size:12px;color:rgba(17,17,17,0.55);line-height:1.5;">Museums, bookstores, calm city routes</div></div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="frame ph" id="slide-14">
     <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 14</div></div><div class="ph-slide-num-big">14</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
@@ -2173,7 +2296,7 @@ html, body {
       </div>
       <div class="ss-slide reveal">
         <div class="ss-meta"><div class="ssm-num">09</div><div class="ssm-title">IG Persona 1 — Mina</div></div>
-        <div class="ss-body" style="zoom:1.2;">
+        <div class="ss-body">
           <!-- header -->
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);">
             <div style="display:flex;align-items:center;gap:12px;">
@@ -2213,20 +2336,20 @@ html, body {
               </div>
             </div>
             <!-- right: 5 attributes -->
-            <div style="display:flex;flex-direction:column;gap:0;">
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
+            <div class="ss-stagger-parent" style="display:flex;flex-direction:column;gap:0;">
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
                 <div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">♡</div>
                 <div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">1. Driving Desire</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">To move through global cities with style and confidence while staying true to her own identity.</div></div>
               </div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
                 <div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">⚖</div>
                 <div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">2. Core Tension</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">She loves international fashion and cultural discovery, but rejects copy-paste city aesthetics that erase personal and local perspective.</div></div>
               </div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
                 <div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">✦</div>
                 <div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">3. Content Triggers</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Cross-city style comparisons &nbsp;·&nbsp; Neighborhood culture, galleries, cafés &nbsp;·&nbsp; Prompts that invite "how would this look in my city?"</div></div>
               </div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
                 <div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">◎</div>
                 <div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">4. Why She Follows Yujia</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Yujia turns New York into a cross-cultural conversation rather than a fixed lifestyle template. She makes global city style feel translatable and personal.</div></div>
               </div>
@@ -2240,7 +2363,7 @@ html, body {
       </div>
       <div class="ss-slide reveal">
         <div class="ss-meta"><div class="ssm-num">10</div><div class="ssm-title">IG Persona 2 — Jessica</div></div>
-        <div class="ss-body" style="zoom:1.2;">
+        <div class="ss-body">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);">
             <div style="display:flex;align-items:center;gap:12px;">
               <div style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--gold);">Persona 2</div>
@@ -2275,20 +2398,20 @@ html, body {
                 <div style="font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:rgba(255,255,255,0.7);line-height:1.65;">I want to look considered without looking like everyone else."</div>
               </div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:0;">
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
+            <div class="ss-stagger-parent" style="display:flex;flex-direction:column;gap:0;">
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
                 <div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">♡</div>
                 <div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">1. Driving Desire</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">To build a style identity that feels polished, expressive, and unmistakably her own.</div></div>
               </div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
                 <div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">⚖</div>
                 <div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">2. Core Tension</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">She loves beauty and refinement, but resists aesthetics that feel too uniform, over-performed, or stripped of personality.</div></div>
               </div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
                 <div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">✦</div>
                 <div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">3. Content Triggers</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Distinctive NYC street style &nbsp;·&nbsp; Outfits with personality, texture, and point of view &nbsp;·&nbsp; Fashion that feels lived-in rather than copy-paste</div></div>
               </div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);">
                 <div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">◎</div>
                 <div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">4. Why She Follows Yujia</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Yujia makes style feel personal, not prescriptive. She turns New York fashion into something interpretable rather than intimidating.</div></div>
               </div>
@@ -2302,7 +2425,7 @@ html, body {
       </div>
       <div class="ss-slide reveal">
         <div class="ss-meta"><div class="ssm-num">11</div><div class="ssm-title">TikTok Persona 1 — Lummy</div></div>
-        <div class="ss-body" style="zoom:1.2;">
+        <div class="ss-body">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);">
             <div style="display:flex;align-items:center;gap:12px;">
               <div style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--gold);">Persona 3</div>
@@ -2325,31 +2448,19 @@ html, body {
                 <div style="font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:rgba(255,255,255,0.7);line-height:1.65;">I want New York to feel like a life I could grow into — not just a life I watch."</div>
               </div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:0;">
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">♡</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">1. Driving Desire</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">To imagine a beautiful, independent city life that still feels emotionally reachable.</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">⚖</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">2. Core Tension</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">She is drawn to New York's romance, style, and freedom, but disconnects when aspirational content feels too distant or over-polished.</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">✦</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">3. Content Triggers</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Solo city moments with warmth &nbsp;·&nbsp; Museum dates, night walks, cafes, and gentle routines &nbsp;·&nbsp; Saveable outfit, location, and lifestyle details</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">◎</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">4. Why She Follows Yujia</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Yujia turns New York into something relatable rather than untouchable. She makes independence feel soft, stylish, and possible.</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">→</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">5. Desired Action</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Save, comment, and emotionally engage with relatable New York lifestyle content.</div></div></div>
+            <div class="ss-stagger-parent" style="display:flex;flex-direction:column;gap:0;">
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">♡</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">1. Driving Desire</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">To imagine a beautiful, independent city life that still feels emotionally reachable.</div></div></div>
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">⚖</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">2. Core Tension</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">She is drawn to New York's romance, style, and freedom, but disconnects when aspirational content feels too distant or over-polished.</div></div></div>
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">✦</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">3. Content Triggers</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Solo city moments with warmth &nbsp;·&nbsp; Museum dates, night walks, cafes, and gentle routines &nbsp;·&nbsp; Saveable outfit, location, and lifestyle details</div></div></div>
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">◎</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">4. Why She Follows Yujia</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Yujia turns New York into something relatable rather than untouchable. She makes independence feel soft, stylish, and possible.</div></div></div>
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">→</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">5. Desired Action</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Save, comment, and emotionally engage with relatable New York lifestyle content.</div></div></div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- S4 -->
-    <div id="ss4">
-      <div class="ss-header reveal">
-        <div class="ssh-blob anim"  style="width:420px;height:420px;background:conic-gradient(from 140deg,#14532d,#16a34a,#065f46,#1e3a8a,#14532d);opacity:0.14;top:-120px;right:-60px;"></div>
-        <div class="ssh-blob anim2" style="width:180px;height:180px;background:conic-gradient(from 280deg,#b8935a,#16a34a,#b8935a);opacity:0.1;bottom:0;left:60px;"></div>
-        <div class="ssh-deco">IV</div>
-        <div class="ssh-part">Part Four</div>
-        <div class="ssh-title">The Strategy</div>
-        <div class="ssh-sub">Brand Aligner &nbsp;·&nbsp; Impact Formula &nbsp;·&nbsp; Platform Matrix &nbsp;·&nbsp; Content Pillars</div>
-      </div>
       <div class="ss-slide reveal">
         <div class="ss-meta"><div class="ssm-num">12</div><div class="ssm-title">TikTok Persona 2 — Felix</div></div>
-        <div class="ss-body" style="zoom:1.2;">
+        <div class="ss-body">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.08);">
             <div style="display:flex;align-items:center;gap:12px;">
               <div style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--gold);">Persona 4</div>
@@ -2372,17 +2483,105 @@ html, body {
                 <div style="font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:rgba(255,255,255,0.7);line-height:1.65;">I want my version of life abroad to be part of the story — not just a comment under someone else's."</div>
               </div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:0;">
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">♡</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">1. Driving Desire</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">To see overseas life as a shared conversation — where his own city, humor, and daily reality also count.</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">⚖</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">2. Core Tension</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">He enjoys aspirational study-abroad content, but rejects one-size-fits-all versions of "life overseas" that erase local differences and personal perspective.</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">✦</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">3. Content Triggers</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Cross-city and cross-country comparisons &nbsp;·&nbsp; International student humor and comment-chain participation &nbsp;·&nbsp; Prompts that invite "what it's like in my city" responses</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">◎</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">4. Why He Follows Yujia</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Yujia turns overseas life into an open prompt rather than a fixed template. Her content leaves room for audiences to add their own place, version, and lived experience.</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">→</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">5. Desired Action</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Comment, tag friends, and add his own city-specific version of the story.</div></div></div>
+            <div class="ss-stagger-parent" style="display:flex;flex-direction:column;gap:0;">
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">♡</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">1. Driving Desire</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">To see overseas life as a shared conversation — where his own city, humor, and daily reality also count.</div></div></div>
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">⚖</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">2. Core Tension</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">He enjoys aspirational study-abroad content, but rejects one-size-fits-all versions of "life overseas" that erase local differences and personal perspective.</div></div></div>
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">✦</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">3. Content Triggers</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Cross-city and cross-country comparisons &nbsp;·&nbsp; International student humor and comment-chain participation &nbsp;·&nbsp; Prompts that invite "what it's like in my city" responses</div></div></div>
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.07);"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">◎</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">4. Why He Follows Yujia</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Yujia turns overseas life into an open prompt rather than a fixed template. Her content leaves room for audiences to add their own place, version, and lived experience.</div></div></div>
+              <div class="ss-reveal-row" style="display:flex;align-items:flex-start;gap:12px;padding:18px 0;"><div style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(184,147,90,0.4);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;color:rgba(255,255,255,0.6);">→</div><div><div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">5. Desired Action</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Comment, tag friends, and add his own city-specific version of the story.</div></div></div>
             </div>
           </div>
         </div>
       </div>
-      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">13</div><div class="ssm-title">Brand Aligner</div><div class="ssm-tool">Tool: Brand Aligner</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — Sinek's Golden Circle, the shared why.</div></div></div>
+    </div>
+
+    <!-- S4 -->
+    <div id="ss4">
+      <div class="ss-header reveal">
+        <div class="ssh-blob anim"  style="width:420px;height:420px;background:conic-gradient(from 140deg,#14532d,#16a34a,#065f46,#1e3a8a,#14532d);opacity:0.14;top:-120px;right:-60px;"></div>
+        <div class="ssh-blob anim2" style="width:180px;height:180px;background:conic-gradient(from 280deg,#b8935a,#16a34a,#b8935a);opacity:0.1;bottom:0;left:60px;"></div>
+        <div class="ssh-deco">IV</div>
+        <div class="ssh-part">Part Four</div>
+        <div class="ssh-title">The Strategy</div>
+        <div class="ssh-sub">Brand Aligner &nbsp;·&nbsp; Impact Formula &nbsp;·&nbsp; Platform Matrix &nbsp;·&nbsp; Content Pillars</div>
+      </div>
+      <div class="ss-slide reveal">
+        <div class="ss-meta"><div class="ssm-num">13</div><div class="ssm-title">Persona to Platform Map</div></div>
+        <div class="ss-body">
+          <!-- hero -->
+          <div style="padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.07);">
+            <div style="font-size:8px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Part 04 · The Strategy</div>
+            <div style="font-family:'Playfair Display',serif;font-size:30px;font-style:italic;color:#fff;line-height:1.2;margin-bottom:10px;">Same Creator,<br>Different Entrances.</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;">One identity. Three platforms. Each meets a different audience desire — to be seen, to be inspired, or to discover quickly.</div>
+          </div>
+          <!-- platform cards -->
+          <div style="display:flex;flex-direction:column;gap:0;margin-bottom:28px;">
+            <div style="display:flex;align-items:center;gap:16px;padding:14px 0 14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);border-left:3px solid #ff2442;">
+              <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:9px;"><rect width="60" height="60" fill="#FF2442"/><text x="30" y="38" text-anchor="middle" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">小红书</text></svg>
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:13px;font-weight:600;color:#ff6b6b;margin-bottom:3px;">RedNote / 小红书</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.35);">Recognition · Practical guidance · Identity stories</div>
+              </div>
+              <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:4px 12px;border-radius:20px;background:rgba(255,36,66,0.12);color:#ff6b6b;flex-shrink:0;margin-right:4px;">Recognition + Usefulness</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;padding:14px 0 14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);border-left:3px solid #dc2743;">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:9px;">
+                <defs><radialGradient id="ig-ss" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs>
+                <rect width="24" height="24" rx="6" fill="url(#ig-ss)"/>
+                <rect x="3.5" y="3.5" width="17" height="17" rx="4" stroke="white" stroke-width="1.5" fill="none"/>
+                <circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5" fill="none"/>
+                <circle cx="17" cy="7" r="1.2" fill="white"/>
+              </svg>
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:13px;font-weight:600;margin-bottom:3px;background:linear-gradient(90deg,#f09433,#dc2743,#bc1888);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Instagram</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.35);">Visual inspiration · Places to save · Weekend ideas</div>
+              </div>
+              <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:4px 12px;border-radius:20px;background:rgba(220,39,67,0.1);color:#fd5949;flex-shrink:0;margin-right:4px;">Aesthetic Identity</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;padding:14px 0 14px 16px;border-left:3px solid #25F4EE;">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;border-radius:9px;">
+                <rect width="24" height="24" rx="6" fill="#010101"/>
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="#25F4EE" transform="translate(-0.4 0)"/>
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="#FE2C55" transform="translate(0.4 0)"/>
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="white"/>
+              </svg>
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:3px;">Douyin / TikTok</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.35);">Quick mood · Relatability · Entertainment</div>
+              </div>
+              <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:4px 12px;border-radius:20px;background:rgba(37,244,238,0.08);color:#25F4EE;flex-shrink:0;margin-right:4px;">Fast Emotional Discovery</div>
+            </div>
+          </div>
+          <!-- mapping table -->
+          <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;background:rgba(184,147,90,0.12);border-bottom:1px solid rgba(255,255,255,0.08);">
+              <div style="padding:10px 16px;font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);">Persona</div>
+              <div style="padding:10px 16px;font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border-left:1px solid rgba(255,255,255,0.06);">Platform</div>
+              <div style="padding:10px 16px;font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border-left:1px solid rgba(255,255,255,0.06);">Content Need</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="padding:13px 16px;font-size:12px;color:#fff;line-height:1.4;border-right:1px solid rgba(255,255,255,0.06);">Chinese Professional Women in the U.S.</div>
+              <div style="padding:13px 16px;font-size:12px;font-weight:500;color:#ff2442;border-right:1px solid rgba(255,255,255,0.06);">小红书 RedNote</div>
+              <div style="padding:13px 16px;font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5;">Recognition, practical guidance, identity stories</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+              <div style="padding:13px 16px;font-size:12px;color:#fff;line-height:1.4;border-right:1px solid rgba(255,255,255,0.06);">NYC Lifestyle Explorers</div>
+              <div style="padding:13px 16px;font-size:12px;font-weight:500;border-right:1px solid rgba(255,255,255,0.06);background:linear-gradient(90deg,#f09433,#dc2743,#bc1888);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Instagram</div>
+              <div style="padding:13px 16px;font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5;">Visual inspiration, places to save, weekend ideas</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="padding:13px 16px;font-size:12px;color:#fff;line-height:1.4;border-right:1px solid rgba(255,255,255,0.06);">Young Cross-Cultural Viewers</div>
+              <div style="padding:13px 16px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.85);border-right:1px solid rgba(255,255,255,0.06);">Douyin / TikTok</div>
+              <div style="padding:13px 16px;font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5;">Quick mood, relatability, entertainment</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;background:rgba(255,255,255,0.02);">
+              <div style="padding:13px 16px;font-size:12px;color:#fff;line-height:1.4;border-right:1px solid rgba(255,255,255,0.06);">Cultural Weekend Seekers</div>
+              <div style="padding:13px 16px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);border-right:1px solid rgba(255,255,255,0.06);">RedNote + Instagram</div>
+              <div style="padding:13px 16px;font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5;">Museums, bookstores, calm city routes</div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">14</div><div class="ssm-title">Impact Formula</div><div class="ssm-tool">Tool: Impact Formula</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — INSIGHT + ETHICS = IMPACT.</div></div></div>
       <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">15</div><div class="ssm-title">Content Pillars</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — the core content themes.</div></div></div>
     </div>
@@ -2593,6 +2792,8 @@ function setMode(m) {
   if (m === 'story') {
     // Reset all reveals so animation plays fresh each time
     document.querySelectorAll('.reveal').forEach(el => el.classList.remove('visible'));
+    document.querySelectorAll('.ss-stagger-parent').forEach(el => el.classList.remove('staggered'));
+    document.querySelectorAll('.ss-reveal-row').forEach(el => { el.classList.remove('visible'); el.style.transitionDelay = ''; });
     stQuantAnimated = false;
     ['st-qs-n1','st-qs-n2','st-qs-n3'].forEach(id => { const e=document.getElementById(id); if(e) e.textContent='0'; });
     ['st-qs-bar-pos','st-qs-bar-neu','st-qs-bar-neg'].forEach(id => { const e=document.getElementById(id); if(e){e.style.transition='none';e.style.width='0%';requestAnimationFrame(()=>{if(e)e.style.transition='';});} });
@@ -2616,6 +2817,16 @@ function checkReveal() {
   document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight - 60) el.classList.add('visible');
+  });
+  document.querySelectorAll('.ss-stagger-parent:not(.staggered)').forEach(parent => {
+    const rect = parent.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 40) {
+      parent.classList.add('staggered');
+      parent.querySelectorAll('.ss-reveal-row').forEach((row, i) => {
+        row.style.transitionDelay = (i * 0.12) + 's';
+        row.classList.add('visible');
+      });
+    }
   });
   if (!stQuantAnimated) {
     const trigger = document.querySelector('.st-quant-trigger');
