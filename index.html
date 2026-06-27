@@ -332,6 +332,12 @@ html, body {
 #slide-7.show-s7-1 .s7-left,    #slide-7.show-s7-1 .s7-photo-1 { animation: panel-reveal 0.7s ease forwards; }
 #slide-7.show-s7-2 .s7-center,  #slide-7.show-s7-2 .s7-photo-2 { animation: panel-reveal 0.7s ease forwards; }
 #slide-7.show-s7-3 .s7-right,   #slide-7.show-s7-3 .s7-photo-3 { animation: panel-reveal 0.7s ease forwards; }
+@keyframes s14FadeIn { from { opacity:0; } to { opacity:1; } }
+#slide-14 .s14-photo { opacity:0; }
+#slide-14.active .s14-photo:nth-child(1) { animation: s14FadeIn 0.7s ease 0.2s forwards; }
+#slide-14.active .s14-photo:nth-child(2) { animation: s14FadeIn 0.7s ease 0.7s forwards; }
+#slide-14.active .s14-photo:nth-child(3) { animation: s14FadeIn 0.7s ease 1.2s forwards; }
+#slide-14.active .s14-photo:nth-child(4) { animation: s14FadeIn 0.7s ease 1.7s forwards; }
 #slide-13 .map-row > * { opacity:0; }
 #slide-13.show-col-1 .map-row > *:nth-child(1) { animation: col-reveal 2s ease forwards; }
 #slide-13.show-col-2 .map-row > *:nth-child(2) { animation: col-reveal 2s ease forwards; }
@@ -351,6 +357,10 @@ html, body {
   position: relative; overflow: hidden;
 }
 /* subtle blob for content slides */
+.concept-photo img { transition: transform 0.35s ease; }
+.concept-photo:hover img { transform: scale(1.08); }
+.concept-photo-scaled img { transform: scale(1.65); transition: transform 0.35s ease; }
+.concept-photo-scaled:hover img { transform: scale(1.78); }
 .ph-blob {
   position: absolute; border-radius: 50%; filter: blur(80px);
   pointer-events: none; z-index: 0;
@@ -417,7 +427,7 @@ html, body {
 
 /* ── HUD ── */
 #hud {
-  position: fixed; bottom: 28px; left: 50%;
+  position: fixed; bottom: 10px; left: 50%;
   transform: translateX(-50%);
   display: flex; align-items: center; gap: 6px; z-index: 500;
 }
@@ -1008,11 +1018,11 @@ html, body {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
         <div>
           <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;">The Key Insight</div>
-          <div style="font-size:13px;color:rgba(17,17,17,0.55);line-height:1.85;">It's not luxury fatigue — it's <strong style="color:var(--ink);font-weight:600;">sameness fatigue</strong>. Quiet luxury makes everyone blend in. The conversation rewards standing out as yourself.<br><br>Yujia's opening: you don't have to flatten yourself to belong.</div>
+          <div style="font-size:11px;color:rgba(17,17,17,0.55);line-height:1.85;">It's not luxury fatigue — it's <strong style="color:var(--ink);font-weight:600;">sameness fatigue</strong>. Quiet luxury makes everyone blend in. The conversation rewards standing out as yourself.<br><br>Yujia's opening: you don't have to flatten yourself to belong.</div>
         </div>
         <div>
           <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;">How We Listened</div>
-          <div style="font-size:13px;color:rgba(17,17,17,0.55);line-height:1.85;">Digital ethnography via Talkwalker, 326.6K mentions.<br><br>Quant dashboards, a 20,000-post extract, and a Reddit deep-dive. Searched for recurring themes, then pulled representative quotes.</div>
+          <div style="font-size:11px;color:rgba(17,17,17,0.55);line-height:1.85;">Digital ethnography via Talkwalker, 326.6K mentions.<br><br>Quant dashboards, a 20,000-post extract, and a Reddit deep-dive. Searched for recurring themes, then pulled representative quotes.</div>
         </div>
       </div>
       <div><span class="ph-tool">Tool — Ethno Research</span></div>
@@ -1179,7 +1189,7 @@ html, body {
       <div class="ph-slide-num-big">07</div>
       <div class="ph-sidebar-bottom">East Meets Feed</div>
     </div>
-    <div style="flex:1;display:flex;flex-direction:column;padding:22px 36px 18px 36px;gap:14px;min-width:0;">
+    <div style="flex:1;display:flex;flex-direction:column;padding:40px 36px 36px 36px;gap:14px;min-width:0;">
       <!-- heading -->
       <div style="display:flex;align-items:center;gap:16px;flex-shrink:0;">
         <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);">Key Insight</div>
@@ -1234,9 +1244,9 @@ html, body {
       </div>
       <!-- body text -->
       <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;">
-        <div class="s7-left" style="font-size:13px;color:rgba(17,17,17,0.55);line-height:1.85;">Audience don't want a more perfect version of Yujia's NY life. They want a way to locate themselves inside it.<br>—— through their city, culture, style and everyday reality.</div>
+        <div class="s7-left" style="font-size:11px;color:rgba(17,17,17,0.55);line-height:1.85;">Audience don't want a more perfect version of Yujia's NY life. They want a way to locate themselves inside it.<br>—— through their city, culture, style and everyday reality.</div>
         <div class="s7-right" style="font-size:22px;color:rgba(184,147,90,0.5);transform:translateX(-12px);">➜</div>
-        <div class="s7-right" style="font-size:13px;color:rgba(17,17,17,0.55);line-height:1.85;">Yujia's feed shouldn't function as a finished lifestyle to admire. It should function as an open cross-cultural imaginarium.<br>—— a world that audiences can enter, interpret, and extend.</div>
+        <div class="s7-right" style="font-size:11px;color:rgba(17,17,17,0.55);line-height:1.85;">Yujia's feed shouldn't function as a finished lifestyle to admire. It should function as an open cross-cultural imaginarium.<br>—— a world that audiences can enter, interpret, and extend.</div>
       </div>
       <!-- photo strip -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;flex:1;min-height:0;overflow:hidden;">
@@ -1267,7 +1277,7 @@ html, body {
       <div class="ph-slide-num-big">08</div>
       <div class="ph-sidebar-bottom">East Meets Feed</div>
     </div>
-    <div style="flex:1;display:flex;flex-direction:column;padding:22px 48px 10px 44px;gap:14px;min-width:0;">
+    <div style="flex:1;display:flex;flex-direction:column;padding:40px 48px 10px 44px;gap:8px;min-width:0;">
       <div style="display:flex;align-items:center;gap:16px;flex-shrink:0;">
         <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);">Audience Overview</div>
         <div style="display:flex;align-items:center;gap:10px;">
@@ -1278,7 +1288,7 @@ html, body {
       <div style="font-size:13px;color:rgba(17,17,17,0.45);flex-shrink:0;">The same creator promise travels differently across Douyin and Instagram.</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
         <!-- Douyin -->
-        <div style="border:1px solid var(--rule);border-radius:8px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;">
+        <div style="border:1px solid var(--rule);border-radius:8px;padding:12px 16px;display:flex;flex-direction:column;gap:8px;">
           <div style="display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--rule);">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:6px;flex-shrink:0;">
               <rect width="24" height="24" rx="6" fill="#010101"/>
@@ -1291,15 +1301,15 @@ html, body {
           <!-- stats strip -->
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;background:rgba(17,17,17,0.03);border-radius:6px;padding:10px 12px;">
             <div style="text-align:center;">
-              <div style="font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;">1,174</div>
+              <div style="font-size:13px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;">1,174</div>
               <div style="font-size:8px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(17,17,17,0.35);margin-top:2px;">Followers</div>
             </div>
             <div style="text-align:center;border-left:1px solid var(--rule);border-right:1px solid var(--rule);">
-              <div style="font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;">309</div>
+              <div style="font-size:13px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;">309</div>
               <div style="font-size:8px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(17,17,17,0.35);margin-top:2px;">Avg Likes</div>
             </div>
             <div style="text-align:center;">
-              <div style="font-size:16px;font-weight:700;color:var(--gold);letter-spacing:-0.02em;">26.3%</div>
+              <div style="font-size:13px;font-weight:700;color:var(--gold);letter-spacing:-0.02em;">26.3%</div>
               <div style="font-size:8px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(17,17,17,0.35);margin-top:2px;">Eng. Rate</div>
             </div>
           </div>
@@ -1321,15 +1331,15 @@ html, body {
           <div style="display:flex;flex-direction:column;gap:10px;">
             <div>
               <div style="font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">Role</div>
-              <div style="font-size:13px;color:rgba(17,17,17,0.55);">Current engagement engine.</div>
+              <div style="font-size:11px;color:rgba(17,17,17,0.55);">Current engagement engine.</div>
             </div>
             <div>
               <div style="font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">Audience</div>
-              <div style="font-size:13px;color:rgba(17,17,17,0.55);line-height:1.7;">China-based viewers using New York content to imagine a freer, more expressive urban life.</div>
+              <div style="font-size:11px;color:rgba(17,17,17,0.55);line-height:1.65;">China-based viewers using New York content to imagine a freer, more expressive urban life.</div>
             </div>
             <div>
               <div style="font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">Their Entry Point</div>
-              <div style="font-size:13px;color:rgba(17,17,17,0.55);line-height:1.7;">Mood, relatability, and saveable lifestyle details. <em>"I want this life too."</em></div>
+              <div style="font-size:11px;color:rgba(17,17,17,0.55);line-height:1.65;">Mood, relatability, and saveable lifestyle details. <em>"I want this life too."</em></div>
             </div>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
@@ -1339,7 +1349,7 @@ html, body {
           </div>
         </div>
         <!-- Instagram -->
-        <div style="border:1px solid var(--rule);border-radius:8px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;background:rgba(17,17,17,0.01);">
+        <div style="border:1px solid var(--rule);border-radius:8px;padding:12px 16px;display:flex;flex-direction:column;gap:8px;background:rgba(17,17,17,0.01);">
           <div style="display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--rule);">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:6px;flex-shrink:0;">
               <defs><radialGradient id="ig-s8" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs>
@@ -1353,15 +1363,15 @@ html, body {
           <!-- stats strip -->
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;background:rgba(17,17,17,0.03);border-radius:6px;padding:10px 12px;">
             <div style="text-align:center;">
-              <div style="font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;">2,340</div>
+              <div style="font-size:13px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;">2,340</div>
               <div style="font-size:8px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(17,17,17,0.35);margin-top:2px;">Followers</div>
             </div>
             <div style="text-align:center;border-left:1px solid var(--rule);border-right:1px solid var(--rule);">
-              <div style="font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;">57</div>
+              <div style="font-size:13px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;">57</div>
               <div style="font-size:8px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(17,17,17,0.35);margin-top:2px;">Posts</div>
             </div>
             <div style="text-align:center;">
-              <div style="font-size:16px;font-weight:700;color:var(--gold);letter-spacing:-0.02em;">165</div>
+              <div style="font-size:13px;font-weight:700;color:var(--gold);letter-spacing:-0.02em;">165</div>
               <div style="font-size:8px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(17,17,17,0.35);margin-top:2px;">Avg Likes</div>
             </div>
           </div>
@@ -1385,15 +1395,15 @@ html, body {
           <div style="display:flex;flex-direction:column;gap:10px;">
             <div>
               <div style="font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">Role</div>
-              <div style="font-size:13px;color:rgba(17,17,17,0.55);">Global expansion space.</div>
+              <div style="font-size:11px;color:rgba(17,17,17,0.55);">Global expansion space.</div>
             </div>
             <div>
               <div style="font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">Audience</div>
-              <div style="font-size:13px;color:rgba(17,17,17,0.55);line-height:1.7;">Cross-cultural, English-speaking citystyle audiences seeking inspiration beyond copy-paste aesthetics.</div>
+              <div style="font-size:11px;color:rgba(17,17,17,0.55);line-height:1.65;">Cross-cultural, English-speaking citystyle audiences seeking inspiration beyond copy-paste aesthetics.</div>
             </div>
             <div>
               <div style="font-size:8px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">Their Entry Point</div>
-              <div style="font-size:13px;color:rgba(17,17,17,0.55);line-height:1.7;">Visual identity, cultural comparison, and prompts invite their city version.</div>
+              <div style="font-size:11px;color:rgba(17,17,17,0.55);line-height:1.65;">Visual identity, cultural comparison, and prompts invite their city version.</div>
             </div>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
@@ -1417,7 +1427,7 @@ html, body {
     </div>
     <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
       <!-- header strip -->
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 28px 14px 28px;border-bottom:1px solid var(--rule);flex-shrink:0;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:40px 28px 14px 28px;border-bottom:1px solid var(--rule);flex-shrink:0;">
         <div style="display:flex;align-items:center;gap:14px;">
           <div style="font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:var(--gold);font-weight:400;line-height:1;">Persona 1</div>
           <div style="width:28px;height:1px;background:var(--ink);flex-shrink:0;"></div>
@@ -1507,7 +1517,7 @@ html, body {
     </div>
     <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
       <!-- header strip -->
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 28px 14px 28px;border-bottom:1px solid var(--rule);flex-shrink:0;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:40px 28px 14px 28px;border-bottom:1px solid var(--rule);flex-shrink:0;">
         <div style="display:flex;align-items:center;gap:14px;">
           <div style="font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:var(--gold);font-weight:400;line-height:1;">Persona 2</div>
           <div style="width:28px;height:1px;background:var(--ink);flex-shrink:0;"></div>
@@ -1595,7 +1605,7 @@ html, body {
       <div class="ph-sidebar-bottom">East Meets Feed</div>
     </div>
     <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 28px 14px 28px;border-bottom:1px solid var(--rule);flex-shrink:0;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:40px 28px 14px 28px;border-bottom:1px solid var(--rule);flex-shrink:0;">
         <div style="display:flex;align-items:center;gap:14px;">
           <div style="font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:var(--gold);font-weight:400;line-height:1;">Persona 3</div>
           <div style="width:28px;height:1px;background:var(--ink);flex-shrink:0;"></div>
@@ -1696,7 +1706,7 @@ html, body {
       <div class="ph-sidebar-bottom">East Meets Feed</div>
     </div>
     <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 28px 14px 28px;border-bottom:1px solid var(--rule);flex-shrink:0;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:40px 28px 14px 28px;border-bottom:1px solid var(--rule);flex-shrink:0;">
         <div style="display:flex;align-items:center;gap:14px;">
           <div style="font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:var(--gold);font-weight:400;line-height:1;">Persona 4</div>
           <div style="width:28px;height:1px;background:var(--ink);flex-shrink:0;"></div>
@@ -1897,13 +1907,146 @@ html, body {
       </div>
     </div>
   </div>
-  <div class="frame ph" id="slide-14">
-    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 14</div></div><div class="ph-slide-num-big">14</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
-    <div class="ph-main"><div class="ph-headline">Impact<br>Formula</div><div class="ph-rule"></div><div class="ph-body">INSIGHT + ETHICS = IMPACT. The Yujia version and the value it creates.</div><div class="ph-tool">Tool — Impact Formula</div></div>
+  <!-- SLIDE 14 — Platform Strategy Matrix -->
+  <div class="frame" id="slide-14" style="background:#f7f5f0;flex-direction:row;overflow:hidden;">
+    <div class="ph-sidebar" style="background:#eeebe4;border-right:1px solid rgba(17,17,17,0.08);">
+      <div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 14</div></div>
+      <div class="ph-slide-num-big">14</div>
+      <div class="ph-sidebar-bottom">East Meets Feed</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:row;overflow:hidden;min-width:0;">
+      <!-- left: photo collage -->
+      <div style="width:260px;flex-shrink:0;display:flex;flex-direction:column;padding:42px 16px 36px;gap:6px;border-right:1px solid rgba(17,17,17,0.08);">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">The Strategy</div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:var(--ink);line-height:1.25;margin-bottom:4px;">Platform Strategy Matrix</div>
+        <div style="font-size:10px;font-weight:500;color:rgba(17,17,17,0.45);letter-spacing:0.03em;margin-bottom:8px;">One brand, Three Platforms</div>
+        <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4px;min-height:0;border:2px solid #7c5cbf;border-radius:4px;overflow:hidden;">
+          <img class="s14-photo" src="Photos for website/persona_mina.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;" alt="">
+          <img class="s14-photo" src="Photos for website/persona_jessica.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;" alt="">
+          <img class="s14-photo" src="Photos for website/persona_lummy.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;" alt="">
+          <img class="s14-photo" src="Photos for website/persona_felix.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;" alt="">
+        </div>
+      </div>
+      <!-- right: strategy content -->
+      <div style="flex:1;display:flex;flex-direction:column;padding:50px 24px 16px;gap:18px;min-width:0;overflow:hidden;">
+        <!-- gold banner -->
+        <div style="background:var(--gold);border-radius:4px;padding:12px 18px;flex-shrink:0;">
+          <div style="font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#fff;line-height:1.3;">Turning Platform Differences into Campaign Roles</div>
+        </div>
+        <!-- strategic logic -->
+        <div style="background:#eeebe4;border-radius:4px;padding:12px 16px;flex-shrink:0;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Strategic Logic</div>
+          <div style="font-size:11px;color:rgba(17,17,17,0.6);line-height:1.65;">The campaign should not copy and paste the same content across platforms. Instead, we use one creator, one brand, and platform-specific storytelling: RedNote for depth and usefulness, Instagram for visual aspiration, and Douyin/TikTok for speed and emotional discovery.</div>
+        </div>
+        <!-- table -->
+        <div style="border-radius:4px;border:1px solid rgba(17,17,17,0.1);overflow:hidden;">
+          <!-- header -->
+          <div style="display:grid;grid-template-columns:100px 1fr 1.6fr 1.1fr 1.1fr;background:var(--gold);">
+            <div style="padding:8px 10px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#fff;">Platform</div>
+            <div style="padding:8px 10px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#fff;border-left:1px solid rgba(255,255,255,0.2);">Role</div>
+            <div style="padding:8px 10px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#fff;border-left:1px solid rgba(255,255,255,0.2);">Content Strategy</div>
+            <div style="padding:8px 10px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#fff;border-left:1px solid rgba(255,255,255,0.2);">KPI Focus</div>
+            <div style="padding:8px 10px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#fff;border-left:1px solid rgba(255,255,255,0.2);">Why it fits</div>
+          </div>
+          <!-- row 1 RedNote -->
+          <div style="display:grid;grid-template-columns:100px 1fr 1.6fr 1.1fr 1.1fr;border-bottom:1px solid rgba(17,17,17,0.07);">
+            <div style="padding:10px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;">
+              <svg width="22" height="22" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" style="border-radius:6px;flex-shrink:0;"><rect width="60" height="60" fill="#FF2442"/><text x="30" y="38" text-anchor="middle" font-family="'PingFang SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif" font-size="16" font-weight="700" fill="#fff">小红书</text></svg>
+              <div style="font-size:10px;font-weight:700;color:#ff2442;">RedNote</div>
+            </div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Recognition + searchable lifestyle guide</div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Chinese-language work-life, cultural routes, after-work reset, museum weekends</div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Saves, comments, search traffic, followers</div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Best for relatable detail and practical saving</div>
+          </div>
+          <!-- row 2 Instagram -->
+          <div style="display:grid;grid-template-columns:100px 1fr 1.6fr 1.1fr 1.1fr;border-bottom:1px solid rgba(17,17,17,0.07);background:rgba(17,17,17,0.015);">
+            <div style="padding:10px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="border-radius:6px;flex-shrink:0;"><defs><radialGradient id="ig-s14" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6" fill="url(#ig-s14)"/><rect x="3.5" y="3.5" width="17" height="17" rx="4" stroke="white" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5" fill="none"/><circle cx="17" cy="7" r="1.2" fill="white"/></svg>
+              <div style="font-size:10px;font-weight:700;background:linear-gradient(90deg,#f09433,#dc2743,#bc1888);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Instagram</div>
+            </div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Aesthetic brand world</div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Visual storytelling around museums, UES, city walks, quiet luxury, cinematic NYC</div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Reach, shares, profile visits, follower growth</div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Best for visual identity and aspirational recognition</div>
+          </div>
+          <!-- row 3 Douyin -->
+          <div style="display:grid;grid-template-columns:100px 1fr 1.6fr 1.1fr 1.1fr;">
+            <div style="padding:10px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="border-radius:6px;flex-shrink:0;"><rect width="24" height="24" rx="6" fill="#010101"/><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="#25F4EE"/><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="#FE2C55" opacity="0.5"/><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.79 1.52V6.79a4.85 4.85 0 0 1-1.02-.1z" fill="white" opacity="0.9"/></svg>
+              <div style="font-size:10px;font-weight:700;color:var(--ink);">Douyin / TikTok</div>
+            </div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Fast emotional discovery</div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Short hooks: night walks, sports/city atmosphere, workday-to-evening transitions</div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Views, completion rate, likes, shares</div>
+            <div style="padding:10px 10px;font-size:10px;color:rgba(17,17,17,0.65);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);text-align:center;">Best for rapid mood and emotional discovery</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="frame ph" id="slide-15">
-    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 15</div></div><div class="ph-slide-num-big">15</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
-    <div class="ph-main"><div class="ph-headline">Content<br>Pillars</div><div class="ph-rule"></div><div class="ph-body">The core content themes that define East Meets Feed.</div></div>
+  <div class="frame" id="slide-15" style="background:#f7f5f0;flex-direction:row;overflow:hidden;">
+    <div class="ph-sidebar" style="background:#eeebe4;border-right:1px solid rgba(17,17,17,0.08);">
+      <div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 15</div></div>
+      <div class="ph-slide-num-big">15</div>
+      <div class="ph-sidebar-bottom">East Meets Feed</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;padding:40px 28px 20px;gap:0;min-width:0;overflow:hidden;">
+      <!-- header -->
+      <div style="flex-shrink:0;margin-bottom:16px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">The Strategy</div>
+        <div style="font-family:'Playfair Display',serif;font-size:24px;font-style:italic;color:var(--ink);line-height:1.15;margin-bottom:4px;">Impact formula</div>
+        <div style="font-size:9px;font-weight:500;color:rgba(17,17,17,0.4);letter-spacing:0.03em;">NS / SV / BV &nbsp;=&nbsp; (Business Insight + Human Insight) &nbsp;×&nbsp; (Business Ethics + Human Ethics)</div>
+      </div>
+      <!-- row 1: two input boxes + × operator -->
+      <div style="display:flex;align-items:stretch;gap:0;flex-shrink:0;margin-bottom:0;">
+        <!-- Insight box -->
+        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.1);border-radius:6px;padding:14px 16px;">
+          <div style="font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Insight Layer</div>
+          <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <span style="font-size:9px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(184,147,90,0.12);color:var(--gold);white-space:nowrap;">Business Insight</span>
+            <span style="font-size:9px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(184,147,90,0.12);color:var(--gold);white-space:nowrap;">Human Insight</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <div style="flex:1;font-size:9.5px;color:rgba(17,17,17,0.58);line-height:1.65;">Cross-cultural creators are underserved. Bilingual dual-platform presence is a rare asset. The real gap: content that sells recognition drives saves and shares.</div>
+            <div style="width:1px;background:rgba(17,17,17,0.08);flex-shrink:0;"></div>
+            <div style="flex:1;font-size:9.5px;color:rgba(17,17,17,0.58);line-height:1.65;">Audiences don't envy her — they see themselves in her. "This could be my version too." Cultural identity is an entry point, not a barrier.</div>
+          </div>
+        </div>
+        <!-- × operator -->
+        <div style="width:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:300;color:var(--gold);">×</div>
+        <!-- Ethics box -->
+        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.1);border-radius:6px;padding:14px 16px;">
+          <div style="font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(17,17,17,0.4);margin-bottom:8px;">Ethics Layer</div>
+          <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <span style="font-size:9px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(17,17,17,0.07);color:var(--ink);white-space:nowrap;">Business Ethics</span>
+            <span style="font-size:9px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(17,17,17,0.07);color:var(--ink);white-space:nowrap;">Human Ethics</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <div style="flex:1;font-size:9.5px;color:rgba(17,17,17,0.58);line-height:1.65;">Sell real, lived-in moments — not perfect filters. Respect both cultures instead of reducing them to stereotypes.</div>
+            <div style="width:1px;background:rgba(17,17,17,0.08);flex-shrink:0;"></div>
+            <div style="flex:1;font-size:9.5px;color:rgba(17,17,17,0.58);line-height:1.65;">Never force the audience to choose a side. Give both platform communities equal space to connect and belong.</div>
+          </div>
+        </div>
+      </div>
+      <!-- arrow -->
+      <div style="display:flex;align-items:center;justify-content:center;padding:8px 0;color:var(--gold);font-size:18px;flex-shrink:0;">↓</div>
+      <!-- row 2: three output boxes -->
+      <div style="display:flex;gap:8px;flex-shrink:0;">
+        <div style="flex:1;background:var(--gold);border-radius:6px;padding:12px 14px;">
+          <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#fff;margin-bottom:5px;">New Stakeholders</div>
+          <div style="font-size:9.5px;color:rgba(255,255,255,0.85);line-height:1.65;">Audiences shift from passive viewers to active participants — co-creating the story through comments, saves, and shares.</div>
+        </div>
+        <div style="flex:1;background:var(--ink);border-radius:6px;padding:12px 14px;">
+          <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;">Business Value</div>
+          <div style="font-size:9.5px;color:rgba(255,255,255,0.65);line-height:1.65;">Organically hits the 5,000 engagement target across platforms. Builds a sustainable growth engine for future brand partnerships.</div>
+        </div>
+        <div style="flex:1;background:var(--ink);border-radius:6px;padding:12px 14px;">
+          <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;">Social Value</div>
+          <div style="font-size:9.5px;color:rgba(255,255,255,0.65);line-height:1.65;">Reduces either/or cultural narratives for overseas Chinese communities. Sets a brand-new, honest standard for cross-cultural content.</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- SC 5 -->
@@ -1919,34 +2062,306 @@ html, body {
   </div>
 
   <!-- SLIDES 16-19 -->
-  <div class="frame ph" id="slide-16">
-    <div class="ph-blob" style="width:300px;height:300px;background:rgba(58,26,110,0.06);top:-60px;right:40px;"></div>
-    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 05 &nbsp;·&nbsp; The Activation</div><div class="ph-slide-label">Slide 16</div></div><div class="ph-slide-num-big">16</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
-    <div class="ph-main"><div class="ph-headline">Behavioral<br>Planner</div><div class="ph-rule"></div><div class="ph-body">Touchpoints and needstates from the research. Drives the unified content brief.</div><div class="ph-tool">Tool — Behavioral Planner</div></div>
+  <!-- SLIDE 16 — Brand Strategy (Philosophy + Positioning + Pillars) -->
+  <div class="frame" id="slide-16" style="background:#f7f5f0;flex-direction:row;overflow:hidden;">
+    <div class="ph-sidebar" style="background:#eeebe4;border-right:1px solid rgba(17,17,17,0.08);">
+      <div class="ph-sidebar-top"><div class="ph-section-tag">Part 04 &nbsp;·&nbsp; The Strategy</div><div class="ph-slide-label">Slide 16</div></div>
+      <div class="ph-slide-num-big">16</div>
+      <div class="ph-sidebar-bottom">East Meets Feed</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:row;overflow:hidden;min-width:0;">
+
+      <!-- COL 1: Brand Philosophy -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 18px 28px;border-right:1px solid rgba(17,17,17,0.08);overflow:hidden;">
+        <div style="font-size:8px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Brand Philosophy</div>
+        <!-- concentric circles -->
+        <div style="position:relative;width:170px;height:170px;flex-shrink:0;margin:0 auto 12px;">
+          <div style="position:absolute;inset:0;border-radius:50%;background:rgba(200,193,180,0.35);"></div>
+          <div style="position:absolute;inset:22px;border-radius:50%;background:rgba(184,147,90,0.22);"></div>
+          <div style="position:absolute;inset:48px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;">
+            <div style="font-size:7.5px;font-weight:700;text-transform:uppercase;color:#fff;text-align:center;letter-spacing:0.05em;line-height:1.4;">Recognition<br>Not Envy</div>
+          </div>
+          <div style="position:absolute;top:30px;left:-30px;font-size:7px;font-weight:700;text-transform:uppercase;color:rgba(17,17,17,0.45);line-height:1.4;text-align:center;width:72px;">A Chinese-<br>New Yorker<br>Both Worlds</div>
+          <div style="position:absolute;top:56px;right:-36px;font-size:7px;font-weight:700;text-transform:uppercase;color:rgba(17,17,17,0.45);line-height:1.4;text-align:center;width:80px;">Dual-Platform<br>Cross-Cultural<br>Lived-In</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <div style="border-left:2px solid var(--gold);padding:4px 8px;">
+            <div style="font-size:7.5px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:2px;">What it is</div>
+            <div style="font-size:10px;color:rgba(17,17,17,0.6);line-height:1.5;">A cross-cultural lifestyle creator bridging New York and China.</div>
+          </div>
+          <div style="border-left:2px solid rgba(17,17,17,0.2);padding:4px 8px;">
+            <div style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:2px;">How we do it</div>
+            <div style="font-size:10px;color:rgba(17,17,17,0.6);line-height:1.5;">Instagram for visual style. Douyin for emotional connection.</div>
+          </div>
+          <div style="border-left:2px solid rgba(17,17,17,0.2);padding:4px 8px;">
+            <div style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:2px;">Why it matters</div>
+            <div style="font-size:10px;color:rgba(17,17,17,0.6);line-height:1.5;">You don't have to choose. Both cultures get equal space.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COL 2: Brand Positioning -->
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 28px 36px 18px;overflow:hidden;">
+        <div style="font-size:8px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Brand Positioning</div>
+        <div style="font-size:10px;color:rgba(17,17,17,0.5);line-height:1.5;margin-bottom:10px;">Yujia is not just a lifestyle account — she is a cultural entry point.</div>
+        <!-- 2x2 matrix -->
+        <div style="height:300px;flex-shrink:0;position:relative;overflow:hidden;">
+          <!-- axis lines -->
+          <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(17,17,17,0.15);"></div>
+          <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(17,17,17,0.15);"></div>
+          <!-- axis labels -->
+          <div style="position:absolute;top:2px;left:50%;transform:translateX(-50%);font-size:8px;font-weight:700;color:rgba(17,17,17,0.5);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;">Cross-cultural</div>
+          <div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);font-size:8px;font-weight:700;color:rgba(17,17,17,0.35);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;">Mono-cultural</div>
+          <div style="position:absolute;top:50%;left:2px;transform:translateY(-50%);font-size:7.5px;font-weight:600;color:rgba(17,17,17,0.35);writing-mode:vertical-lr;transform:rotate(180deg) translateY(50%);white-space:nowrap;">Passive</div>
+          <div style="position:absolute;top:50%;right:2px;transform:translateY(-50%);font-size:7.5px;font-weight:600;color:rgba(17,17,17,0.35);writing-mode:vertical-lr;white-space:nowrap;">Participatory</div>
+          <!-- @Yujia — top right -->
+          <div style="position:absolute;top:10%;right:8%;display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <div style="font-size:14px;color:var(--gold);">✦</div>
+            <div style="font-size:9px;font-weight:700;color:var(--gold);">@Yujia</div>
+            <div style="font-size:7px;color:rgba(17,17,17,0.4);line-height:1.3;text-align:center;max-width:66px;">Cross-cultural<br>Participatory</div>
+          </div>
+          <!-- Study Abroad Vlogs — top left -->
+          <div style="position:absolute;top:12%;left:8%;font-size:7.5px;color:rgba(17,17,17,0.3);text-align:center;max-width:72px;line-height:1.4;">@Study Abroad<br>Vlogs</div>
+          <!-- Quiet Luxury — bottom left -->
+          <div style="position:absolute;bottom:12%;left:8%;font-size:7.5px;color:rgba(17,17,17,0.3);text-align:center;max-width:72px;line-height:1.4;">@ "Quiet Luxury"<br>Bloggers</div>
+          <!-- Perfect Aesthetic — bottom center-left -->
+          <div style="position:absolute;bottom:30%;left:18%;font-size:7px;color:rgba(17,17,17,0.22);text-align:center;max-width:68px;line-height:1.4;">@Perfect<br>Aesthetic Feeds</div>
+          <!-- Daily Bloggers — bottom right -->
+          <div style="position:absolute;bottom:12%;right:8%;font-size:7.5px;color:rgba(17,17,17,0.3);text-align:center;max-width:72px;line-height:1.4;">@Daily<br>Bloggers</div>
+          <!-- Food & Travel — bottom center-right -->
+          <div style="position:absolute;bottom:30%;right:14%;font-size:7px;color:rgba(17,17,17,0.22);text-align:center;max-width:68px;line-height:1.4;">@Food &<br>Travel Guides</div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="frame ph" id="slide-17">
-    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 05 &nbsp;·&nbsp; The Activation</div><div class="ph-slide-label">Slide 17</div></div><div class="ph-slide-num-big">17</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
-    <div class="ph-main">
-      <div class="ph-headline">Instagram<br>Content Concepts</div>
-      <div class="ph-rule"></div>
-      <div class="ph-body">The Instagram content concepts and creative direction.</div>
-      <div class="post-links">
-        <a class="btn-post ig" href="https://www.instagram.com/p/PLACEHOLDER/" target="_blank" rel="noopener">
-          <span class="post-icon">📸</span>
-          <span>IG Post 01</span>
-          <span class="post-arrow">→</span>
-        </a>
-        <a class="btn-post ig" href="https://www.instagram.com/p/PLACEHOLDER/" target="_blank" rel="noopener">
-          <span class="post-icon">📸</span>
-          <span>IG Post 02</span>
-          <span class="post-arrow">→</span>
-        </a>
+  <div class="frame" id="slide-17" style="background:#f7f5f0;flex-direction:row;overflow:hidden;">
+    <div class="ph-sidebar" style="background:#eeebe4;border-right:1px solid rgba(17,17,17,0.08);">
+      <div class="ph-sidebar-top"><div class="ph-section-tag">Part 05 &nbsp;·&nbsp; The Activation</div><div class="ph-slide-label">Slide 17</div></div>
+      <div class="ph-slide-num-big">17</div>
+      <div class="ph-sidebar-bottom">East Meets Feed</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:row;overflow:hidden;min-width:0;">
+      <!-- LEFT: Behavioral Planner — expanded with detailed stage cards -->
+      <div style="flex:1.8;display:flex;flex-direction:column;padding:40px 16px 12px;border-right:1px solid rgba(17,17,17,0.08);overflow:hidden;min-width:0;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;">The Activation</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
+          <div style="font-family:'Playfair Display',serif;font-size:15px;font-style:italic;color:var(--ink);line-height:1.2;white-space:nowrap;">Behavioral Planner</div>
+          <div style="font-size:8.5px;color:rgba(17,17,17,0.4);line-height:1.2;">Audience-out · needstate-specific · currently between awareness and engagement</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:7px;justify-content:center;position:relative;min-height:0;">
+          <div style="position:absolute;left:14px;top:14px;bottom:14px;width:1px;background:rgba(184,147,90,0.2);z-index:0;"></div>
+          <!-- Stage 1 -->
+          <div style="display:flex;align-items:flex-start;gap:8px;position:relative;z-index:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:5px;padding:6px 9px;overflow:hidden;">
+            <div style="width:22px;height:22px;border-radius:50%;background:#eeebe4;border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);margin-top:1px;">1</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);margin-bottom:2px;">Passive Social Scrolling</div>
+              <div style="font-size:8.5px;color:rgba(17,17,17,0.55);line-height:1.4;margin-bottom:1px;"><span style="font-weight:600;color:rgba(17,17,17,0.7);">Need state:</span> Casually scrolling IG or Douyin without actively searching for Yujia.</div>
+              <div style="font-size:8.5px;color:rgba(17,17,17,0.55);line-height:1.4;margin-bottom:1px;"><span style="font-weight:600;color:rgba(17,17,17,0.7);">Message:</span> Strong first impression in 3 seconds — NYC lifestyle, soft fashion, cultural taste, Chinese perspective.</div>
+              <div style="font-size:8px;color:rgba(17,17,17,0.38);line-height:1.5;">Touchpoints: IG Reels, Douyin feed, image-text posts, cover titles, hashtags, location tags &nbsp;·&nbsp; <span style="color:var(--gold);font-weight:600;">KPI: Reach → views → profile visits</span></div>
+            </div>
+          </div>
+          <!-- Stage 2 -->
+          <div style="display:flex;align-items:flex-start;gap:8px;position:relative;z-index:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:5px;padding:6px 9px;overflow:hidden;">
+            <div style="width:22px;height:22px;border-radius:50%;background:#eeebe4;border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);margin-top:1px;">2</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);margin-bottom:2px;">Identity Recognition</div>
+              <div style="font-size:8.5px;color:rgba(17,17,17,0.55);line-height:1.4;margin-bottom:1px;"><span style="font-weight:600;color:rgba(17,17,17,0.7);">Need state:</span> Starts to understand what makes Yujia different from other NYC lifestyle creators.</div>
+              <div style="font-size:8.5px;color:rgba(17,17,17,0.55);line-height:1.4;margin-bottom:1px;"><span style="font-weight:600;color:rgba(17,17,17,0.7);">Message:</span> "You don't have to choose." Her life blends Chinese identity, NYC lifestyle, culture, romance, and independence.</div>
+              <div style="font-size:8px;color:rgba(17,17,17,0.38);line-height:1.5;">Touchpoints: Frick Collection, Albertine, Cloisters, East Village, NYC night street posts &nbsp;·&nbsp; <span style="color:var(--gold);font-weight:600;">KPI: Likes → comments → saves</span></div>
+            </div>
+          </div>
+          <!-- Stage 3 -->
+          <div style="display:flex;align-items:flex-start;gap:8px;position:relative;z-index:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:5px;padding:6px 9px;overflow:hidden;">
+            <div style="width:22px;height:22px;border-radius:50%;background:#eeebe4;border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);margin-top:1px;">3</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);margin-bottom:2px;">Follow Decision</div>
+              <div style="font-size:8.5px;color:rgba(17,17,17,0.55);line-height:1.4;margin-bottom:1px;"><span style="font-weight:600;color:rgba(17,17,17,0.7);">Need state:</span> Decides whether Yujia's profile is worth following after seeing one or two posts.</div>
+              <div style="font-size:8.5px;color:rgba(17,17,17,0.55);line-height:1.4;margin-bottom:1px;"><span style="font-weight:600;color:rgba(17,17,17,0.7);">Message:</span> A consistent world — NYC culture, fashion, emotional lifestyle, Chinese-language recognition, personal POV.</div>
+              <div style="font-size:8px;color:rgba(17,17,17,0.38);line-height:1.5;">Touchpoints: Profile grid, pinned posts, bio, recurring content pillars, platform-specific captions &nbsp;·&nbsp; <span style="color:var(--gold);font-weight:600;">KPI: Profile conversion → follower growth</span></div>
+            </div>
+          </div>
+          <!-- Stage 4 -->
+          <div style="display:flex;align-items:flex-start;gap:8px;position:relative;z-index:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:5px;padding:6px 9px;overflow:hidden;">
+            <div style="width:22px;height:22px;border-radius:50%;background:#eeebe4;border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);margin-top:1px;">4</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);margin-bottom:2px;">Save &amp; Share Intent</div>
+              <div style="font-size:8.5px;color:rgba(17,17,17,0.55);line-height:1.4;margin-bottom:1px;"><span style="font-weight:600;color:rgba(17,17,17,0.7);">Need state:</span> Likes the post and wants to remember it, copy it, or send it to a friend.</div>
+              <div style="font-size:8.5px;color:rgba(17,17,17,0.55);line-height:1.4;margin-bottom:1px;"><span style="font-weight:600;color:rgba(17,17,17,0.7);">Message:</span> Useful beauty — beautiful content with real routes, addresses, tips, captions, and repeatable experiences.</div>
+              <div style="font-size:8px;color:rgba(17,17,17,0.38);line-height:1.5;">Touchpoints: Carousel guides, Douyin image-text posts, location tips, route captions, searchable keywords &nbsp;·&nbsp; <span style="color:var(--gold);font-weight:600;">KPI: Save rate → share rate → organic engagement</span></div>
+            </div>
+          </div>
+          <!-- Stage 5 -->
+          <div style="display:flex;align-items:flex-start;gap:8px;position:relative;z-index:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:5px;padding:6px 9px;overflow:hidden;">
+            <div style="width:22px;height:22px;border-radius:50%;background:#eeebe4;border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);margin-top:1px;">5</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);margin-bottom:2px;">Returning / Advocacy</div>
+              <div style="font-size:8.5px;color:rgba(17,17,17,0.55);line-height:1.4;margin-bottom:1px;"><span style="font-weight:600;color:rgba(17,17,17,0.7);">Need state:</span> Returns because content feels personally relevant, not just visually attractive.</div>
+              <div style="font-size:8.5px;color:rgba(17,17,17,0.55);line-height:1.4;margin-bottom:1px;"><span style="font-weight:600;color:rgba(17,17,17,0.7);">Message:</span> "This feels like my NYC life." / "We should go here." / "This is the kind of life I want."</div>
+              <div style="font-size:8px;color:rgba(17,17,17,0.38);line-height:1.5;">Touchpoints: Comment prompts, friend-tag captions, recurring series, trend-based Douyin posts, weekly cadence &nbsp;·&nbsp; <span style="color:var(--gold);font-weight:600;">KPI: Repeat engagement → comments → tags → shares</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- RIGHT: Content Pillars table — compact -->
+      <div style="flex:1;display:flex;flex-direction:column;padding:40px 14px 12px;overflow:hidden;min-width:0;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Content Pillars</div>
+        <div style="font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--ink);line-height:1.2;margin-bottom:8px;">Needstate → Delivery → Action</div>
+        <div style="border:1px solid rgba(17,17,17,0.1);border-radius:5px;overflow:hidden;display:flex;flex-direction:column;width:100%;margin:auto 0;">
+          <div style="display:grid;grid-template-columns:32px 1fr 1fr;background:var(--gold);flex-shrink:0;">
+            <div style="padding:10px 6px;font-size:8.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#fff;text-align:center;">#</div>
+            <div style="padding:10px 10px;font-size:8.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#fff;border-left:1px solid rgba(255,255,255,0.2);">Needstate</div>
+            <div style="padding:10px 10px;font-size:8.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#fff;border-left:1px solid rgba(255,255,255,0.2);">Delivery &amp; KPI</div>
+          </div>
+          <div style="display:grid;grid-template-columns:32px 1fr 1fr;border-bottom:1px solid rgba(17,17,17,0.07);">
+            <div style="display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(17,17,17,0.06);"><div style="width:18px;height:18px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:7.5px;font-weight:700;color:var(--gold);">1</div></div>
+            <div style="padding:14px 10px;font-size:10px;color:var(--ink);font-weight:600;line-height:1.5;">Passive Scrolling<br><span style="font-weight:400;color:rgba(17,17,17,0.5);">Tired of copy-paste trends</span></div>
+            <div style="padding:14px 10px;font-size:10px;color:rgba(17,17,17,0.6);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);">NYC night walks + style details<br><span style="color:var(--gold);font-weight:600;">The 3-Second Hook</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:32px 1fr 1fr;border-bottom:1px solid rgba(17,17,17,0.07);background:rgba(17,17,17,0.015);">
+            <div style="display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(17,17,17,0.06);"><div style="width:18px;height:18px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:7.5px;font-weight:700;color:var(--gold);">2</div></div>
+            <div style="padding:14px 10px;font-size:10px;color:var(--ink);font-weight:600;line-height:1.5;">Identity Seeking<br><span style="font-weight:400;color:rgba(17,17,17,0.5);">Dual cultures blended</span></div>
+            <div style="padding:14px 10px;font-size:10px;color:rgba(17,17,17,0.6);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);">Career + heritage balance<br><span style="color:var(--gold);font-weight:600;">The Follow</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:32px 1fr 1fr;border-bottom:1px solid rgba(17,17,17,0.07);">
+            <div style="display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(17,17,17,0.06);"><div style="width:18px;height:18px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:7.5px;font-weight:700;color:var(--gold);">4</div></div>
+            <div style="padding:14px 10px;font-size:10px;color:var(--ink);font-weight:600;line-height:1.5;">Actionable Planning<br><span style="font-weight:400;color:rgba(17,17,17,0.5);">Real, fresh city guides</span></div>
+            <div style="padding:14px 10px;font-size:10px;color:rgba(17,17,17,0.6);line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);">Saveable routes + hidden gems<br><span style="color:var(--gold);font-weight:600;">Saves &amp; Shares</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:32px 1fr 1fr;background:rgba(17,17,17,0.015);">
+            <div style="display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(17,17,17,0.06);"><div style="width:18px;height:18px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:7.5px;font-weight:700;color:var(--gold);">5</div></div>
+            <div style="padding:14px 10px;font-size:10px;color:var(--ink);font-weight:600;line-height:1.5;">Deep Connection<br><span style="font-weight:400;color:rgba(17,17,17,0.5);">Feel at home in a big city</span></div>
+            <div style="padding:14px 10px;font-size:10px;color:rgba(17,17,17,0.6);font-style:italic;line-height:1.5;border-left:1px solid rgba(17,17,17,0.06);">"How does this look in your city?"<br><span style="color:var(--gold);font-weight:600;font-style:normal;">Comment</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="frame ph" id="slide-18">
-    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 05 &nbsp;·&nbsp; The Activation</div><div class="ph-slide-label">Slide 18</div></div><div class="ph-slide-num-big">18</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
-    <div class="ph-main"><div class="ph-headline">Douyin<br>Content Concepts</div><div class="ph-rule"></div><div class="ph-body">The Douyin post concepts and creative direction.</div></div>
+  <div class="frame" id="slide-18" style="background:#f7f5f0;flex-direction:row;overflow:hidden;">
+    <div class="ph-sidebar" style="background:#eeebe4;border-right:1px solid rgba(17,17,17,0.08);">
+      <div class="ph-sidebar-top"><div class="ph-section-tag">Part 05 &nbsp;·&nbsp; The Activation</div><div class="ph-slide-label">Slide 18</div></div>
+      <div class="ph-slide-num-big">18</div>
+      <div class="ph-sidebar-bottom">East Meets Feed</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;padding:46px 22px 16px;overflow:hidden;min-width:0;gap:10px;">
+      <!-- HEADER -->
+      <div style="flex-shrink:0;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">The Activation</div>
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--ink);line-height:1.1;">Instagram Content Concepts</div>
+      </div>
+      <!-- INSTAGRAM ROLE + PHOTO -->
+      <div style="display:flex;gap:12px;flex-shrink:0;height:126px;">
+        <div style="flex:1.35;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;padding:11px 14px;display:flex;flex-direction:column;overflow:hidden;">
+          <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Instagram Role</div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div style="display:flex;gap:7px;align-items:flex-start;"><span style="color:var(--gold);font-size:11px;line-height:1.35;flex-shrink:0;">·</span><span style="font-size:9.5px;color:rgba(17,17,17,0.65);line-height:1.45;">Builds Yujia's visual identity and cultural credibility</span></div>
+            <div style="display:flex;gap:7px;align-items:flex-start;"><span style="color:var(--gold);font-size:11px;line-height:1.35;flex-shrink:0;">·</span><span style="font-size:9.5px;color:rgba(17,17,17,0.65);line-height:1.45;">Turns NYC lifestyle into saveable cultural routes</span></div>
+            <div style="display:flex;gap:7px;align-items:flex-start;"><span style="color:var(--gold);font-size:11px;line-height:1.35;flex-shrink:0;">·</span><span style="font-size:9.5px;color:rgba(17,17,17,0.65);line-height:1.45;">Challenge: strong visuals, but weaker follower conversion</span></div>
+            <div style="display:flex;gap:7px;align-items:flex-start;"><span style="color:var(--gold);font-size:11px;line-height:1.35;flex-shrink:0;">·</span><span style="font-size:9.5px;color:rgba(17,17,17,0.65);line-height:1.45;">Strategic focus: profile value, likes, shares, and clearer hooks</span></div>
+          </div>
+        </div>
+        <!-- IG profile mock -->
+        <div style="flex:0.65;border-radius:6px;border:1px solid rgba(17,17,17,0.08);background:#fff;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:8px;overflow:hidden;">
+          <!-- header row: avatar + stats -->
+          <div style="display:flex;align-items:center;gap:12px;">
+            <!-- avatar with IG gradient ring -->
+            <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);padding:2px;flex-shrink:0;">
+              <div style="width:100%;height:100%;border-radius:50%;overflow:hidden;border:2px solid #fff;">
+                <img src="ig_night_portrait.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+              </div>
+            </div>
+            <!-- name + stats -->
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:10px;font-weight:700;color:var(--ink);margin-bottom:6px;white-space:nowrap;">Yujia Xie</div>
+              <div style="display:flex;gap:10px;">
+                <div style="text-align:center;"><div style="font-size:10px;font-weight:700;color:var(--ink);line-height:1.2;">57</div><div style="font-size:7px;color:rgba(17,17,17,0.45);letter-spacing:0.02em;">posts</div></div>
+                <div style="text-align:center;"><div style="font-size:10px;font-weight:700;color:var(--ink);line-height:1.2;">2,341</div><div style="font-size:7px;color:rgba(17,17,17,0.45);letter-spacing:0.02em;">followers</div></div>
+                <div style="text-align:center;"><div style="font-size:10px;font-weight:700;color:var(--ink);line-height:1.2;">810</div><div style="font-size:7px;color:rgba(17,17,17,0.45);letter-spacing:0.02em;">following</div></div>
+              </div>
+            </div>
+          </div>
+          <!-- bio -->
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="font-size:8px;color:rgba(17,17,17,0.45);">Personal blog</div>
+            <div style="font-size:8px;color:var(--ink);">📍 nyc</div>
+            <div style="font-size:8px;color:var(--ink);">👩‍💻 data engineer</div>
+            <div style="font-size:8px;color:var(--ink);">🎓 ucsd/columbia</div>
+          </div>
+        </div>
+      </div>
+      <!-- 3 CONCEPT CARDS -->
+      <div style="display:flex;gap:10px;flex:0 0 245px;min-height:0;">
+        <!-- Concept 1: Rainy Day at The Frick -->
+        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+          <!-- photo -->
+          <div style="width:95px;flex-shrink:0;overflow:hidden;">
+            <a href="https://www.instagram.com/p/DZAze9XRwZf/" target="_blank" class="concept-photo-scaled" style="display:block;width:100%;height:100%;">
+              <img src="ig_central_park.png" style="width:100%;height:100%;object-fit:cover;object-position:58% 30%;display:block;">
+            </a>
+          </div>
+          <!-- content -->
+          <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
+            <div style="background:var(--gold);padding:8px 13px;flex-shrink:0;">
+              <div style="font-size:7.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:2px;">Concept 01</div>
+              <div style="font-size:11px;font-weight:700;color:#fff;line-height:1.25;">Central Park, Golden Hour</div>
+            </div>
+            <div style="flex:1;padding:10px 13px;display:flex;flex-direction:column;gap:6px;overflow:hidden;">
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Hook</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;font-style:italic;">"Slow down — beauty is already here"</span></div>
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.38);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Format</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;">Reel + photo carousel</span></div>
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.38);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Job</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;">Lifestyle discovery + NYC outdoor moment</span></div>
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.38);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Fits</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;">Candid, golden hour, recognition not envy</span></div>
+              <div style="margin-top:auto;padding-top:6px;border-top:1px solid rgba(17,17,17,0.06);font-size:8.5px;font-weight:700;color:var(--gold);letter-spacing:0.06em;">KPI &nbsp;·&nbsp; Saves &nbsp;·&nbsp; Shares &nbsp;·&nbsp; Comments</div>
+            </div>
+          </div>
+        </div>
+        <!-- Concept 2: Albertine -->
+        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+          <!-- photo -->
+          <div style="width:95px;flex-shrink:0;overflow:hidden;">
+            <a href="https://www.instagram.com/p/DZh1B-yEdIL/?img_index=1" target="_blank" class="concept-photo" style="display:block;width:100%;height:100%;">
+              <img src="ig_night_portrait.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+            </a>
+          </div>
+          <!-- content -->
+          <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
+            <div style="background:var(--ink);padding:8px 13px;flex-shrink:0;">
+              <div style="font-size:7.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Concept 02</div>
+              <div style="font-size:11px;font-weight:700;color:#fff;line-height:1.25;">NYC After Dark</div>
+            </div>
+            <div style="flex:1;padding:10px 13px;display:flex;flex-direction:column;gap:6px;overflow:hidden;">
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Hook</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;font-style:italic;">"When the city feels like it belongs to you"</span></div>
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.38);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Format</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;">Cinematic photo carousel + Reel</span></div>
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.38);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Job</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;">Style aspiration + NYC dinner discovery</span></div>
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.38);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Fits</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;">Night portrait, quiet luxury, recognition not envy</span></div>
+              <div style="margin-top:auto;padding-top:6px;border-top:1px solid rgba(17,17,17,0.06);font-size:8.5px;font-weight:700;color:var(--gold);letter-spacing:0.06em;">KPI &nbsp;·&nbsp; Saves &nbsp;·&nbsp; Profile Visits &nbsp;·&nbsp; Follows</div>
+            </div>
+          </div>
+        </div>
+        <!-- Concept 3: The Met Cloisters -->
+        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+          <!-- photo -->
+          <div style="width:95px;flex-shrink:0;overflow:hidden;">
+            <a href="https://www.instagram.com/p/DYuhp1FFP_o/?img_index=1" target="_blank" class="concept-photo" style="display:block;width:100%;height:100%;">
+              <img src="../Posts assets/The Met/IMG_7807.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+            </a>
+          </div>
+          <!-- content -->
+          <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
+            <div style="background:var(--gold);padding:8px 13px;flex-shrink:0;">
+              <div style="font-size:7.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:2px;">Concept 03</div>
+              <div style="font-size:11px;font-weight:700;color:#fff;line-height:1.25;">The Met Cloisters Escape</div>
+            </div>
+            <div style="flex:1;padding:10px 13px;display:flex;flex-direction:column;gap:6px;overflow:hidden;">
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Hook</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;font-style:italic;">"Visit medieval Europe without leaving Manhattan"</span></div>
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.38);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Format</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;">Reel + location guide</span></div>
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.38);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Job</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;">Discovery + shareable hidden gem</span></div>
+              <div style="display:flex;gap:7px;align-items:baseline;"><span style="font-size:7.5px;font-weight:700;color:rgba(17,17,17,0.38);text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;flex-shrink:0;">Fits</span><span style="font-size:9px;color:rgba(17,17,17,0.65);line-height:1.4;">Only-in-NYC, cultural, cinematic</span></div>
+              <div style="margin-top:auto;padding-top:6px;border-top:1px solid rgba(17,17,17,0.06);font-size:8.5px;font-weight:700;color:var(--gold);letter-spacing:0.06em;">KPI &nbsp;·&nbsp; Reach &nbsp;·&nbsp; Shares &nbsp;·&nbsp; Saves</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="frame ph" id="slide-19">
     <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 05 &nbsp;·&nbsp; The Activation</div><div class="ph-slide-label">Slide 19</div></div><div class="ph-slide-num-big">19</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
@@ -2702,9 +3117,157 @@ html, body {
           </div>
         </div>
       </div>
-      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">14</div><div class="ssm-title">Impact Formula</div><div class="ssm-tool">Tool: Impact Formula</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — INSIGHT + ETHICS = IMPACT.</div></div></div>
-      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">15</div><div class="ssm-title">Content Pillars</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — the core content themes.</div></div></div>
+      <div class="ss-slide reveal">
+        <div class="ss-meta"><div class="ssm-num">14</div><div class="ssm-title">Platform Strategy Matrix</div><div class="ssm-tool">One brand, Three Platforms</div></div>
+        <div class="ss-body">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Strategic Logic</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:24px;">The campaign does not copy the same content across platforms. One creator, one brand — platform-specific storytelling: RedNote for depth, Instagram for aspiration, Douyin/TikTok for emotional discovery.</div>
+          <!-- platform table -->
+          <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;">
+            <!-- header -->
+            <div style="display:grid;grid-template-columns:110px 1fr 1.6fr 1.1fr 1.1fr;background:rgba(184,147,90,0.18);border-bottom:1px solid rgba(255,255,255,0.08);">
+              <div style="padding:10px 12px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);">Platform</div>
+              <div style="padding:10px 12px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);border-left:1px solid rgba(255,255,255,0.06);">Role</div>
+              <div style="padding:10px 12px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);border-left:1px solid rgba(255,255,255,0.06);">Content Strategy</div>
+              <div style="padding:10px 12px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);border-left:1px solid rgba(255,255,255,0.06);">KPI Focus</div>
+              <div style="padding:10px 12px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);border-left:1px solid rgba(255,255,255,0.06);">Why it fits</div>
+            </div>
+            <!-- RedNote -->
+            <div style="display:grid;grid-template-columns:110px 1fr 1.6fr 1.1fr 1.1fr;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="padding:12px 12px;font-size:12px;font-weight:700;color:#ff6b6b;">RedNote</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Recognition + searchable lifestyle guide</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Chinese-language work-life, cultural routes, after-work reset, museum weekends</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Saves, comments, search traffic, followers</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Best for relatable detail and practical saving</div>
+            </div>
+            <!-- Instagram -->
+            <div style="display:grid;grid-template-columns:110px 1fr 1.6fr 1.1fr 1.1fr;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+              <div style="padding:12px 12px;font-size:12px;font-weight:700;background:linear-gradient(90deg,#f09433,#dc2743,#bc1888);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Instagram</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Aesthetic brand world</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Visual storytelling: museums, UES, city walks, quiet luxury, cinematic NYC</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Reach, shares, profile visits, follower growth</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Best for visual identity and aspirational recognition</div>
+            </div>
+            <!-- Douyin -->
+            <div style="display:grid;grid-template-columns:110px 1fr 1.6fr 1.1fr 1.1fr;">
+              <div style="padding:12px 12px;font-size:12px;font-weight:700;color:#25F4EE;">Douyin / TikTok</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Fast emotional discovery</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Short hooks: night walks, sports/city atmosphere, workday-to-evening transitions</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Views, completion rate, likes, shares</div>
+              <div style="padding:12px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Best for rapid mood and emotional discovery</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ss-slide reveal">
+        <div class="ss-meta"><div class="ssm-num">15</div><div class="ssm-title">Impact Formula</div><div class="ssm-tool">NS / SV / BV = (Insight + Ethics)</div></div>
+        <div class="ss-body">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">The Strategy</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:24px;">The campaign's impact is not accidental — it is derived. Insight tells us what the audience needs; Ethics tells us how to deliver it without harm. Together they multiply into measurable value.</div>
+          <!-- 2×2 insight / ethics grid — 3-col layout so × sits between the columns -->
+          <div style="display:grid;grid-template-columns:1fr 36px 1fr;grid-template-rows:auto auto;gap:8px 0;margin-bottom:0;">
+            <!-- left col: Insight cards -->
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-left:2px solid var(--gold);border-radius:4px;padding:12px 14px;">
+                <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Business Insight</div>
+                <div style="font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.65;">Cross-cultural creators are underserved. Bilingual dual-platform presence is a rare asset. The real market gap: content that sells recognition drives saves and shares.</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-left:2px solid rgba(255,255,255,0.2);border-radius:4px;padding:12px 14px;">
+                <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;">Business Ethics</div>
+                <div style="font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.65;">Sell real, lived-in moments — not perfect filters. Respect both cultures instead of reducing them to stereotypes.</div>
+              </div>
+            </div>
+            <!-- center col: × symbol -->
+            <div style="display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:300;color:var(--gold);">×</div>
+            <!-- right col: Human cards -->
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-left:2px solid var(--gold);border-radius:4px;padding:12px 14px;">
+                <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Human Insight</div>
+                <div style="font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.65;">Audiences don't envy her — they see themselves in her. "This could be my version too." Cultural identity is an entry point, not a barrier.</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-left:2px solid rgba(255,255,255,0.2);border-radius:4px;padding:12px 14px;">
+                <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;">Human Ethics</div>
+                <div style="font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.65;">Never force the audience to choose a side. Give both platform communities equal space to connect and belong.</div>
+              </div>
+            </div>
+          </div>
+          <!-- ↓ connector -->
+          <div style="display:flex;align-items:center;justify-content:center;padding:4px 0;color:var(--gold);font-size:18px;">↓</div>
+          <!-- 3-column output row -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+            <div style="background:rgba(184,147,90,0.15);border:1px solid rgba(184,147,90,0.3);border-radius:4px;padding:12px 14px;">
+              <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">New Stakeholders</div>
+              <div style="font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.65;">Passive viewers become active co-creators — through comments, saves, and shares.</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:12px 14px;">
+              <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Business Value</div>
+              <div style="font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.65;">Organically hits the 5,000 engagement target. Builds a sustainable growth engine for future brand partnerships.</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:4px;padding:12px 14px;">
+              <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Social Value</div>
+              <div style="font-size:11.5px;color:rgba(255,255,255,0.55);line-height:1.65;">Reduces either/or cultural narratives. Sets a brand-new, honest standard for cross-cultural content.</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+      <!-- ss slide 16 — Brand Philosophy + Positioning -->
+      <div class="ss-slide reveal">
+        <div class="ss-meta"><div class="ssm-num">16</div><div class="ssm-title">Brand Philosophy & Positioning</div><div class="ssm-tool">Recognition not envy · Cultural entry point</div></div>
+        <div class="ss-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+            <!-- Brand Philosophy -->
+            <div>
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">Brand Philosophy</div>
+              <div style="position:relative;width:160px;height:160px;margin:0 auto 20px;">
+                <div style="position:absolute;inset:0;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
+                <div style="position:absolute;inset:22px;border-radius:50%;background:rgba(184,147,90,0.15);"></div>
+                <div style="position:absolute;inset:48px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;">
+                  <div style="font-size:7px;font-weight:700;text-transform:uppercase;color:#fff;text-align:center;letter-spacing:0.05em;line-height:1.4;">Recognition<br>Not Envy</div>
+                </div>
+                <div style="position:absolute;top:28px;left:-28px;font-size:7px;font-weight:600;text-transform:uppercase;color:rgba(255,255,255,0.35);line-height:1.4;text-align:center;width:68px;">A Chinese-<br>New Yorker<br>Both Worlds</div>
+                <div style="position:absolute;top:54px;right:-34px;font-size:7px;font-weight:600;text-transform:uppercase;color:rgba(255,255,255,0.35);line-height:1.4;text-align:center;width:76px;">Dual-Platform<br>Cross-Cultural<br>Lived-In</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="border-left:2px solid var(--gold);padding:4px 10px;">
+                  <div style="font-size:8px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px;">What it is</div>
+                  <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">A cross-cultural lifestyle creator bridging New York and China.</div>
+                </div>
+                <div style="border-left:2px solid rgba(255,255,255,0.15);padding:4px 10px;">
+                  <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px;">How we do it</div>
+                  <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">Instagram for visual style. Douyin for emotional connection.</div>
+                </div>
+                <div style="border-left:2px solid rgba(255,255,255,0.15);padding:4px 10px;">
+                  <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px;">Why it matters</div>
+                  <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">You don't have to choose. Both cultures get equal space.</div>
+                </div>
+              </div>
+            </div>
+            <!-- Brand Positioning -->
+            <div>
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Brand Positioning</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:16px;">Yujia is not just a lifestyle account — she is a cultural entry point. The focus is not how beautiful her life looks, but whether you can find yourself inside it.</div>
+              <div style="position:relative;height:200px;border:1px solid rgba(255,255,255,0.08);border-radius:6px;">
+                <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,0.12);"></div>
+                <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12);"></div>
+                <div style="position:absolute;top:6px;left:50%;transform:translateX(-50%);font-size:8px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;white-space:nowrap;">Cross-cultural</div>
+                <div style="position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:8px;font-weight:600;color:rgba(255,255,255,0.25);text-transform:uppercase;white-space:nowrap;">Mono-cultural</div>
+                <div style="position:absolute;top:10%;right:8%;display:flex;flex-direction:column;align-items:center;gap:2px;">
+                  <div style="font-size:14px;color:var(--gold);">✦</div>
+                  <div style="font-size:9px;font-weight:700;color:var(--gold);">@Yujia</div>
+                  <div style="font-size:7px;color:rgba(255,255,255,0.35);text-align:center;max-width:66px;line-height:1.3;">Cross-cultural<br>Participatory</div>
+                </div>
+                <div style="position:absolute;top:12%;left:8%;font-size:7.5px;color:rgba(255,255,255,0.28);text-align:center;max-width:72px;line-height:1.4;">@Study Abroad<br>Vlogs</div>
+                <div style="position:absolute;bottom:12%;left:8%;font-size:7.5px;color:rgba(255,255,255,0.28);text-align:center;max-width:72px;line-height:1.4;">@ "Quiet Luxury"<br>Bloggers</div>
+                <div style="position:absolute;bottom:30%;left:18%;font-size:7px;color:rgba(255,255,255,0.18);text-align:center;max-width:68px;line-height:1.4;">@Perfect<br>Aesthetic Feeds</div>
+                <div style="position:absolute;bottom:12%;right:8%;font-size:7.5px;color:rgba(255,255,255,0.28);text-align:center;max-width:72px;line-height:1.4;">@Daily<br>Bloggers</div>
+                <div style="position:absolute;bottom:30%;right:14%;font-size:7px;color:rgba(255,255,255,0.18);text-align:center;max-width:68px;line-height:1.4;">@Food &<br>Travel Guides</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- S5 -->
     <div id="ss5">
@@ -2716,9 +3279,146 @@ html, body {
         <div class="ssh-title">The Activation</div>
         <div class="ssh-sub">Behavioral Planner &nbsp;·&nbsp; IG &nbsp;·&nbsp; Douyin &nbsp;·&nbsp; Workflow</div>
       </div>
-      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">16</div><div class="ssm-title">Behavioral Planner</div><div class="ssm-tool">Tool: Behavioral Planner</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — touchpoints and needstates from the research.</div></div></div>
-      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">17</div><div class="ssm-title">Instagram Content Concepts</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — IG content concepts.</div></div></div>
-      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">18</div><div class="ssm-title">Douyin Content Concepts</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — Douyin post concepts.</div></div></div>
+      <div class="ss-slide reveal">
+        <div class="ss-meta"><div class="ssm-num">17</div><div class="ssm-title">Behavioral Planner · Content Pillars</div><div class="ssm-tool">Audience-out · Needstate-specific</div></div>
+        <div class="ss-body">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">The Activation</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:24px;">The campaign is currently between awareness and engagement. Content must be needstate-specific — each post targets a distinct moment in the audience's journey with Yujia.</div>
+          <!-- 5-stage journey -->
+          <div style="position:relative;display:flex;flex-direction:column;gap:0;margin-bottom:24px;">
+            <div style="position:absolute;left:11px;top:12px;bottom:12px;width:1px;background:rgba(184,147,90,0.2);z-index:0;"></div>
+            <div style="display:flex;align-items:flex-start;gap:12px;position:relative;z-index:1;padding-bottom:16px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(184,147,90,0.15);border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);">1</div>
+              <div><div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;">Passive Social Scrolling</div><div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.5;">IG Reels, Douyin feed — 3-second hook, profile visits. KPI: Reach → views → profile visits.</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;position:relative;z-index:1;padding-bottom:16px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(184,147,90,0.15);border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);">2</div>
+              <div><div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;">Identity Recognition</div><div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.5;">Frick Collection, East Village, NYC night posts. KPI: Likes → comments → saves.</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;position:relative;z-index:1;padding-bottom:16px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(184,147,90,0.15);border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);">3</div>
+              <div><div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;">Follow Decision</div><div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.5;">Profile grid, pinned posts, bio, recurring pillars. KPI: Profile conversion → follower growth.</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;position:relative;z-index:1;padding-bottom:16px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(184,147,90,0.15);border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);">4</div>
+              <div><div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;">Save &amp; Share Intent</div><div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.5;">Carousel guides, route captions, searchable keywords. KPI: Save rate → share rate → organic engagement.</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;position:relative;z-index:1;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(184,147,90,0.15);border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);">5</div>
+              <div><div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;">Returning / Advocacy</div><div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.5;">Comment prompts, friend-tag captions, recurring series. KPI: Repeat engagement → comments → tags → shares.</div></div>
+            </div>
+          </div>
+          <!-- Content Pillars table -->
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Content Pillars</div>
+          <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:1fr 1.1fr 1.4fr 1fr;background:rgba(184,147,90,0.18);border-bottom:1px solid rgba(255,255,255,0.08);">
+              <div style="padding:9px 12px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);">Target Needstate</div>
+              <div style="padding:9px 12px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);border-left:1px solid rgba(255,255,255,0.06);">What They Want</div>
+              <div style="padding:9px 12px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);border-left:1px solid rgba(255,255,255,0.06);">What We Deliver</div>
+              <div style="padding:9px 12px;font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);border-left:1px solid rgba(255,255,255,0.06);">The Action (KPI)</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1.1fr 1.4fr 1fr;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="padding:11px 12px;font-size:11px;color:#fff;font-weight:500;line-height:1.5;">Passive Scrolling</div>
+              <div style="padding:11px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Tired of copy-paste trends.</div>
+              <div style="padding:11px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Beautiful NYC night walks and sharp style details.</div>
+              <div style="padding:11px 12px;font-size:11px;line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);"><span style="font-weight:700;color:var(--gold);">The 3-Second Hook</span><br><span style="color:rgba(255,255,255,0.4);">Profile clicks.</span></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1.1fr 1.4fr 1fr;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);">
+              <div style="padding:11px 12px;font-size:11px;color:#fff;font-weight:500;line-height:1.5;">Identity Seeking</div>
+              <div style="padding:11px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Want to see dual cultures blended well.</div>
+              <div style="padding:11px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">An honest look at balancing career and heritage.</div>
+              <div style="padding:11px 12px;font-size:11px;font-weight:700;color:var(--gold);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">The Follow</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1.1fr 1.4fr 1fr;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="padding:11px 12px;font-size:11px;color:#fff;font-weight:500;line-height:1.5;">Actionable Planning</div>
+              <div style="padding:11px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Need real, fresh city guides.</div>
+              <div style="padding:11px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Saveable routes, local resets, and hidden gems.</div>
+              <div style="padding:11px 12px;font-size:11px;font-weight:700;color:var(--gold);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Saves &amp; Shares</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1.1fr 1.4fr 1fr;">
+              <div style="padding:11px 12px;font-size:11px;color:#fff;font-weight:500;line-height:1.5;">Deep Connection</div>
+              <div style="padding:11px 12px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Want to feel at home in a big city.</div>
+              <div style="padding:11px 12px;font-size:11px;color:rgba(255,255,255,0.5);font-style:italic;line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Captions that ask: "How does this look in your city?"</div>
+              <div style="padding:11px 12px;font-size:11px;font-weight:700;color:var(--gold);line-height:1.5;border-left:1px solid rgba(255,255,255,0.06);">Comment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ss-slide reveal">
+        <div class="ss-meta"><div class="ssm-num">18</div><div class="ssm-title">Instagram Content Concepts</div><div class="ssm-tool">Visual Identity · NYC Lifestyle · Follower Growth</div></div>
+        <div class="ss-body">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">The Activation</div>
+          <!-- IG Role -->
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Instagram Role</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+            <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--gold);font-size:13px;line-height:1.3;flex-shrink:0;">·</span><span style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Builds Yujia's visual identity and cultural credibility</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--gold);font-size:13px;line-height:1.3;flex-shrink:0;">·</span><span style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Turns NYC lifestyle into saveable cultural routes</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--gold);font-size:13px;line-height:1.3;flex-shrink:0;">·</span><span style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Challenge: strong visuals, but weaker follower conversion</span></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--gold);font-size:13px;line-height:1.3;flex-shrink:0;">·</span><span style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;">Strategic focus: profile value, likes, shares, and clearer hooks</span></div>
+          </div>
+          <!-- 3 Concepts -->
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Content Concepts</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <!-- C01 -->
+            <div style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+              <div style="flex:1;display:flex;flex-direction:column;">
+                <div style="background:rgba(184,147,90,0.18);padding:9px 14px;border-bottom:1px solid rgba(184,147,90,0.2);">
+                  <div style="font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(184,147,90,0.6);margin-bottom:2px;">Concept 01</div>
+                  <div style="font-size:13px;font-weight:700;color:#fff;">Central Park, Golden Hour</div>
+                </div>
+                <div style="padding:12px 14px;display:flex;flex-direction:column;gap:7px;">
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Hook</span><span style="font-size:12px;color:rgba(255,255,255,0.55);font-style:italic;line-height:1.5;">"Slow down — beauty is already here"</span></div>
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Format</span><span style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">Reel + photo carousel</span></div>
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Job</span><span style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">Lifestyle discovery + NYC outdoor moment</span></div>
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Fits</span><span style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">Candid, golden hour, recognition not envy</span></div>
+                  <div style="padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.08em;">KPI &nbsp;·&nbsp; Saves &nbsp;·&nbsp; Shares &nbsp;·&nbsp; Comments</div>
+                </div>
+              </div>
+              <a href="https://www.instagram.com/p/DZAze9XRwZf/" target="_blank" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
+                <img src="ig_central_park.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 30%;transform:scale(1.65);display:block;">
+              </a>
+            </div>
+            <!-- C02 -->
+            <div style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+              <div style="flex:1;display:flex;flex-direction:column;">
+                <div style="background:rgba(184,147,90,0.18);padding:9px 14px;border-bottom:1px solid rgba(184,147,90,0.2);">
+                  <div style="font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(184,147,90,0.6);margin-bottom:2px;">Concept 02</div>
+                  <div style="font-size:13px;font-weight:700;color:#fff;">NYC After Dark</div>
+                </div>
+                <div style="padding:12px 14px;display:flex;flex-direction:column;gap:7px;">
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Hook</span><span style="font-size:12px;color:rgba(255,255,255,0.55);font-style:italic;line-height:1.5;">"When the city feels like it belongs to you"</span></div>
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Format</span><span style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">Cinematic photo carousel + Reel</span></div>
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Job</span><span style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">Style aspiration + NYC dinner discovery</span></div>
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Fits</span><span style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">Night portrait, quiet luxury, recognition not envy</span></div>
+                  <div style="padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.08em;">KPI &nbsp;·&nbsp; Saves &nbsp;·&nbsp; Profile Visits &nbsp;·&nbsp; Follows</div>
+                </div>
+              </div>
+              <a href="https://www.instagram.com/p/DZh1B-yEdIL/?img_index=1" target="_blank" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
+                <img src="ig_night_portrait.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+              </a>
+            </div>
+            <!-- C03 -->
+            <div style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+              <div style="flex:1;display:flex;flex-direction:column;">
+                <div style="background:rgba(184,147,90,0.18);padding:9px 14px;border-bottom:1px solid rgba(184,147,90,0.2);">
+                  <div style="font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(184,147,90,0.6);margin-bottom:2px;">Concept 03</div>
+                  <div style="font-size:13px;font-weight:700;color:#fff;">The Met Cloisters Escape</div>
+                </div>
+                <div style="padding:12px 14px;display:flex;flex-direction:column;gap:7px;">
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Hook</span><span style="font-size:12px;color:rgba(255,255,255,0.55);font-style:italic;line-height:1.5;">"Visit medieval Europe without leaving Manhattan"</span></div>
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Format</span><span style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">Reel + location guide</span></div>
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Job</span><span style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">Discovery + shareable hidden gem</span></div>
+                  <div style="display:flex;gap:8px;align-items:baseline;"><span style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0;">Fits</span><span style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;">Only-in-NYC, cultural, cinematic</span></div>
+                  <div style="padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.08em;">KPI &nbsp;·&nbsp; Reach &nbsp;·&nbsp; Shares &nbsp;·&nbsp; Saves</div>
+                </div>
+              </div>
+              <a href="https://www.instagram.com/p/DYuhp1FFP_o/?img_index=1" target="_blank" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
+                <img src="../Posts assets/The Met/IMG_7807.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">19</div><div class="ssm-title">Team Workflow & Posting Cadence</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — production workflow and calendar.</div></div></div>
     </div>
 
@@ -2759,8 +3459,8 @@ const DECK = [
   {id:'sc-1',sec:1,type:'sc'},{id:'slide-1',sec:1,type:'s'},{id:'slide-2',sec:1,type:'s'},{id:'slide-3',sec:1,type:'s'},{id:'slide-4',sec:1,type:'s'},{id:'slide-5',sec:1,type:'s'},
   {id:'sc-2',sec:2,type:'sc'},{id:'slide-6',sec:2,type:'s'},{id:'slide-7',sec:2,type:'s'},
   {id:'sc-3',sec:3,type:'sc'},{id:'slide-8',sec:3,type:'s'},{id:'slide-9',sec:3,type:'s'},{id:'slide-10',sec:3,type:'s'},{id:'slide-11',sec:3,type:'s'},{id:'slide-12',sec:3,type:'s'},
-  {id:'sc-4',sec:4,type:'sc'},{id:'slide-13',sec:4,type:'s'},{id:'slide-14',sec:4,type:'s'},{id:'slide-15',sec:4,type:'s'},
-  {id:'sc-5',sec:5,type:'sc'},{id:'slide-16',sec:5,type:'s'},{id:'slide-17',sec:5,type:'s'},{id:'slide-18',sec:5,type:'s'},{id:'slide-19',sec:5,type:'s'},
+  {id:'sc-4',sec:4,type:'sc'},{id:'slide-13',sec:4,type:'s'},{id:'slide-14',sec:4,type:'s'},{id:'slide-15',sec:4,type:'s'},{id:'slide-16',sec:4,type:'s'},
+  {id:'sc-5',sec:5,type:'sc'},{id:'slide-17',sec:5,type:'s'},{id:'slide-18',sec:5,type:'s'},{id:'slide-19',sec:5,type:'s'},
   {id:'sc-6',sec:6,type:'sc'},{id:'slide-20',sec:6,type:'s'},{id:'slide-21',sec:6,type:'s'},{id:'slide-22',sec:6,type:'s'},
   {id:'sc-7',sec:7,type:'sc'},{id:'slide-23',sec:7,type:'s'},{id:'slide-24',sec:7,type:'s'},
 ];
@@ -2769,7 +3469,7 @@ const SEC = ['','The Open','The Insight','The Audience','The Strategy','The Acti
 let cur = 0, mode = 'slides';
 
 function scale() {
-  const s = Math.min(window.innerWidth/1080, (window.innerHeight-52)/607);
+  const s = Math.max(window.innerWidth/1080, (window.innerHeight-52)/607);
   document.getElementById('deck-wrapper').style.transform = `scale(${s})`;
 }
 window.addEventListener('resize', scale); scale();
