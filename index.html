@@ -565,6 +565,17 @@ html, body {
 .photo-zoom:hover {
   transform: scale(1.08);
 }
+/* ── Slide 24 animations ── */
+.s24-header { opacity:0; transform:translateY(-12px); transition:opacity 0.45s ease, transform 0.45s ease; }
+.s24-arc    { opacity:0; transition:opacity 0.4s ease 0.15s; }
+.s24-card   { opacity:0; transform:translateY(18px); transition:opacity 0.5s ease, transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+#slide-24.active .s24-header { opacity:1; transform:translateY(0); }
+#slide-24.active .s24-arc    { opacity:1; }
+#slide-24.active .s24-row:nth-child(1) .s24-card:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.18s; }
+#slide-24.active .s24-row:nth-child(1) .s24-card:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.32s; }
+#slide-24.active .s24-row:nth-child(1) .s24-card:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.46s; }
+#slide-24.active .s24-row:nth-child(2) .s24-card:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.60s; }
+#slide-24.active .s24-row:nth-child(2) .s24-card:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.74s; }
 .btn-glass, .btn-glass-lt {
   display: inline-flex; align-items: center; justify-content: center;
   gap: 10px; cursor: pointer; text-decoration: none;
@@ -858,6 +869,9 @@ html, body {
 [data-s20b] {
   transform-origin: bottom;
   transform: scaleY(0);
+}
+[data-s15a] {
+  opacity: 0;
 }
 </style>
 </head>
@@ -2009,7 +2023,7 @@ html, body {
       <div class="ph-slide-num-big">15</div>
       <div class="ph-sidebar-bottom">East Meets Feed</div>
     </div>
-    <div style="flex:1;display:flex;flex-direction:column;padding:40px 28px 20px;gap:0;min-width:0;overflow:hidden;">
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 28px 60px;gap:0;min-width:0;overflow:hidden;">
       <!-- header -->
       <div style="flex-shrink:0;margin-bottom:16px;">
         <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">The Strategy</div>
@@ -2019,7 +2033,7 @@ html, body {
       <!-- row 1: two input boxes + × operator -->
       <div style="display:flex;align-items:stretch;gap:0;flex-shrink:0;margin-bottom:0;">
         <!-- Insight box -->
-        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.1);border-radius:6px;padding:14px 16px;">
+        <div data-s15a="0" style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.1);border-radius:6px;padding:14px 16px;">
           <div style="font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Insight Layer</div>
           <div style="display:flex;gap:8px;margin-bottom:6px;">
             <span style="font-size:9px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(184,147,90,0.12);color:var(--gold);white-space:nowrap;">Business Insight</span>
@@ -2032,9 +2046,9 @@ html, body {
           </div>
         </div>
         <!-- × operator -->
-        <div style="width:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:300;color:var(--gold);">×</div>
+        <div data-s15a="1" style="width:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:300;color:var(--gold);">×</div>
         <!-- Ethics box -->
-        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.1);border-radius:6px;padding:14px 16px;">
+        <div data-s15a="1" style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.1);border-radius:6px;padding:14px 16px;">
           <div style="font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(17,17,17,0.4);margin-bottom:8px;">Ethics Layer</div>
           <div style="display:flex;gap:8px;margin-bottom:6px;">
             <span style="font-size:9px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(17,17,17,0.07);color:var(--ink);white-space:nowrap;">Business Ethics</span>
@@ -2048,18 +2062,18 @@ html, body {
         </div>
       </div>
       <!-- arrow -->
-      <div style="display:flex;align-items:center;justify-content:center;padding:8px 0;color:var(--gold);font-size:18px;flex-shrink:0;">↓</div>
+      <div data-s15a="2" style="display:flex;align-items:center;justify-content:center;padding:8px 0;color:var(--gold);font-size:18px;flex-shrink:0;">↓</div>
       <!-- row 2: three output boxes -->
       <div style="display:flex;gap:8px;flex-shrink:0;">
-        <div style="flex:1;background:var(--gold);border-radius:6px;padding:12px 14px;">
+        <div data-s15a="2" style="flex:1;background:var(--gold);border-radius:6px;padding:12px 14px;">
           <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#fff;margin-bottom:5px;">New Stakeholders</div>
           <div style="font-size:9.5px;color:rgba(255,255,255,0.85);line-height:1.65;">Audiences shift from passive viewers to active participants — co-creating the story through comments, saves, and shares.</div>
         </div>
-        <div style="flex:1;background:var(--ink);border-radius:6px;padding:12px 14px;">
+        <div data-s15a="3" style="flex:1;background:var(--ink);border-radius:6px;padding:12px 14px;">
           <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;">Business Value</div>
           <div style="font-size:9.5px;color:rgba(255,255,255,0.65);line-height:1.65;">Organically hits the 5,000 engagement target across platforms. Builds a sustainable growth engine for future brand partnerships.</div>
         </div>
-        <div style="flex:1;background:var(--ink);border-radius:6px;padding:12px 14px;">
+        <div data-s15a="4" style="flex:1;background:var(--ink);border-radius:6px;padding:12px 14px;">
           <div style="font-size:8px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;">Social Value</div>
           <div style="font-size:9.5px;color:rgba(255,255,255,0.65);line-height:1.65;">Reduces either/or cultural narratives for overseas Chinese communities. Sets a brand-new, honest standard for cross-cultural content.</div>
         </div>
@@ -2512,7 +2526,7 @@ html, body {
       <!-- TWO COLUMNS -->
       <div style="flex:1;display:flex;gap:14px;min-height:0;">
         <!-- Left: Team Workflow -->
-        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.07);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;overflow:hidden;">
+        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.07);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;gap:8px;overflow:hidden;">
           <div style="font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;">Team Workflow</div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div style="display:flex;gap:9px;align-items:flex-start;">
@@ -2546,7 +2560,7 @@ html, body {
           </div>
         </div>
         <!-- Right: Weekly Cadence -->
-        <div style="flex:1;background:#111;border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;overflow:hidden;">
+        <div style="flex:1;background:#111;border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;gap:8px;overflow:hidden;">
           <div style="font-size:8px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;">Weekly Cadence</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:10px 12px;">
@@ -2714,7 +2728,7 @@ html, body {
                   <div style="font-size:7px;color:rgba(17,17,17,0.3);margin-bottom:4px;">Day 0 <span style="color:rgba(17,17,17,0.22);">(5/27)</span></div>
                   <div style="font-size:24px;font-weight:700;color:rgba(17,17,17,0.28);line-height:1;">2,341</div>
                 </div>
-                <div style="font-size:16px;color:rgba(17,17,17,0.15);padding-bottom:2px;">→</div>
+                <div style="font-size:16px;color:rgba(17,17,17,0.15);margin-top:14px;">→</div>
                 <div>
                   <div style="font-size:7px;color:rgba(17,17,17,0.4);margin-bottom:4px;">After <span style="color:rgba(17,17,17,0.28);">(6/28)</span></div>
                   <div style="font-size:24px;font-weight:800;color:var(--ink);line-height:1;" data-s20n="2387" data-s20f="2,387">2,387</div>
@@ -3000,9 +3014,83 @@ html, body {
   </div>
 
   <!-- SLIDES 23-24 -->
-  <div class="frame ph" id="slide-24">
-    <div class="ph-sidebar"><div class="ph-sidebar-top"><div class="ph-section-tag">Part 07 &nbsp;·&nbsp; The Road Ahead</div><div class="ph-slide-label">Slide 24</div></div><div class="ph-slide-num-big">24</div><div class="ph-sidebar-bottom">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div></div>
-    <div class="ph-main"><div class="ph-headline">Learnings &<br>Findings</div><div class="ph-rule"></div><div class="ph-body">What worked and what we learned.</div></div>
+  <!-- SLIDE 24 — Learnings & Findings -->
+  <div class="frame" id="slide-24" style="background:#111;flex-direction:row;overflow:hidden;">
+    <div class="ph-sidebar" style="background:#0a0a0a;border-right:1px solid rgba(255,255,255,0.06);">
+      <div class="ph-sidebar-top"><div class="ph-section-tag" style="color:rgba(184,147,90,0.7);">Part 07 &nbsp;·&nbsp; The Road Ahead</div><div class="ph-slide-label" style="color:rgba(255,255,255,0.3);">Slide 24</div></div>
+      <div class="ph-slide-num-big" style="color:rgba(255,255,255,0.06);">24</div>
+      <div class="ph-sidebar-bottom" style="color:rgba(255,255,255,0.25);">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;padding:36px 22px 14px;overflow:hidden;min-width:0;gap:10px;">
+      <!-- Header -->
+      <div class="s24-header" style="flex-shrink:0;display:flex;align-items:baseline;justify-content:space-between;">
+        <div>
+          <div style="font-size:8px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Key Insights · Campaign Learnings</div>
+          <div style="font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:#fff;line-height:1.1;">What We Learned</div>
+        </div>
+        <div class="s24-arc" style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.05em;font-style:italic;text-align:right;line-height:1.7;">
+          One shoot. Three platforms.<br>139K views. 1,077 followers. 4 weeks.
+        </div>
+      </div>
+      <!-- Row 1: 3 cards -->
+      <div class="s24-row" style="display:flex;gap:8px;flex:1;min-height:0;">
+        <!-- 01 -->
+        <div class="s24-card" style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;border:1px solid rgba(255,255,255,0.05);">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:9px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">01</span>
+            <span style="font-size:7px;font-weight:700;background:rgba(184,147,90,0.15);color:var(--gold);padding:2px 7px;border-radius:20px;">Efficiency</span>
+          </div>
+          <div style="font-size:10.5px;font-weight:700;color:#fff;line-height:1.3;">Authenticity<br>as infrastructure</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;flex:1;">One NYC outing creates content for 3 platforms simultaneously. Efficiency isn't an afterthought — it's the strategy.</div>
+          <div style="font-size:8px;font-weight:700;color:rgba(184,147,90,0.6);border-top:1px solid rgba(255,255,255,0.06);padding-top:7px;">1 shoot → 3 platforms · 3–5 posts</div>
+        </div>
+        <!-- 02 -->
+        <div class="s24-card" style="flex:1;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.12);border-radius:8px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:9px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">02</span>
+            <span style="font-size:7px;font-weight:700;background:rgba(74,222,128,0.15);color:#4ade80;padding:2px 7px;border-radius:20px;">Algorithm</span>
+          </div>
+          <div style="font-size:10.5px;font-weight:700;color:#fff;line-height:1.3;">Cover CTR is the<br>algorithm's switch</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;flex:1;">Night mood covers sent CTR from 4% to 66.67%. The thumbnail doesn't just attract viewers — it triggers distribution.</div>
+          <div style="font-size:8px;font-weight:700;color:#4ade80;border-top:1px solid rgba(74,222,128,0.1);padding-top:7px;">4% → 66.67% CTR &nbsp;·&nbsp; ×16 lift</div>
+        </div>
+        <!-- 03 -->
+        <div class="s24-card" style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;border:1px solid rgba(255,255,255,0.05);">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:9px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">03</span>
+            <span style="font-size:7px;font-weight:700;background:rgba(184,147,90,0.15);color:var(--gold);padding:2px 7px;border-radius:20px;">Reach</span>
+          </div>
+          <div style="font-size:10.5px;font-weight:700;color:#fff;line-height:1.3;">The algorithm finds<br>who you didn't plan for</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;flex:1;">89% of new Douyin followers arrived via recommended feed. The primary demographic shifted to Male 24–30 — outside our original persona map entirely.</div>
+          <div style="font-size:8px;font-weight:700;color:rgba(184,147,90,0.6);border-top:1px solid rgba(255,255,255,0.06);padding-top:7px;">89% algorithm-sourced · new demographic</div>
+        </div>
+      </div>
+      <!-- Row 2: 2 cards centred -->
+      <div class="s24-row" style="display:flex;gap:8px;flex:1;min-height:0;justify-content:center;">
+        <!-- 04 -->
+        <div class="s24-card" style="flex:1;max-width:47%;background:rgba(184,147,90,0.07);border:1px solid rgba(184,147,90,0.18);border-radius:8px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:9px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">04</span>
+            <span style="font-size:7px;font-weight:700;background:rgba(184,147,90,0.2);color:var(--gold);padding:2px 7px;border-radius:20px;">Emotion</span>
+          </div>
+          <div style="font-size:10.5px;font-weight:700;color:#fff;line-height:1.3;">Emotional language<br>is the real hook</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;flex:1;">
+            <span style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.6);">"我擅长感受 却拙于表达"</span> — no product message, just truth. It became the campaign's #1 post.
+          </div>
+          <div style="font-size:8px;font-weight:700;color:var(--gold);border-top:1px solid rgba(184,147,90,0.15);padding-top:7px;">33K views · +266 followers · #1 post</div>
+        </div>
+        <!-- 05 -->
+        <div class="s24-card" style="flex:1;max-width:47%;background:rgba(255,255,255,0.04);border-radius:8px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;border:1px solid rgba(255,255,255,0.05);">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:9px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">05</span>
+            <span style="font-size:7px;font-weight:700;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);padding:2px 7px;border-radius:20px;">Results</span>
+          </div>
+          <div style="font-size:10.5px;font-weight:700;color:#fff;line-height:1.3;">The numbers proved<br>the thesis</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;flex:1;">From zero strategy to 139K Douyin views and 1,077 new followers across 3 platforms in under 4 weeks. Organic social works when the system is right.</div>
+          <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.45);border-top:1px solid rgba(255,255,255,0.06);padding-top:7px;">139K views · 1,077 followers · 4 weeks</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="frame ph" id="slide-25">
     <div class="ph-blob" style="width:280px;height:280px;background:rgba(184,147,90,0.07);bottom:-40px;right:40px;"></div>
@@ -4401,7 +4489,41 @@ html, body {
         <div class="ssh-title">The Road Ahead</div>
         <div class="ssh-sub">Learnings &nbsp;·&nbsp; Phase 2</div>
       </div>
-      <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">24</div><div class="ssm-title">Learnings & Findings</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — what worked and what we learned.</div></div></div>
+      <div class="ss-slide reveal">
+        <div class="ss-meta"><div class="ssm-num">24</div><div class="ssm-title">Learnings &amp; Findings</div><div class="ssm-tool">5 Key Insights · Campaign Arc</div></div>
+        <div class="ss-body">
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Key Insights</div>
+          <div style="font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#fff;margin-bottom:6px;">What We Learned</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.35);font-style:italic;margin-bottom:16px;">One shoot. Three platforms. 139K views. 1,077 followers. 4 weeks.</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:7px;padding:11px 13px;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">01</span><span style="font-size:9.5px;font-weight:700;color:#fff;">Authenticity as infrastructure</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">One NYC outing → content for 3 platforms simultaneously. Efficiency is the strategy.</div>
+              <div style="font-size:7.5px;color:var(--gold);margin-top:5px;font-weight:700;">1 shoot · 3 platforms · 3–5 posts</div>
+            </div>
+            <div style="background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.12);border-radius:7px;padding:11px 13px;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">02</span><span style="font-size:9.5px;font-weight:700;color:#fff;">Cover CTR is the algorithm's switch</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">Night mood covers sent CTR from 4% to 66.67% — the thumbnail triggers distribution.</div>
+              <div style="font-size:7.5px;color:#4ade80;margin-top:5px;font-weight:700;">4% → 66.67% CTR · ×16 lift</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:7px;padding:11px 13px;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">03</span><span style="font-size:9.5px;font-weight:700;color:#fff;">Algorithm finds who you didn't plan for</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">89% of new followers via recommended feed. Male 24–30 emerged as primary demographic — unplanned.</div>
+              <div style="font-size:7.5px;color:var(--gold);margin-top:5px;font-weight:700;">89% algorithm-sourced · new demographic</div>
+            </div>
+            <div style="background:rgba(184,147,90,0.07);border:1px solid rgba(184,147,90,0.18);border-radius:7px;padding:11px 13px;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">04</span><span style="font-size:9.5px;font-weight:700;color:#fff;">Emotional language is the real hook</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;"><span style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.6);">"我擅长感受 却拙于表达"</span> — no product, just truth. Campaign's #1 post.</div>
+              <div style="font-size:7.5px;color:var(--gold);margin-top:5px;font-weight:700;">33K views · +266 followers · #1 post</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:7px;padding:11px 13px;">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">05</span><span style="font-size:9.5px;font-weight:700;color:#fff;">The numbers proved the thesis</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">From zero strategy to 139K views and 1,077 new followers across 3 platforms in under 4 weeks.</div>
+              <div style="font-size:7.5px;color:rgba(255,255,255,0.4);margin-top:5px;font-weight:700;">139K views · 1,077 followers · 4 weeks</div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="ss-slide reveal"><div class="ss-meta"><div class="ssm-num">25</div><div class="ssm-title">Phase 2</div></div><div class="ss-body"><div class="ss-ph">Content coming soon — brand ads and collaborations.</div></div></div>
     </div>
 
@@ -4493,12 +4615,31 @@ function goTo(idx) {
     String(cur+1).padStart(2,'0')+' / '+DECK.length+' — '+SEC[DECK[cur].sec];
   document.getElementById('progress-bar').style.width = (cur/(DECK.length-1)*100)+'%';
   if (cur === SLIDE5_IDX) setTimeout(animateQuant, 120);
-  if (DECK[cur].id === 'slide-20') setTimeout(animateSlide20, 150);
+  if (DECK[cur].id === 'slide-21') setTimeout(animateSlide20, 150);
+  if (DECK[cur].id === 'slide-15') {
+    document.querySelectorAll('#slide-15 [data-s15a]').forEach(el => { el.style.transition = 'none'; el.style.opacity = '0'; });
+    setTimeout(animateSlide15, 80);
+  }
   startAutoBuilds();
 }
 
+function animateSlide15() {
+  const s = document.getElementById('slide-15');
+  if (!s) return;
+  const els = s.querySelectorAll('[data-s15a]');
+  els.forEach(el => { el.style.transition = 'none'; el.style.opacity = '0'; void el.offsetWidth; });
+  const delays = { '0': 0, '1': 380, '2': 760, '3': 1100, '4': 1440 };
+  els.forEach(el => {
+    const d = delays[el.getAttribute('data-s15a')] || 0;
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.55s ease';
+      el.style.opacity = '1';
+    }, d);
+  });
+}
+
 function animateSlide20() {
-  const s = document.getElementById('slide-20');
+  const s = document.getElementById('slide-21');
   if (!s) return;
   const bars = s.querySelectorAll('[data-s20b]');
   bars.forEach(b => { b.style.animation = 'none'; b.style.transform = 'scaleY(0)'; void b.offsetWidth; });
