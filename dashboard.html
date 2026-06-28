@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>East Meets Feed — Campaign Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#b8935a;
+  --gold2:#c9a96e;
+  --bg:#0e0e0e;
+  --card:#141414;
+  --card2:#1a1a1a;
+  --border:rgba(255,255,255,0.07);
+  --text:#fff;
+  --text2:rgba(255,255,255,0.55);
+  --text3:rgba(255,255,255,0.28);
+}
+body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-size:14px;min-height:100vh;}
+
+/* ── HEADER ── */
+.dash-header{
+  background:linear-gradient(135deg,#111 0%,#1a1210 100%);
+  border-bottom:1px solid rgba(184,147,90,0.18);
+  padding:28px 40px 24px;
+  display:flex;align-items:flex-end;gap:32px;
+}
+.dash-header-left{flex:1;}
+.dash-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.dash-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;line-height:1.1;color:#fff;}
+.dash-sub{font-size:12px;color:var(--text2);margin-top:5px;letter-spacing:0.04em;}
+.dash-date{font-size:11px;color:var(--text3);margin-top:3px;}
+.dash-rule{width:2px;height:48px;background:rgba(184,147,90,0.35);border-radius:2px;}
+.dash-account{font-size:11px;color:var(--text3);}
+.dash-account strong{color:var(--gold2);font-weight:600;}
+
+/* ── LAYOUT ── */
+.dash-body{padding:28px 40px;display:flex;flex-direction:column;gap:24px;max-width:1400px;margin:0 auto;width:100%;}
+
+/* ── KPI STRIP ── */
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;position:relative;overflow:hidden;}
+.kpi-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,147,90,0.05) 0%,transparent 60%);pointer-events:none;}
+.kpi-card.gold{border-color:rgba(184,147,90,0.3);background:linear-gradient(135deg,#1a1308,#141414);}
+.kpi-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.18em;color:var(--text3);margin-bottom:8px;}
+.kpi-val{font-size:32px;font-weight:800;line-height:1;color:#fff;}
+.kpi-sub{font-size:10px;color:var(--gold);font-weight:600;margin-top:5px;}
+.kpi-before{font-size:9px;color:var(--text3);margin-top:3px;}
+.kpi-badge{position:absolute;top:14px;right:14px;background:rgba(184,147,90,0.15);border:1px solid rgba(184,147,90,0.3);border-radius:20px;padding:3px 8px;font-size:9px;font-weight:700;color:var(--gold);}
+
+/* ── TWO-COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+
+/* ── SECTION ── */
+.section-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.section-header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.section-label{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--gold);}
+.section-title{font-size:13px;font-weight:700;color:#fff;margin-left:4px;}
+.section-meta{margin-left:auto;font-size:9px;color:var(--text3);}
+.section-body{padding:18px 20px;}
+
+/* ── PLATFORM CARDS ── */
+.platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px 20px;}
+.plat-row{display:flex;flex-direction:column;gap:6px;}
+.plat-stat{display:flex;flex-direction:column;gap:2px;}
+.plat-stat-label{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text3);}
+.plat-stat-flow{display:flex;align-items:flex-end;gap:6px;}
+.plat-before{font-size:12px;font-weight:600;color:var(--text3);}
+.plat-arrow{font-size:11px;color:var(--gold);padding-bottom:1px;}
+.plat-after{font-size:28px;font-weight:800;color:#fff;line-height:1;}
+.plat-badge{display:inline-block;background:rgba(184,147,90,0.12);border:1px solid rgba(184,147,90,0.25);border-radius:4px;padding:3px 8px;font-size:9px;font-weight:700;color:var(--gold);margin-top:4px;}
+.plat-divider{width:1px;background:var(--border);}
+.plat-extra{padding:12px 20px;background:rgba(255,255,255,0.03);border-top:1px solid var(--border);display:flex;gap:20px;}
+.plat-extra-item{display:flex;flex-direction:column;gap:2px;}
+.plat-extra-label{font-size:7.5px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);}
+.plat-extra-val{font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);}
+
+/* ── CHART ── */
+.chart-wrap{padding:16px 20px;height:260px;position:relative;}
+
+/* ── POST TABLE ── */
+.post-table{width:100%;border-collapse:collapse;}
+.post-table th{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--text3);padding:8px 12px;border-bottom:1px solid var(--border);text-align:left;}
+.post-table th.r{text-align:right;}
+.post-table td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.03);vertical-align:middle;}
+.post-table tr:last-child td{border-bottom:none;}
+.post-table tr:hover td{background:rgba(255,255,255,0.025);}
+.post-rank{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;}
+.rank-gold{background:var(--gold);color:#000;}
+.rank-silver{background:rgba(184,147,90,0.2);border:1px solid var(--gold);color:var(--gold);}
+.rank-base{background:rgba(255,255,255,0.06);color:var(--text2);}
+.post-date{font-size:9px;color:var(--text3);}
+.post-caption{font-size:9.5px;color:var(--text2);font-style:italic;max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.post-title{font-size:11px;font-weight:600;color:var(--text);}
+.num-big{font-size:13px;font-weight:700;color:#fff;text-align:right;}
+.num-sm{font-size:11px;font-weight:600;color:var(--text2);text-align:right;}
+.num-xs{font-size:9.5px;color:var(--text3);text-align:right;}
+.bar-inline{display:flex;align-items:center;gap:6px;justify-content:flex-end;}
+.bar-bg{width:60px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:2px;}
+.ctr-val{font-size:12px;font-weight:700;text-align:right;}
+.ctr-high{color:#4ade80;}
+.ctr-mid{color:var(--gold2);}
+.ctr-low{color:var(--text2);}
+.ctr-zero{color:var(--text3);}
+.ctr-badge{display:inline-block;padding:2px 6px;border-radius:3px;font-size:8px;font-weight:700;}
+.ctr-badge.peak{background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);color:#4ade80;}
+.ctr-badge.high{background:rgba(184,147,90,0.15);border:1px solid rgba(184,147,90,0.25);color:var(--gold);}
+.plays-text{font-size:10px;font-weight:600;color:var(--text2);text-align:right;}
+.followers-gain{font-size:11px;font-weight:700;color:#60a5fa;text-align:right;}
+.type-pill{font-size:7.5px;font-weight:700;padding:2px 6px;border-radius:3px;text-transform:uppercase;letter-spacing:0.06em;}
+.type-video{background:rgba(184,147,90,0.12);color:var(--gold);}
+.type-carousel{background:rgba(96,165,250,0.12);color:#60a5fa;}
+
+/* ── FINDING CARDS ── */
+.finding-card{background:var(--card2);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.finding-header{padding:10px 14px;background:rgba(184,147,90,0.08);border-bottom:1px solid rgba(184,147,90,0.12);}
+.finding-eyebrow{font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:3px;}
+.finding-title{font-size:12px;font-weight:700;color:#fff;}
+.finding-body{padding:12px 14px;}
+.finding-stat{font-size:22px;font-weight:800;line-height:1;margin-bottom:4px;}
+.finding-desc{font-size:9px;color:var(--text2);line-height:1.6;}
+
+/* ── GOAL CARD ── */
+.goal-row{display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--border);}
+.goal-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--text3);width:80px;flex-shrink:0;}
+.goal-bar-wrap{flex:1;}
+.goal-bar-bg{height:10px;background:rgba(255,255,255,0.06);border-radius:5px;overflow:hidden;}
+.goal-bar-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--gold),#e8c87a);}
+.goal-nums{display:flex;justify-content:space-between;margin-top:4px;}
+.goal-num-left{font-size:9px;color:var(--text3);}
+.goal-num-right{font-size:9px;font-weight:700;color:var(--gold);}
+.goal-big{font-size:14px;font-weight:800;color:#fff;width:64px;text-align:right;flex-shrink:0;}
+.goal-tag{font-size:9px;font-weight:700;color:#4ade80;background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.2);border-radius:4px;padding:2px 7px;flex-shrink:0;}
+
+/* ── SMALL HELPERS ── */
+.section-caption{font-size:9.5px;color:var(--text3);padding:10px 20px 14px;border-top:1px solid var(--border);}
+.ig-card{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:14px;}
+.ig-header{display:flex;align-items:center;gap:10px;}
+.ig-icon{width:22px;height:22px;border-radius:6px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);flex-shrink:0;}
+.ig-name{font-size:12px;font-weight:700;color:#fff;}
+.ig-handle{font-size:10px;color:var(--text3);}
+.ig-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ig-stat-box{background:rgba(255,255,255,0.04);border-radius:6px;padding:10px 12px;}
+.ig-stat-label{font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:var(--text3);margin-bottom:4px;}
+.ig-stat-val{font-size:20px;font-weight:700;color:#fff;}
+.ig-stat-sub{font-size:9px;color:var(--gold);margin-top:2px;}
+.tag-platform{font-size:8px;font-weight:700;padding:1px 6px;border-radius:3px;text-transform:uppercase;letter-spacing:0.06em;background:rgba(184,147,90,0.15);color:var(--gold);}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<div class="dash-header">
+  <div class="dash-header-left">
+    <div class="dash-eyebrow">Campaign Performance Dashboard</div>
+    <div class="dash-title">East Meets Feed</div>
+    <div class="dash-sub">@Yujia &nbsp;·&nbsp; Douyin + Instagram Activation &nbsp;·&nbsp; May 27 – Jun 27, 2026</div>
+    <div class="dash-date">Data sourced from Douyin Creator Center &amp; Instagram Insights &nbsp;·&nbsp; Updated Jun 27, 2026</div>
+  </div>
+  <div class="dash-rule"></div>
+  <div class="dash-account">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.14em;color:var(--text3);margin-bottom:6px;">Douyin</div>
+    <div style="font-size:12px;font-weight:600;color:#fff;">@Xyjjj</div>
+    <div style="font-size:10px;color:var(--text3);margin-top:2px;">dywop2sac7pm</div>
+  </div>
+  <div class="dash-rule"></div>
+  <div class="dash-account">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.14em;color:var(--text3);margin-bottom:6px;">Instagram</div>
+    <div style="font-size:12px;font-weight:600;color:#fff;">@yujiaaa_xie</div>
+    <div style="font-size:10px;color:var(--text3);margin-top:2px;">2,387 followers</div>
+  </div>
+</div>
+
+<div class="dash-body">
+
+<!-- ══════════════ KPI STRIP ══════════════ -->
+<div class="kpi-strip">
+  <div class="kpi-card gold">
+    <div class="kpi-badge">×98</div>
+    <div class="kpi-label">Douyin Followers</div>
+    <div class="kpi-val">1,271</div>
+    <div class="kpi-sub">+1,258 gained</div>
+    <div class="kpi-before">Baseline: 13 &nbsp;→&nbsp; Jun 27</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-badge">×71.5</div>
+    <div class="kpi-label">Total Douyin Likes</div>
+    <div class="kpi-val">7,150</div>
+    <div class="kpi-sub">+7,050 from activation</div>
+    <div class="kpi-before">Baseline: 100</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-badge">18 posts</div>
+    <div class="kpi-label">Total Engagement</div>
+    <div class="kpi-val">7,990</div>
+    <div class="kpi-sub">Likes + Comments + Saves + Shares</div>
+    <div class="kpi-before">Goal: 5,000 &nbsp;·&nbsp; Achieved +59.8%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-badge">Peak</div>
+    <div class="kpi-label">Best Cover CTR</div>
+    <div class="kpi-val" style="color:#4ade80;">66.67%</div>
+    <div class="kpi-sub" style="color:#4ade80;">永远太远了 · Jun 12</div>
+    <div class="kpi-before">Avg CTR (video only): ~23.5%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-badge">IG</div>
+    <div class="kpi-label">IG Followers</div>
+    <div class="kpi-val">2,387</div>
+    <div class="kpi-sub">+46 gained</div>
+    <div class="kpi-before">Baseline: 2,341 &nbsp;·&nbsp; Top reel 10.1K</div>
+  </div>
+</div>
+
+<!-- ══════════════ CAMPAIGN GOAL PROGRESS ══════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-label">Campaign Goal</div>
+    <div class="section-title">The 5,000 Engagement Target</div>
+    <div class="section-meta">30-Day Activation Window · May 27 → Jun 27</div>
+  </div>
+  <div style="padding:16px 20px;display:flex;flex-direction:column;gap:10px;">
+    <!-- Goal bar -->
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);width:120px;flex-shrink:0;">5,000 target</div>
+      <div style="flex:1;">
+        <div style="height:12px;background:rgba(255,255,255,0.05);border-radius:6px;overflow:hidden;position:relative;">
+          <div style="height:100%;width:100%;background:linear-gradient(90deg,var(--gold),#e8c87a);border-radius:6px;"></div>
+          <div style="position:absolute;top:0;left:calc(5000/7990*100%);width:2px;height:100%;background:#fff;opacity:0.6;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;">
+          <span style="font-size:8.5px;color:var(--text3);">0</span>
+          <span style="font-size:8.5px;color:rgba(255,255,255,0.35);">5,000 goal</span>
+          <span style="font-size:8.5px;font-weight:700;color:var(--gold);">7,990 achieved</span>
+        </div>
+      </div>
+      <div style="font-size:22px;font-weight:800;color:#4ade80;width:52px;text-align:right;flex-shrink:0;">+60%</div>
+    </div>
+    <!-- Breakdown row -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px;">
+      <div style="background:rgba(255,255,255,0.03);border-radius:6px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;font-weight:800;color:#fff;">6,748</div>
+        <div style="font-size:9px;color:var(--text3);margin-top:2px;">❤ Likes</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border-radius:6px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;font-weight:800;color:#fff;">275</div>
+        <div style="font-size:9px;color:var(--text3);margin-top:2px;">💬 Comments</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border-radius:6px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;font-weight:800;color:#fff;">658</div>
+        <div style="font-size:9px;color:var(--text3);margin-top:2px;">⭐ Saves</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border-radius:6px;padding:10px 12px;text-align:center;">
+        <div style="font-size:18px;font-weight:800;color:#fff;">309</div>
+        <div style="font-size:9px;color:var(--text3);margin-top:2px;">↗ Shares</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ PLATFORM COMPARISON ══════════════ -->
+<div class="two-col">
+  <!-- DOUYIN -->
+  <div class="section-card">
+    <div class="section-header">
+      <div style="width:16px;height:16px;border-radius:4px;background:linear-gradient(135deg,#fe2c55,#000 50%,#25f4ee);flex-shrink:0;"></div>
+      <div class="section-label" style="margin-left:4px;">Douyin</div>
+      <div class="section-title">@Xyjjj</div>
+      <div class="section-meta">May 27 → Jun 27, 2026</div>
+    </div>
+    <div class="platform-grid">
+      <div class="plat-row">
+        <div class="plat-stat">
+          <div class="plat-stat-label">粉丝 Followers</div>
+          <div class="plat-stat-flow">
+            <div class="plat-before">13</div>
+            <div class="plat-arrow">→</div>
+            <div class="plat-after">1,271</div>
+          </div>
+          <div class="plat-badge">+1,258 &nbsp;·&nbsp; ×98 growth</div>
+        </div>
+      </div>
+      <div class="plat-row">
+        <div class="plat-stat">
+          <div class="plat-stat-label">获赞 Total Likes</div>
+          <div class="plat-stat-flow">
+            <div class="plat-before">100</div>
+            <div class="plat-arrow">→</div>
+            <div class="plat-after">7,150</div>
+          </div>
+          <div class="plat-badge">+7,050 &nbsp;·&nbsp; ×71.5 lift</div>
+        </div>
+      </div>
+    </div>
+    <div class="plat-extra">
+      <div class="plat-extra-item"><div class="plat-extra-label">Posts Published</div><div class="plat-extra-val">18</div></div>
+      <div class="plat-extra-item"><div class="plat-extra-label">Total Comments</div><div class="plat-extra-val">275</div></div>
+      <div class="plat-extra-item"><div class="plat-extra-label">Total Saves</div><div class="plat-extra-val">658</div></div>
+      <div class="plat-extra-item"><div class="plat-extra-label">Total Shares</div><div class="plat-extra-val">309</div></div>
+      <div class="plat-extra-item"><div class="plat-extra-label">关注 Following</div><div class="plat-extra-val">281</div></div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <div class="ig-card">
+    <div class="ig-header">
+      <div class="ig-icon"></div>
+      <div>
+        <div class="ig-name">Instagram</div>
+        <div class="ig-handle">@yujiaaa_xie</div>
+      </div>
+      <div style="margin-left:auto;font-size:9px;color:var(--text3);">May 27 → Jun 27</div>
+    </div>
+    <div class="ig-stat-grid">
+      <div class="ig-stat-box">
+        <div class="ig-stat-label">Followers</div>
+        <div style="font-size:10px;color:var(--text3);margin-bottom:3px;">2,341 →</div>
+        <div class="ig-stat-val">2,387</div>
+        <div class="ig-stat-sub">+46 &nbsp;·&nbsp; +2%</div>
+      </div>
+      <div class="ig-stat-box">
+        <div class="ig-stat-label">Top Reel Views</div>
+        <div class="ig-stat-val" style="margin-top:14px;">10.1K</div>
+        <div class="ig-stat-sub">NYC After Dark reel</div>
+      </div>
+    </div>
+    <div style="background:rgba(184,147,90,0.06);border:1px solid rgba(184,147,90,0.12);border-radius:6px;padding:12px 14px;">
+      <div style="font-size:8.5px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;">Platform Contrast</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.7;">Douyin delivered <strong style="color:#fff;">×98 follower growth</strong> while Instagram grew +2%. The activation proved Douyin as the primary growth engine — audience appetite for the Chinese-diaspora NYC lifestyle narrative is strongest in the Chinese social ecosystem.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ 18-POST ENGAGEMENT CHART ══════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-label">Engagement</div>
+    <div class="section-title">All 18 Posts — Likes by Date</div>
+    <div class="section-meta">Douyin @Xyjjj · May 27 → Jun 26</div>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="postsChart"></canvas>
+  </div>
+</div>
+
+<!-- ══════════════ FULL POST TABLE ══════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-label">All Posts</div>
+    <div class="section-title">Complete Engagement Breakdown — 18 Posts</div>
+    <div class="section-meta">Ranked by Likes · Douyin · Feed Data</div>
+  </div>
+  <div style="padding:0 0 4px;">
+    <table class="post-table">
+      <thead>
+        <tr>
+          <th style="width:34px;">#</th>
+          <th>Date</th>
+          <th>Post / Caption</th>
+          <th class="r">Likes ❤</th>
+          <th class="r">Comments 💬</th>
+          <th class="r">Saves ⭐</th>
+          <th class="r">Shares ↗</th>
+          <th class="r">Total Eng.</th>
+        </tr>
+      </thead>
+      <tbody id="postTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════ COVER CTR TABLE ══════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-label">Creator Center</div>
+    <div class="section-title">封面点击率 Cover CTR — 9 Posts with Creator Data</div>
+    <div class="section-meta">Douyin 流量分析 · Key Discovery: Cover thumbnail drives algorithmic reach</div>
+  </div>
+  <div style="padding:0 0 4px;">
+    <table class="post-table">
+      <thead>
+        <tr>
+          <th style="width:34px;">#</th>
+          <th>Date</th>
+          <th>Post</th>
+          <th>Type</th>
+          <th class="r">Plays 播放</th>
+          <th class="r">Likes ❤</th>
+          <th class="r">封面CTR</th>
+          <th class="r">CTR bar</th>
+          <th class="r">New Followers</th>
+          <th class="r">Traffic Boost</th>
+        </tr>
+      </thead>
+      <tbody id="ctrTableBody"></tbody>
+    </table>
+  </div>
+  <div class="section-caption">
+    ⚡ <strong style="color:#4ade80;">66.67% Cover CTR</strong> on "永远太远了" (Jun 12 · atmospheric night NYC) is the campaign's highest-signal finding — Douyin's algorithm rewards thumbnails with strong mood and subject clarity. Airport post (26.32%) achieved 689.47% CTR lift vs prior period with algorithm traffic boost. Posts marked 0% are carousels (no cover click event).
+  </div>
+</div>
+
+<!-- ══════════════ KEY FINDINGS ══════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-label">Findings</div>
+    <div class="section-title">Cover CTR Discovery — What the Data Tells Us</div>
+  </div>
+  <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="finding-eyebrow">Finding 01</div>
+        <div class="finding-title">Night Mood = Highest CTR</div>
+      </div>
+      <div class="finding-body">
+        <div class="finding-stat" style="color:#4ade80;">66.67%</div>
+        <div class="finding-desc">"永远太远了" (Jun 12) — atmospheric night NYC street, moody halter dress. Highest Cover CTR in the campaign. Dark tones + face forward = strong click signal.</div>
+      </div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="finding-eyebrow">Finding 02</div>
+        <div class="finding-title">Golden Hour Gets 50% CTR</div>
+      </div>
+      <div class="finding-body">
+        <div class="finding-stat" style="color:var(--gold2);">50%</div>
+        <div class="finding-desc">"前奏太好听了" (Jun 23) — sunset street in NYC, backlit golden light. Ranked 3rd in CTR. Nature + warm light + identity framing drives curiosity clicks.</div>
+      </div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="finding-eyebrow">Finding 03</div>
+        <div class="finding-title">Airport = Algo Boost + 26% CTR</div>
+      </div>
+      <div class="finding-body">
+        <div class="finding-stat" style="color:var(--gold);">26.32%</div>
+        <div class="finding-desc">Airport post (Jun 26) earned +689.47% CTR lift vs prior. Douyin gave it 流量激励 traffic boost. Transit narrative + LV bag + MacBook = aspirational lifestyle hook.</div>
+      </div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="finding-eyebrow">Finding 04</div>
+        <div class="finding-title">Carousels Have 0% Cover CTR</div>
+      </div>
+      <div class="finding-body">
+        <div class="finding-stat" style="color:var(--text2);">0%</div>
+        <div class="finding-desc">"世界上有个特别幸福的人" (Jun 15) is a photo carousel — no video cover click event registered. Still drove 246 ❤ via caption strength. Carousels serve different funnel (text-driven).</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════ TOP 6 POSTS ══════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-label">Top Performers</div>
+    <div class="section-title">Top 6 Posts by Total Engagement</div>
+    <div class="section-meta">Likes + Comments + Saves + Shares</div>
+  </div>
+  <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;" id="topPostsGrid"></div>
+</div>
+
+<!-- ══════════════ FOLLOWER ACQUISITION ══════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-label">Creator Center</div>
+    <div class="section-title">Follower Acquisition Per Post — 9 Posts</div>
+    <div class="section-meta">吸粉量 · Cumulative new followers per post</div>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="followerChart"></canvas>
+  </div>
+  <div class="section-caption">
+    Total tracked new followers from 9 Creator-Center posts: <strong style="color:#fff;">877</strong> &nbsp;·&nbsp;
+    Post 9 "我擅长感受" led with <strong style="color:#fff;">266 new followers</strong> &nbsp;·&nbsp;
+    Airport post #1 drove <strong style="color:#fff;">216 new followers</strong> in first 24hrs.
+  </div>
+</div>
+
+</div><!-- /dash-body -->
+
+<script>
+// ══ DATA ══
+const POSTS = [
+  {rank:1, date:'Jun 26', title:'Airport OOTD',       caption:'一次又一次愿意出发',         likes:1086, comments:27,  saves:144, shares:39},
+  {rank:2, date:'May 27', title:'Museum Gallery',     caption:'我擅长感受 却拙于表达',       likes:1049, comments:30,  saves:119, shares:82},
+  {rank:3, date:'Jun 5',  title:'Empire State Night', caption:'答案是不是总在忘记问题时才出现', likes:1029, comments:19,  saves:89,  shares:20},
+  {rank:4, date:'Jun 21', title:'Café OOTD',          caption:'关于幸福的七个关键词',        likes:785,  comments:13,  saves:74,  shares:65},
+  {rank:5, date:'May 28', title:'The Met Staircase',  caption:'我表达爱的方式很贪婪',        likes:458,  comments:9,   saves:48,  shares:34},
+  {rank:6, date:'Jun 7',  title:'Brooklyn Night Walk',caption:'请让时间停留在我感到幸福的每一天',likes:426, comments:20, saves:29,  shares:22},
+  {rank:7, date:'Jun 13', title:'NYC Restaurant',     caption:'周末纽约下午适合',            likes:364,  comments:40,  saves:30,  shares:7},
+  {rank:8, date:'Jun 11', title:'Seaport Street',     caption:'Cuz we\'ve got One life to live',likes:298,comments:13, saves:16,  shares:11},
+  {rank:9, date:'Jun 12', title:'Night NYC OOTD',     caption:'永远太远了 记住这一帧就好',    likes:254,  comments:11,  saves:26,  shares:5},
+  {rank:10,date:'Jun 15', title:'Night Car Mood',     caption:'世界上有个特别幸福的人',       likes:243,  comments:20,  saves:22,  shares:6},
+  {rank:11,date:'Jun 25', title:'Street Selfie',      caption:'太阳与地球',                 likes:173,  comments:11,  saves:15,  shares:10},
+  {rank:12,date:'Jun 23', title:'Golden Hour Walk',   caption:'前奏太好听了',               likes:149,  comments:17,  saves:13,  shares:1},
+  {rank:13,date:'Jun 9',  title:'Seaport Smiling',    caption:'没有人是木讷的树',            likes:103,  comments:6,   saves:4,   shares:2},
+  {rank:14,date:'May 27', title:'Coding Desk Night',  caption:'幸福有时不说话',              likes:86,   comments:13,  saves:5,   shares:2},
+  {rank:15,date:'May 30', title:'Park Leica Shoot',   caption:'"如果你也刚好抬头望"',        likes:64,   comments:8,   saves:5,   shares:0},
+  {rank:16,date:'Jun 4',  title:'Golden Hour Walk 2', caption:'要不再走走 #落日夕阳',        likes:63,   comments:6,   saves:8,   shares:0},
+  {rank:17,date:'May 30', title:'Night Crosswalk',    caption:'我在月光下许过情真',           likes:63,   comments:8,   saves:7,   shares:3},
+  {rank:18,date:'May 31', title:'Sunset Central Park',caption:'突然抬头 定格在黄昏的晚霞',   likes:55,   comments:4,   saves:4,   shares:0},
+];
+
+// Sort by date for chart
+const POSTS_BY_DATE = [
+  {d:'May 27', l:1049, t:'Museum Gallery'},
+  {d:'May 27', l:86,   t:'Coding Desk'},
+  {d:'May 28', l:458,  t:'The Met'},
+  {d:'May 30', l:64,   t:'Park Leica'},
+  {d:'May 30', l:63,   t:'Night Cross'},
+  {d:'May 31', l:55,   t:'Sunset Park'},
+  {d:'Jun 4',  l:63,   t:'Golden Walk'},
+  {d:'Jun 5',  l:1029, t:'Empire State'},
+  {d:'Jun 7',  l:426,  t:'Brooklyn Night'},
+  {d:'Jun 9',  l:103,  t:'Seaport'},
+  {d:'Jun 11', l:298,  t:'One Life'},
+  {d:'Jun 12', l:254,  t:'Night OOTD'},
+  {d:'Jun 13', l:364,  t:'Restaurant'},
+  {d:'Jun 15', l:243,  t:'Night Car'},
+  {d:'Jun 21', l:785,  t:'Café OOTD'},
+  {d:'Jun 23', l:149,  t:'Golden Hour'},
+  {d:'Jun 25', l:173,  t:'Street Selfie'},
+  {d:'Jun 26', l:1086, t:'Airport'},
+];
+
+const CTR_POSTS = [
+  {n:1, date:'Jun 26', title:'Airport OOTD',          type:'video',    plays:'~30,000', likes:1086, ctr:26.32, ctrNote:'+689% vs prior', followers:216, boost:'Yes'},
+  {n:2, date:'Jun 25', title:'太阳与地球',             type:'carousel', plays:'~10,000', likes:173,  ctr:8.57,  ctrNote:'+100%',          followers:34,  boost:'—'},
+  {n:3, date:'Jun 23', title:'前奏太好听了 ☀️',        type:'carousel', plays:'6,196',   likes:151,  ctr:50.00, ctrNote:'+100%',          followers:20,  boost:'—'},
+  {n:4, date:'Jun 21', title:'关于幸福的七个关键词',   type:'carousel', plays:'~25,000', likes:903,  ctr:11.11, ctrNote:'+100%',          followers:141, boost:'—'},
+  {n:5, date:'Jun 15', title:'世界上有个特别幸福的人', type:'carousel', plays:'7,375',   likes:246,  ctr:0,     ctrNote:'carousel',       followers:64,  boost:'—'},
+  {n:6, date:'Jun 13', title:'周末纽约下午适合',       type:'carousel', plays:'6,689',   likes:365,  ctr:4.35,  ctrNote:'',               followers:136, boost:'—'},
+  {n:7, date:'Jun 12', title:'永远太远了 🌃',          type:'video',    plays:'4,037',   likes:254,  ctr:66.67, ctrNote:'PEAK',           followers:35,  boost:'—'},
+  {n:8, date:'Jun 5',  title:'答案是不是总在忘记',     type:'carousel', plays:'~17,000', likes:1032, ctr:14.29, ctrNote:'',               followers:165, boost:'4,763'},
+  {n:9, date:'May 27', title:'我擅长感受 却拙于表达',  type:'carousel', plays:'~33,000', likes:1049, ctr:7.69,  ctrNote:'',               followers:266, boost:'934'},
+];
+
+// ══ RENDER POST TABLE ══
+const tbody = document.getElementById('postTableBody');
+POSTS.forEach(p => {
+  const total = p.likes + p.comments + p.saves + p.shares;
+  const maxL = 1086;
+  const pct = p.likes / maxL * 100;
+  let rankClass = p.rank <= 3 ? 'rank-gold' : p.rank <= 6 ? 'rank-silver' : 'rank-base';
+  tbody.innerHTML += `
+    <tr>
+      <td><div class="post-rank ${rankClass}">${p.rank}</div></td>
+      <td><span class="post-date">${p.date}</span></td>
+      <td>
+        <div class="post-title">${p.title}</div>
+        <div class="post-caption">${p.caption}</div>
+      </td>
+      <td>
+        <div class="bar-inline">
+          <div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${p.rank<=3?'var(--gold)':'rgba(184,147,90,0.5)'};"></div></div>
+          <div class="num-big">${p.likes.toLocaleString()}</div>
+        </div>
+      </td>
+      <td class="num-sm">${p.comments}</td>
+      <td class="num-sm">${p.saves}</td>
+      <td class="num-sm">${p.shares}</td>
+      <td class="num-big" style="color:${p.rank<=3?'#fff':'rgba(255,255,255,0.6)'};">${total.toLocaleString()}</td>
+    </tr>`;
+});
+
+// ══ RENDER CTR TABLE ══
+const ctrBody = document.getElementById('ctrTableBody');
+CTR_POSTS.forEach(p => {
+  const ctrColor = p.ctr >= 50 ? 'ctr-high' : p.ctr >= 20 ? 'ctr-mid' : p.ctr > 0 ? 'ctr-low' : 'ctr-zero';
+  const ctrBadge = p.ctrNote === 'PEAK' ? '<span class="ctr-badge peak">PEAK</span>' :
+                   p.ctr >= 20 ? '<span class="ctr-badge high">HIGH</span>' : '';
+  const barW = p.ctr === 0 ? 0 : Math.max(p.ctr / 66.67 * 100, 4);
+  const barColor = p.ctr >= 50 ? '#4ade80' : p.ctr >= 20 ? 'var(--gold)' : 'rgba(184,147,90,0.4)';
+  const typeClass = p.type === 'video' ? 'type-video' : 'type-carousel';
+  ctrBody.innerHTML += `
+    <tr>
+      <td><div class="post-rank ${p.ctr >= 50?'rank-gold':p.ctr>=20?'rank-silver':'rank-base'}">${p.n}</div></td>
+      <td><span class="post-date">${p.date}</span></td>
+      <td>
+        <div class="post-title">${p.title}</div>
+      </td>
+      <td><span class="type-pill ${typeClass}">${p.type}</span></td>
+      <td class="plays-text">${p.plays}</td>
+      <td class="num-sm">${p.likes.toLocaleString()}</td>
+      <td>
+        <div style="text-align:right;">
+          <div class="ctr-val ${ctrColor}">${p.ctr === 0 ? '0%' : p.ctr+'%'} ${ctrBadge}</div>
+          ${p.ctrNote && p.ctrNote !== 'PEAK' && p.ctrNote !== 'carousel' ? `<div style="font-size:8px;color:var(--text3);">${p.ctrNote}</div>` : ''}
+        </div>
+      </td>
+      <td>
+        <div class="bar-inline">
+          <div class="bar-bg"><div class="bar-fill" style="width:${barW}%;background:${barColor};"></div></div>
+        </div>
+      </td>
+      <td class="followers-gain">+${p.followers}</td>
+      <td style="text-align:right;font-size:10px;color:${p.boost!=='—'&&p.boost!=='Yes'?'#4ade80':p.boost==='Yes'?'var(--gold)':'var(--text3)'};">${p.boost==='Yes'?'✓ boosted':p.boost==='—'?'—':'🔥 '+p.boost}</td>
+    </tr>`;
+});
+
+// ══ RENDER TOP 6 GRID ══
+const grid = document.getElementById('topPostsGrid');
+POSTS.slice(0,6).forEach((p,i) => {
+  const total = p.likes + p.comments + p.saves + p.shares;
+  const medal = ['🥇','🥈','🥉','④','⑤','⑥'][i];
+  grid.innerHTML += `
+    <div style="background:${i<3?'var(--card2)':'rgba(255,255,255,0.03)'};border:1px solid ${i<3?'rgba(184,147,90,0.2)':'var(--border)'};border-radius:8px;overflow:hidden;">
+      <div style="background:${i<3?'rgba(184,147,90,0.1)':'transparent'};padding:8px 12px;border-bottom:1px solid ${i<3?'rgba(184,147,90,0.12)':'var(--border)'};display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:11px;font-weight:700;color:${i<3?'#fff':'rgba(255,255,255,0.7)'};">${medal} ${p.title}</div>
+        <div style="font-size:9px;color:var(--text3);">${p.date}</div>
+      </div>
+      <div style="padding:10px 12px;font-size:9px;color:var(--text2);font-style:italic;margin-bottom:6px;">${p.caption}</div>
+      <div style="padding:0 12px 10px;display:flex;gap:14px;">
+        <div><div style="font-size:16px;font-weight:800;color:${i<3?'#fff':'rgba(255,255,255,0.7)'};">${p.likes.toLocaleString()}</div><div style="font-size:8px;color:var(--text3);">❤ Likes</div></div>
+        <div><div style="font-size:16px;font-weight:800;color:rgba(255,255,255,0.5);">${p.saves}</div><div style="font-size:8px;color:var(--text3);">⭐ Saves</div></div>
+        <div><div style="font-size:16px;font-weight:800;color:rgba(255,255,255,0.5);">${p.comments}</div><div style="font-size:8px;color:var(--text3);">💬</div></div>
+        <div style="margin-left:auto;text-align:right;"><div style="font-size:13px;font-weight:800;color:${i<3?'var(--gold)':'rgba(184,147,90,0.6)'};">${total}</div><div style="font-size:8px;color:var(--text3);">total eng.</div></div>
+      </div>
+    </div>`;
+});
+
+// ══ POSTS BAR CHART ══
+const ctx1 = document.getElementById('postsChart').getContext('2d');
+new Chart(ctx1, {
+  type: 'bar',
+  data: {
+    labels: POSTS_BY_DATE.map(p => p.d + ' · ' + p.t),
+    datasets: [{
+      data: POSTS_BY_DATE.map(p => p.l),
+      backgroundColor: POSTS_BY_DATE.map(p => p.l >= 800 ? '#b8935a' : p.l >= 300 ? 'rgba(184,147,90,0.6)' : 'rgba(184,147,90,0.25)'),
+      borderColor: POSTS_BY_DATE.map(p => p.l >= 800 ? '#e8c87a' : 'transparent'),
+      borderWidth: 1,
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.raw.toLocaleString()} likes` } } },
+    scales: {
+      x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: 'rgba(255,255,255,0.35)', font: { size: 9, family: 'Jost' }, maxRotation: 45 } },
+      y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: 'rgba(255,255,255,0.35)', font: { size: 9, family: 'Jost' } }, beginAtZero: true }
+    }
+  }
+});
+
+// ══ FOLLOWER CHART ══
+const ctx2 = document.getElementById('followerChart').getContext('2d');
+const followerData = [
+  {l:'May 27 · Museum',   v:266},
+  {l:'Jun 5 · Emp State', v:165},
+  {l:'Jun 26 · Airport',  v:216},
+  {l:'Jun 21 · Café',     v:141},
+  {l:'Jun 13 · Rest.',    v:136},
+  {l:'Jun 15 · Car Night',v:64},
+  {l:'Jun 12 · Night NYC',v:35},
+  {l:'Jun 25 · Street',   v:34},
+  {l:'Jun 23 · Sunset',   v:20},
+];
+new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: followerData.map(d => d.l),
+    datasets: [{
+      label: 'New Followers',
+      data: followerData.map(d => d.v),
+      backgroundColor: followerData.map(d => d.v >= 200 ? '#b8935a' : d.v >= 100 ? 'rgba(96,165,250,0.6)' : 'rgba(96,165,250,0.25)'),
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` +${ctx.raw} new followers` } } },
+    scales: {
+      x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: 'rgba(255,255,255,0.35)', font: { size: 9, family: 'Jost' } } },
+      y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: 'rgba(255,255,255,0.35)', font: { size: 9, family: 'Jost' } }, beginAtZero: true }
+    }
+  }
+});
+</script>
+</body>
+</html>
