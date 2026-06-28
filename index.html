@@ -567,15 +567,19 @@ html, body {
 }
 /* ── Slide 24 animations ── */
 .s24-header { opacity:0; transform:translateY(-12px); transition:opacity 0.45s ease, transform 0.45s ease; }
-.s24-arc    { opacity:0; transition:opacity 0.4s ease 0.15s; }
-.s24-card   { opacity:0; transform:translateY(18px); transition:opacity 0.5s ease, transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+.s24-arc    { opacity:0; transform:translateY(8px); transition:opacity 0.4s ease, transform 0.4s ease; transition-delay:0.08s; }
+.s24-item   { opacity:0; transform:translateY(14px); transition:opacity 0.45s ease, transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
 #slide-24.active .s24-header { opacity:1; transform:translateY(0); }
-#slide-24.active .s24-arc    { opacity:1; }
-#slide-24.active .s24-row:nth-child(1) .s24-card:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.18s; }
-#slide-24.active .s24-row:nth-child(1) .s24-card:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.32s; }
-#slide-24.active .s24-row:nth-child(1) .s24-card:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.46s; }
-#slide-24.active .s24-row:nth-child(2) .s24-card:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.60s; }
-#slide-24.active .s24-row:nth-child(2) .s24-card:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.74s; }
+#slide-24.active .s24-arc    { opacity:1; transform:translateY(0); }
+#slide-24.active .s24-col:nth-child(1) .s24-item:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.20s; }
+#slide-24.active .s24-col:nth-child(1) .s24-item:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.34s; }
+#slide-24.active .s24-col:nth-child(1) .s24-item:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.48s; }
+#slide-24.active .s24-col:nth-child(1) .s24-item:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.62s; }
+#slide-24.active .s24-col:nth-child(2) .s24-item:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.26s; }
+#slide-24.active .s24-col:nth-child(2) .s24-item:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.40s; }
+#slide-24.active .s24-col:nth-child(2) .s24-item:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.54s; }
+#slide-24.active .s24-col:nth-child(2) .s24-item:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.68s; }
+#slide-24.active .s24-col:nth-child(2) .s24-item:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:0.82s; }
 .btn-glass, .btn-glass-lt {
   display: inline-flex; align-items: center; justify-content: center;
   gap: 10px; cursor: pointer; text-decoration: none;
@@ -3021,73 +3025,119 @@ html, body {
       <div class="ph-slide-num-big" style="color:rgba(255,255,255,0.06);">24</div>
       <div class="ph-sidebar-bottom" style="color:rgba(255,255,255,0.25);">East Meets Feed<br>@Yujia &nbsp;·&nbsp; 2026</div>
     </div>
-    <div style="flex:1;display:flex;flex-direction:column;padding:36px 22px 14px;overflow:hidden;min-width:0;gap:10px;">
-      <!-- Header -->
-      <div class="s24-header" style="flex-shrink:0;display:flex;align-items:baseline;justify-content:space-between;">
+    <div style="flex:1;display:flex;flex-direction:column;padding:26px 20px 8px;overflow:hidden;min-width:0;gap:5px;">
+      <!-- Header row -->
+      <div class="s24-header" style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:16px;">
         <div>
-          <div style="font-size:8px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Key Insights · Campaign Learnings</div>
-          <div style="font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:#fff;line-height:1.1;">What We Learned</div>
+          <div style="font-size:8px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">Learnings &amp; Findings · East Meets Feed</div>
+          <div style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:#fff;line-height:1.1;">What We Learned</div>
         </div>
-        <div class="s24-arc" style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.05em;font-style:italic;text-align:right;line-height:1.7;">
-          One shoot. Three platforms.<br>139K views. 1,077 followers. 4 weeks.
-        </div>
-      </div>
-      <!-- Row 1: 3 cards -->
-      <div class="s24-row" style="display:flex;gap:8px;flex:1;min-height:0;">
-        <!-- 01 -->
-        <div class="s24-card" style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;border:1px solid rgba(255,255,255,0.05);">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-size:9px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">01</span>
-            <span style="font-size:7px;font-weight:700;background:rgba(184,147,90,0.15);color:var(--gold);padding:2px 7px;border-radius:20px;">Efficiency</span>
-          </div>
-          <div style="font-size:10.5px;font-weight:700;color:#fff;line-height:1.3;">Authenticity<br>as infrastructure</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;flex:1;">One NYC outing creates content for 3 platforms simultaneously. Efficiency isn't an afterthought — it's the strategy.</div>
-          <div style="font-size:8px;font-weight:700;color:rgba(184,147,90,0.6);border-top:1px solid rgba(255,255,255,0.06);padding-top:7px;">1 shoot → 3 platforms · 3–5 posts</div>
-        </div>
-        <!-- 02 -->
-        <div class="s24-card" style="flex:1;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.12);border-radius:8px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-size:9px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">02</span>
-            <span style="font-size:7px;font-weight:700;background:rgba(74,222,128,0.15);color:#4ade80;padding:2px 7px;border-radius:20px;">Algorithm</span>
-          </div>
-          <div style="font-size:10.5px;font-weight:700;color:#fff;line-height:1.3;">Cover CTR is the<br>algorithm's switch</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;flex:1;">Night mood covers sent CTR from 4% to 66.67%. The thumbnail doesn't just attract viewers — it triggers distribution.</div>
-          <div style="font-size:8px;font-weight:700;color:#4ade80;border-top:1px solid rgba(74,222,128,0.1);padding-top:7px;">4% → 66.67% CTR &nbsp;·&nbsp; ×16 lift</div>
-        </div>
-        <!-- 03 -->
-        <div class="s24-card" style="flex:1;background:rgba(255,255,255,0.04);border-radius:8px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;border:1px solid rgba(255,255,255,0.05);">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-size:9px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">03</span>
-            <span style="font-size:7px;font-weight:700;background:rgba(184,147,90,0.15);color:var(--gold);padding:2px 7px;border-radius:20px;">Reach</span>
-          </div>
-          <div style="font-size:10.5px;font-weight:700;color:#fff;line-height:1.3;">The algorithm finds<br>who you didn't plan for</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;flex:1;">89% of new Douyin followers arrived via recommended feed. The primary demographic shifted to Male 24–30 — outside our original persona map entirely.</div>
-          <div style="font-size:8px;font-weight:700;color:rgba(184,147,90,0.6);border-top:1px solid rgba(255,255,255,0.06);padding-top:7px;">89% algorithm-sourced · new demographic</div>
+        <div class="s24-arc" style="border-left:2px solid rgba(184,147,90,0.4);padding-left:12px;padding-top:16px;">
+          <div style="font-family:'Playfair Display',serif;font-size:9px;font-style:italic;color:rgba(255,255,255,0.55);line-height:1.65;">One authentic voice, the right system,<br>three platforms — and the numbers follow.</div>
         </div>
       </div>
-      <!-- Row 2: 2 cards centred -->
-      <div class="s24-row" style="display:flex;gap:8px;flex:1;min-height:0;justify-content:center;">
-        <!-- 04 -->
-        <div class="s24-card" style="flex:1;max-width:47%;background:rgba(184,147,90,0.07);border:1px solid rgba(184,147,90,0.18);border-radius:8px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-size:9px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">04</span>
-            <span style="font-size:7px;font-weight:700;background:rgba(184,147,90,0.2);color:var(--gold);padding:2px 7px;border-radius:20px;">Emotion</span>
+      <!-- Column labels -->
+      <div style="display:flex;gap:10px;flex-shrink:0;">
+        <div style="flex:1;font-size:7.5px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(184,147,90,0.55);padding-bottom:4px;border-bottom:1px solid rgba(184,147,90,0.2);">Strategy Learnings</div>
+        <div style="flex:1;font-size:7.5px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(74,222,128,0.5);padding-bottom:4px;border-bottom:1px solid rgba(74,222,128,0.15);">Analytical Insights</div>
+      </div>
+      <!-- Two columns -->
+      <div style="flex:1;display:flex;gap:10px;min-height:0;overflow:hidden;">
+        <!-- LEFT: Strategy (4 items) -->
+        <div class="s24-col" style="flex:1;display:flex;flex-direction:column;gap:4px;min-height:0;overflow:hidden;">
+          <!-- S1 -->
+          <div class="s24-item" style="flex:1;min-height:0;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 11px;display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+              <span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.15em;flex-shrink:0;">S1</span>
+              <span style="font-size:10.5px;font-weight:700;color:#fff;">Platform differentiation is not optional</span>
+              <span style="margin-left:auto;font-size:7px;font-weight:700;background:rgba(184,147,90,0.15);color:var(--gold);padding:1px 6px;border-radius:10px;flex-shrink:0;">Strategy</span>
+            </div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.42);line-height:1.55;flex:1;min-height:0;overflow:hidden;">IG builds brand identity through aesthetic polish. Douyin drives mass follower growth through algorithm and emotional hooks. XHS activates niche community trust. Treating them as one channel wastes each platform's native advantage.</div>
+            <div style="font-size:8px;font-weight:700;color:rgba(184,147,90,0.5);flex-shrink:0;">3 platforms · 3 content strategies · 1 brand voice</div>
           </div>
-          <div style="font-size:10.5px;font-weight:700;color:#fff;line-height:1.3;">Emotional language<br>is the real hook</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;flex:1;">
-            <span style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.6);">"我擅长感受 却拙于表达"</span> — no product message, just truth. It became the campaign's #1 post.
+          <!-- S2 -->
+          <div class="s24-item" style="flex:1;min-height:0;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 11px;display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+              <span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.15em;flex-shrink:0;">S2</span>
+              <span style="font-size:10.5px;font-weight:700;color:#fff;">The workflow is a loop, not a funnel</span>
+              <span style="margin-left:auto;font-size:7px;font-weight:700;background:rgba(184,147,90,0.15);color:var(--gold);padding:1px 6px;border-radius:10px;flex-shrink:0;">Process</span>
+            </div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.42);line-height:1.55;flex:1;min-height:0;overflow:hidden;">Research → Brief → Shoot → Adapt → Post → Measure → Optimize. One NYC outing feeds all three platforms, and every engagement metric teaches the next brief. The system compounds with each cycle.</div>
+            <div style="font-size:8px;font-weight:700;color:rgba(184,147,90,0.5);flex-shrink:0;">7-step loop · 3–5 posts per outing · efficiency compounds</div>
           </div>
-          <div style="font-size:8px;font-weight:700;color:var(--gold);border-top:1px solid rgba(184,147,90,0.15);padding-top:7px;">33K views · +266 followers · #1 post</div>
+          <!-- S3 -->
+          <div class="s24-item" style="flex:1;min-height:0;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 11px;display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+              <span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.15em;flex-shrink:0;">S3</span>
+              <span style="font-size:10.5px;font-weight:700;color:#fff;">Personas are hypotheses, not blueprints</span>
+              <span style="margin-left:auto;font-size:7px;font-weight:700;background:rgba(184,147,90,0.15);color:var(--gold);padding:1px 6px;border-radius:10px;flex-shrink:0;">Audience</span>
+            </div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.42);line-height:1.55;flex:1;min-height:0;overflow:hidden;">We planned for Mina (IG-first aesthete) and Lummy (Douyin-native). The algorithm surfaced Male 24–30 as Douyin's primary demographic — a segment never in the original brief. Personas should guide content, but the data should revise them.</div>
+            <div style="font-size:8px;font-weight:700;color:rgba(184,147,90,0.5);flex-shrink:0;">Planned audience ≠ reached audience · algorithm reveals truth</div>
+          </div>
+          <!-- S4 -->
+          <div class="s24-item" style="flex:1;min-height:0;overflow:hidden;background:rgba(184,147,90,0.06);border:1px solid rgba(184,147,90,0.14);border-radius:6px;padding:8px 11px;display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+              <span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.15em;flex-shrink:0;">S4</span>
+              <span style="font-size:10.5px;font-weight:700;color:#fff;">Cultural translation &gt; content localization</span>
+              <span style="margin-left:auto;font-size:7px;font-weight:700;background:rgba(184,147,90,0.2);color:var(--gold);padding:1px 6px;border-radius:10px;flex-shrink:0;">Content</span>
+            </div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.42);line-height:1.55;flex:1;min-height:0;overflow:hidden;">The strongest Douyin posts weren't translated from English — they were conceived in Chinese emotional logic: introspection, solitude in the city, quiet yearning. Authentic cultural framing consistently outperformed localized captions.</div>
+            <div style="font-size:8px;font-weight:700;color:rgba(184,147,90,0.5);flex-shrink:0;">Emotional frame in Chinese → highest follower conversion</div>
+          </div>
         </div>
-        <!-- 05 -->
-        <div class="s24-card" style="flex:1;max-width:47%;background:rgba(255,255,255,0.04);border-radius:8px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;border:1px solid rgba(255,255,255,0.05);">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-size:9px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">05</span>
-            <span style="font-size:7px;font-weight:700;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);padding:2px 7px;border-radius:20px;">Results</span>
+        <!-- RIGHT: Analytics (5 items) -->
+        <div class="s24-col" style="flex:1;display:flex;flex-direction:column;gap:4px;min-height:0;overflow:hidden;">
+          <!-- A1 -->
+          <div class="s24-item" style="flex:1;min-height:0;overflow:hidden;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.12);border-radius:6px;padding:8px 11px;display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+              <span style="font-size:8px;font-weight:800;color:#4ade80;letter-spacing:0.15em;flex-shrink:0;">A1</span>
+              <span style="font-size:10.5px;font-weight:700;color:#fff;">Cover CTR is the algorithm's gate</span>
+              <span style="margin-left:auto;font-size:7px;font-weight:700;background:rgba(74,222,128,0.15);color:#4ade80;padding:1px 6px;border-radius:10px;flex-shrink:0;">×16 lift</span>
+            </div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.42);line-height:1.55;flex:1;min-height:0;overflow:hidden;">Night mood covers sent CTR from 4% → 66.67% — a single variable shift. High CTR signals Douyin to push the post to the next audience wave. Cover is not aesthetics; it's distribution infrastructure.</div>
+            <div style="font-size:8px;font-weight:700;color:#4ade80;flex-shrink:0;">4% → 66.67% · Night &gt; Daytime &gt; Carousel</div>
           </div>
-          <div style="font-size:10.5px;font-weight:700;color:#fff;line-height:1.3;">The numbers proved<br>the thesis</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;flex:1;">From zero strategy to 139K Douyin views and 1,077 new followers across 3 platforms in under 4 weeks. Organic social works when the system is right.</div>
-          <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.45);border-top:1px solid rgba(255,255,255,0.06);padding-top:7px;">139K views · 1,077 followers · 4 weeks</div>
+          <!-- A2 -->
+          <div class="s24-item" style="flex:1;min-height:0;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 11px;display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+              <span style="font-size:8px;font-weight:800;color:#4ade80;letter-spacing:0.15em;flex-shrink:0;">A2</span>
+              <span style="font-size:10.5px;font-weight:700;color:#fff;">89% of reach was algorithm-driven</span>
+              <span style="margin-left:auto;font-size:7px;font-weight:700;background:rgba(74,222,128,0.12);color:#4ade80;padding:1px 6px;border-radius:10px;flex-shrink:0;">Organic</span>
+            </div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.42);line-height:1.55;flex:1;min-height:0;overflow:hidden;">Only 11% of new followers came from pre-existing connections. At low follower counts, Douyin's algorithm distributes purely on content quality signals — watch time, completion rate, and CTR.</div>
+            <div style="font-size:8px;font-weight:700;color:rgba(74,222,128,0.6);flex-shrink:0;">89% recommended · organic ≠ existing network</div>
+          </div>
+          <!-- A3 -->
+          <div class="s24-item" style="flex:1;min-height:0;overflow:hidden;background:rgba(184,147,90,0.07);border:1px solid rgba(184,147,90,0.16);border-radius:6px;padding:8px 11px;display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+              <span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.15em;flex-shrink:0;">A3</span>
+              <span style="font-size:10.5px;font-weight:700;color:#fff;">Emotional depth drives follow rate</span>
+              <span style="margin-left:auto;font-size:7px;font-weight:700;background:rgba(184,147,90,0.2);color:var(--gold);padding:1px 6px;border-radius:10px;flex-shrink:0;">#1 post</span>
+            </div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.42);line-height:1.55;flex:1;min-height:0;overflow:hidden;"><span style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.55);">"我擅长感受 却拙于表达"</span> — 33K views, 1,049 ❤, +266 followers. 2.03% follow rate, highest in the campaign. Polish didn't predict performance; emotional truth did.</div>
+            <div style="font-size:8px;font-weight:700;color:var(--gold);flex-shrink:0;">33K views · 2.03% follow rate · 0 product message</div>
+          </div>
+          <!-- A4 -->
+          <div class="s24-item" style="flex:1;min-height:0;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 11px;display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+              <span style="font-size:8px;font-weight:800;color:#4ade80;letter-spacing:0.15em;flex-shrink:0;">A4</span>
+              <span style="font-size:10.5px;font-weight:700;color:#fff;">Volume with quality compounds</span>
+              <span style="margin-left:auto;font-size:7px;font-weight:700;background:rgba(74,222,128,0.12);color:#4ade80;padding:1px 6px;border-radius:10px;flex-shrink:0;">9 posts</span>
+            </div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.42);line-height:1.55;flex:1;min-height:0;overflow:hidden;">9 Douyin posts generated 139K total views at 11.9K average — well above cold-start benchmarks. The top post alone (33K) represented 24% of total campaign views. Consistent output builds algorithmic trust.</div>
+            <div style="font-size:8px;font-weight:700;color:rgba(74,222,128,0.6);flex-shrink:0;">139K views · 11.9K avg/post · 1,077 new followers</div>
+          </div>
+          <!-- A5 -->
+          <div class="s24-item" style="flex:1;min-height:0;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:8px 11px;display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+              <span style="font-size:8px;font-weight:800;color:#4ade80;letter-spacing:0.15em;flex-shrink:0;">A5</span>
+              <span style="font-size:10.5px;font-weight:700;color:#fff;">Attention depth beats reach metrics</span>
+              <span style="margin-left:auto;font-size:7px;font-weight:700;background:rgba(74,222,128,0.12);color:#4ade80;padding:1px 6px;border-radius:10px;flex-shrink:0;">Retention</span>
+            </div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.42);line-height:1.55;flex:1;min-height:0;overflow:hidden;">Caption completion rate and low swipe-away rate on top posts signal that Douyin rewards content that holds attention end-to-end. Quality of watch time outweighs raw view count as a long-term growth signal.</div>
+            <div style="font-size:8px;font-weight:700;color:rgba(74,222,128,0.6);flex-shrink:0;">Caption completion &amp; low swipe-away = algorithmic trust</div>
+          </div>
         </div>
       </div>
     </div>
@@ -4490,36 +4540,64 @@ html, body {
         <div class="ssh-sub">Learnings &nbsp;·&nbsp; Phase 2</div>
       </div>
       <div class="ss-slide reveal">
-        <div class="ss-meta"><div class="ssm-num">24</div><div class="ssm-title">Learnings &amp; Findings</div><div class="ssm-tool">5 Key Insights · Campaign Arc</div></div>
+        <div class="ss-meta"><div class="ssm-num">24</div><div class="ssm-title">Learnings &amp; Findings</div><div class="ssm-tool">4 Strategy · 5 Analytics · Full Campaign Arc</div></div>
         <div class="ss-body">
-          <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Key Insights</div>
-          <div style="font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#fff;margin-bottom:6px;">What We Learned</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.35);font-style:italic;margin-bottom:16px;">One shoot. Three platforms. 139K views. 1,077 followers. 4 weeks.</div>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:7px;padding:11px 13px;">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">01</span><span style="font-size:9.5px;font-weight:700;color:#fff;">Authenticity as infrastructure</span></div>
-              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">One NYC outing → content for 3 platforms simultaneously. Efficiency is the strategy.</div>
-              <div style="font-size:7.5px;color:var(--gold);margin-top:5px;font-weight:700;">1 shoot · 3 platforms · 3–5 posts</div>
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Learnings &amp; Findings</div>
+          <div style="font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#fff;margin-bottom:4px;">What We Learned</div>
+          <div style="border-left:2px solid rgba(184,147,90,0.4);padding-left:10px;margin-bottom:14px;">
+            <div style="font-family:'Playfair Display',serif;font-size:8.5px;font-style:italic;color:rgba(255,255,255,0.5);line-height:1.65;">One authentic voice, the right system, three platforms — and the numbers follow.</div>
+          </div>
+
+          <div style="font-size:7.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(184,147,90,0.6);margin-bottom:7px;padding-bottom:5px;border-bottom:1px solid rgba(184,147,90,0.18);">Strategy Learnings</div>
+          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;"><span style="font-size:7.5px;font-weight:800;color:var(--gold);letter-spacing:0.15em;">S1</span><span style="font-size:9px;font-weight:700;color:#fff;">Platform differentiation is not optional</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">IG = brand identity. Douyin = mass growth. XHS = community trust. Each needs its own native content logic — not repurposed versions.</div>
+              <div style="font-size:7px;color:rgba(184,147,90,0.6);margin-top:4px;font-weight:700;">3 platforms · 3 strategies · 1 brand voice</div>
             </div>
-            <div style="background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.12);border-radius:7px;padding:11px 13px;">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">02</span><span style="font-size:9.5px;font-weight:700;color:#fff;">Cover CTR is the algorithm's switch</span></div>
-              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">Night mood covers sent CTR from 4% to 66.67% — the thumbnail triggers distribution.</div>
-              <div style="font-size:7.5px;color:#4ade80;margin-top:5px;font-weight:700;">4% → 66.67% CTR · ×16 lift</div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;"><span style="font-size:7.5px;font-weight:800;color:var(--gold);letter-spacing:0.15em;">S2</span><span style="font-size:9px;font-weight:700;color:#fff;">The workflow is a loop, not a funnel</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">Research → Brief → Shoot → Adapt → Post → Measure → Optimize. One NYC outing feeds all three platforms. Every metric teaches the next brief.</div>
+              <div style="font-size:7px;color:rgba(184,147,90,0.6);margin-top:4px;font-weight:700;">7-step loop · efficiency compounds with each cycle</div>
             </div>
-            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:7px;padding:11px 13px;">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">03</span><span style="font-size:9.5px;font-weight:700;color:#fff;">Algorithm finds who you didn't plan for</span></div>
-              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">89% of new followers via recommended feed. Male 24–30 emerged as primary demographic — unplanned.</div>
-              <div style="font-size:7.5px;color:var(--gold);margin-top:5px;font-weight:700;">89% algorithm-sourced · new demographic</div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;"><span style="font-size:7.5px;font-weight:800;color:var(--gold);letter-spacing:0.15em;">S3</span><span style="font-size:9px;font-weight:700;color:#fff;">Personas are hypotheses, not blueprints</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">We planned for Mina and Lummy. The algorithm surfaced Male 24–30 as Douyin's primary segment — unplanned. Data should revise personas, not the other way around.</div>
+              <div style="font-size:7px;color:rgba(184,147,90,0.6);margin-top:4px;font-weight:700;">Planned audience ≠ reached audience · algorithm reveals truth</div>
             </div>
-            <div style="background:rgba(184,147,90,0.07);border:1px solid rgba(184,147,90,0.18);border-radius:7px;padding:11px 13px;">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">04</span><span style="font-size:9.5px;font-weight:700;color:#fff;">Emotional language is the real hook</span></div>
-              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;"><span style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.6);">"我擅长感受 却拙于表达"</span> — no product, just truth. Campaign's #1 post.</div>
-              <div style="font-size:7.5px;color:var(--gold);margin-top:5px;font-weight:700;">33K views · +266 followers · #1 post</div>
+            <div style="background:rgba(184,147,90,0.06);border:1px solid rgba(184,147,90,0.14);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;"><span style="font-size:7.5px;font-weight:800;color:var(--gold);letter-spacing:0.15em;">S4</span><span style="font-size:9px;font-weight:700;color:#fff;">Cultural translation beats localization</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">Best Douyin posts were conceived in Chinese emotional logic — introspection, solitude, quiet yearning — not translated from English. Authentic framing beats localized captions.</div>
+              <div style="font-size:7px;color:rgba(184,147,90,0.6);margin-top:4px;font-weight:700;">Chinese emotional frame → highest follower conversion</div>
             </div>
-            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:7px;padding:11px 13px;">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:8px;font-weight:800;color:var(--gold);letter-spacing:0.2em;">05</span><span style="font-size:9.5px;font-weight:700;color:#fff;">The numbers proved the thesis</span></div>
-              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">From zero strategy to 139K views and 1,077 new followers across 3 platforms in under 4 weeks.</div>
-              <div style="font-size:7.5px;color:rgba(255,255,255,0.4);margin-top:5px;font-weight:700;">139K views · 1,077 followers · 4 weeks</div>
+          </div>
+
+          <div style="font-size:7.5px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(74,222,128,0.55);margin-bottom:7px;padding-bottom:5px;border-bottom:1px solid rgba(74,222,128,0.15);">Analytical Insights</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.12);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;"><span style="font-size:7.5px;font-weight:800;color:#4ade80;letter-spacing:0.15em;">A1</span><span style="font-size:9px;font-weight:700;color:#fff;">Cover CTR is the algorithm's distribution gate</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">Night mood covers sent CTR 4% → 66.67% (×16). High CTR signals Douyin to push the post wider. Cover is distribution infrastructure, not aesthetics.</div>
+              <div style="font-size:7px;color:#4ade80;margin-top:4px;font-weight:700;">4% → 66.67% · Night &gt; Daytime &gt; Carousel</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;"><span style="font-size:7.5px;font-weight:800;color:#4ade80;letter-spacing:0.15em;">A2</span><span style="font-size:9px;font-weight:700;color:#fff;">89% of reach was algorithm-driven</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">Only 11% of new followers came from pre-existing connections. At low follower counts, Douyin distributes purely on content quality signals — watch time, completion, CTR.</div>
+              <div style="font-size:7px;color:rgba(74,222,128,0.6);margin-top:4px;font-weight:700;">89% recommended · organic ≠ existing network</div>
+            </div>
+            <div style="background:rgba(184,147,90,0.07);border:1px solid rgba(184,147,90,0.16);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;"><span style="font-size:7.5px;font-weight:800;color:var(--gold);letter-spacing:0.15em;">A3</span><span style="font-size:9px;font-weight:700;color:#fff;">Emotional depth drives follow rate, not polish</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;"><span style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.55);">"我擅长感受 却拙于表达"</span> — 33K views, 1,049 ❤, +266 followers, 2.03% follow rate. No product message. Just truth.</div>
+              <div style="font-size:7px;color:var(--gold);margin-top:4px;font-weight:700;">33K views · 2.03% follow rate (campaign best)</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;"><span style="font-size:7.5px;font-weight:800;color:#4ade80;letter-spacing:0.15em;">A4</span><span style="font-size:9px;font-weight:700;color:#fff;">Volume with quality compounds algorithmic trust</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">9 posts · 139K total views · 11.9K avg/post. Top post alone (33K) = 24% of total campaign views. Consistency builds the trust that keeps content surfacing.</div>
+              <div style="font-size:7px;color:rgba(74,222,128,0.6);margin-top:4px;font-weight:700;">139K views · 1,077 followers · 11.9K avg/post</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:10px 12px;">
+              <div style="display:flex;align-items:center;gap:7px;margin-bottom:4px;"><span style="font-size:7.5px;font-weight:800;color:#4ade80;letter-spacing:0.15em;">A5</span><span style="font-size:9px;font-weight:700;color:#fff;">Attention depth beats raw reach metrics</span></div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.45);line-height:1.6;">Caption completion rate and low swipe-away rate signal Douyin's algorithm to keep distributing. Quality of watch time outweighs view count as the long-term growth signal.</div>
+              <div style="font-size:7px;color:rgba(74,222,128,0.6);margin-top:4px;font-weight:700;">Caption completion + low swipe-away = algorithmic trust</div>
             </div>
           </div>
         </div>
