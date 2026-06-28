@@ -349,6 +349,8 @@ html, body {
 #slide-9.active .p-stat:nth-child(4), #slide-10.active .p-stat:nth-child(4), #slide-11.active .p-stat:nth-child(4), #slide-12.active .p-stat:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.45s; }
 #slide-9.active .p-quote, #slide-10.active .p-quote, #slide-11.active .p-quote, #slide-12.active .p-quote { opacity:1; transform:translateY(0); transition-delay:0.55s; }
 .p-attr.build-visible { opacity:1; transform:translateX(0); }
+.cc-anim  { opacity:0; transform:translateX(-40px); transition:opacity 0.55s ease, transform 0.55s ease; }
+.cc-anim.build-visible { opacity:1; transform:translateX(0); }
 
 /* ── Generic placeholder slide ── */
 .ph {
@@ -762,6 +764,8 @@ html, body {
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity:0; transform:translateX(-40px); transition:opacity 0.55s ease, transform 0.55s ease; }
+.reveal-left.visible { opacity:1; transform:translateX(0); }
 .ss-reveal-row {
   opacity: 0;
   transform: translateY(14px);
@@ -2292,7 +2296,7 @@ html, body {
       <!-- 3 CONCEPT CARDS -->
       <div style="display:flex;gap:10px;flex:0 0 245px;min-height:0;">
         <!-- Concept 1: Rainy Day at The Frick -->
-        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+        <div class="cc-anim" style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
           <!-- photo -->
           <div style="width:95px;flex-shrink:0;overflow:hidden;">
             <a href="https://www.instagram.com/p/DZAze9XRwZf/" target="_blank" class="concept-photo-scaled" style="display:block;width:100%;height:100%;">
@@ -2315,7 +2319,7 @@ html, body {
           </div>
         </div>
         <!-- Concept 2: Albertine -->
-        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+        <div class="cc-anim" style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
           <!-- photo -->
           <div style="width:95px;flex-shrink:0;overflow:hidden;">
             <a href="https://www.instagram.com/p/DZh1B-yEdIL/?img_index=1" target="_blank" class="concept-photo" style="display:block;width:100%;height:100%;">
@@ -2338,7 +2342,7 @@ html, body {
           </div>
         </div>
         <!-- Concept 3: The Met Cloisters -->
-        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+        <div class="cc-anim" style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
           <!-- photo -->
           <div style="width:95px;flex-shrink:0;overflow:hidden;">
             <a href="https://www.instagram.com/p/DYuhp1FFP_o/?img_index=1" target="_blank" class="concept-photo" style="display:block;width:100%;height:100%;">
@@ -2412,14 +2416,14 @@ html, body {
       <!-- 3 CONCEPT CARDS -->
       <div style="display:flex;gap:10px;flex:0 0 245px;min-height:0;">
         <!-- Concept 1: New York After 8 PM -->
-        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+        <div class="cc-anim" style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
           <div style="width:95px;flex-shrink:0;overflow:hidden;">
             <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7655600138748465339" target="_blank" class="concept-photo" style="display:block;width:100%;height:100%;">
               <img src="dy_night_street.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
             </a>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
-            <div style="background:var(--gold);padding:8px 13px;flex-shrink:0;">
+            <div style="background:#111;padding:8px 13px;flex-shrink:0;">
               <div style="font-size:7.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:2px;">Concept 01</div>
               <div style="font-size:11px;font-weight:700;color:#fff;line-height:1.25;">Life in Transit</div>
             </div>
@@ -2433,9 +2437,11 @@ html, body {
           </div>
         </div>
         <!-- Concept 2: East Village Date Night — placeholder photo -->
-        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
-          <div style="width:95px;flex-shrink:0;overflow:hidden;background:#e8e4dc;display:flex;align-items:center;justify-content:center;">
-            <div style="font-size:8px;color:rgba(17,17,17,0.3);text-align:center;line-height:1.6;padding:8px;">Photo<br>placeholder</div>
+        <div class="cc-anim" style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+          <div style="width:95px;flex-shrink:0;overflow:hidden;">
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7648091309983725925" target="_blank" class="concept-photo" style="display:block;width:100%;height:100%;">
+              <img src="dy_date_night.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+            </a>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
             <div style="background:var(--gold);padding:8px 13px;flex-shrink:0;">
@@ -2452,14 +2458,14 @@ html, body {
           </div>
         </div>
         <!-- Concept 3: Soft Lifestyle Moments -->
-        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+        <div class="cc-anim" style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
           <div style="width:95px;flex-shrink:0;overflow:hidden;">
-            <a href="#" class="concept-photo-scaled" style="display:block;width:100%;height:100%;">
-              <img src="dy_cafe.png" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;transform:scale(1.65);display:block;">
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7644735231031421925" target="_blank" class="concept-photo" style="display:block;width:100%;height:100%;">
+              <img src="dy_lifestyle.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
             </a>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
-            <div style="background:var(--gold);padding:8px 13px;flex-shrink:0;">
+            <div style="background:#111;padding:8px 13px;flex-shrink:0;">
               <div style="font-size:7.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:2px;">Concept 03</div>
               <div style="font-size:11px;font-weight:700;color:#fff;line-height:1.25;">Soft Lifestyle Moments</div>
             </div>
@@ -3468,7 +3474,7 @@ html, body {
           <div style="font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Content Concepts</div>
           <div style="display:flex;flex-direction:column;gap:12px;">
             <!-- C01 -->
-            <div style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+            <div class="reveal-left" style="transition-delay:0s;border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
               <div style="flex:1;display:flex;flex-direction:column;">
                 <div style="background:rgba(184,147,90,0.18);padding:9px 14px;border-bottom:1px solid rgba(184,147,90,0.2);">
                   <div style="font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(184,147,90,0.6);margin-bottom:2px;">Concept 01</div>
@@ -3482,12 +3488,12 @@ html, body {
                   <div style="padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.08em;">KPI &nbsp;·&nbsp; Saves &nbsp;·&nbsp; Shares &nbsp;·&nbsp; Comments</div>
                 </div>
               </div>
-              <a href="https://www.instagram.com/p/DZAze9XRwZf/" target="_blank" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
-                <img src="ig_central_park.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 30%;transform:scale(1.65);display:block;">
+              <a href="https://www.instagram.com/p/DZAze9XRwZf/" target="_blank" class="concept-photo-scaled" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
+                <img src="ig_central_park.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 30%;display:block;">
               </a>
             </div>
             <!-- C02 -->
-            <div style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+            <div class="reveal-left" style="transition-delay:0.18s;border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
               <div style="flex:1;display:flex;flex-direction:column;">
                 <div style="background:rgba(184,147,90,0.18);padding:9px 14px;border-bottom:1px solid rgba(184,147,90,0.2);">
                   <div style="font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(184,147,90,0.6);margin-bottom:2px;">Concept 02</div>
@@ -3501,12 +3507,12 @@ html, body {
                   <div style="padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.08em;">KPI &nbsp;·&nbsp; Saves &nbsp;·&nbsp; Profile Visits &nbsp;·&nbsp; Follows</div>
                 </div>
               </div>
-              <a href="https://www.instagram.com/p/DZh1B-yEdIL/?img_index=1" target="_blank" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
+              <a href="https://www.instagram.com/p/DZh1B-yEdIL/?img_index=1" target="_blank" class="concept-photo" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
                 <img src="ig_night_portrait.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
               </a>
             </div>
             <!-- C03 -->
-            <div style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+            <div class="reveal-left" style="transition-delay:0.36s;border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
               <div style="flex:1;display:flex;flex-direction:column;">
                 <div style="background:rgba(184,147,90,0.18);padding:9px 14px;border-bottom:1px solid rgba(184,147,90,0.2);">
                   <div style="font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(184,147,90,0.6);margin-bottom:2px;">Concept 03</div>
@@ -3520,7 +3526,7 @@ html, body {
                   <div style="padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.08em;">KPI &nbsp;·&nbsp; Reach &nbsp;·&nbsp; Shares &nbsp;·&nbsp; Saves</div>
                 </div>
               </div>
-              <a href="https://www.instagram.com/p/DYuhp1FFP_o/?img_index=1" target="_blank" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
+              <a href="https://www.instagram.com/p/DYuhp1FFP_o/?img_index=1" target="_blank" class="concept-photo" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
                 <img src="ig_met_cloisters.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
               </a>
             </div>
@@ -3542,7 +3548,7 @@ html, body {
           <div style="font-size:9px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Content Concepts</div>
           <div style="display:flex;flex-direction:column;gap:12px;">
             <!-- C01 -->
-            <div style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+            <div class="reveal-left" style="transition-delay:0s;border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
               <div style="flex:1;display:flex;flex-direction:column;">
                 <div style="background:rgba(184,147,90,0.18);padding:9px 14px;border-bottom:1px solid rgba(184,147,90,0.2);">
                   <div style="font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(184,147,90,0.6);margin-bottom:2px;">Concept 01</div>
@@ -3556,12 +3562,12 @@ html, body {
                   <div style="padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.08em;">KPI &nbsp;·&nbsp; Likes &nbsp;·&nbsp; Comments &nbsp;·&nbsp; Saves</div>
                 </div>
               </div>
-              <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7655600138748465339" target="_blank" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
+              <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7655600138748465339" target="_blank" class="concept-photo" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
                 <img src="dy_night_street.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
               </a>
             </div>
             <!-- C02 -->
-            <div style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+            <div class="reveal-left" style="transition-delay:0.18s;border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
               <div style="flex:1;display:flex;flex-direction:column;">
                 <div style="background:rgba(184,147,90,0.18);padding:9px 14px;border-bottom:1px solid rgba(184,147,90,0.2);">
                   <div style="font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(184,147,90,0.6);margin-bottom:2px;">Concept 02</div>
@@ -3575,12 +3581,12 @@ html, body {
                   <div style="padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.08em;">KPI &nbsp;·&nbsp; Likes &nbsp;·&nbsp; Comments &nbsp;·&nbsp; Saves</div>
                 </div>
               </div>
-              <div style="width:120px;flex-shrink:0;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;">
-                <div style="font-size:9px;color:rgba(255,255,255,0.2);text-align:center;line-height:1.8;">Photo<br>placeholder</div>
-              </div>
+              <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7648091309983725925" target="_blank" class="concept-photo" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
+                <img src="dy_date_night.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+              </a>
             </div>
             <!-- C03 -->
-            <div style="border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
+            <div class="reveal-left" style="transition-delay:0.36s;border:1px solid rgba(184,147,90,0.25);border-radius:6px;overflow:hidden;display:flex;flex-direction:row;">
               <div style="flex:1;display:flex;flex-direction:column;">
                 <div style="background:rgba(184,147,90,0.18);padding:9px 14px;border-bottom:1px solid rgba(184,147,90,0.2);">
                   <div style="font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(184,147,90,0.6);margin-bottom:2px;">Concept 03</div>
@@ -3594,8 +3600,8 @@ html, body {
                   <div style="padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.08em;">KPI &nbsp;·&nbsp; Likes &nbsp;·&nbsp; Comments &nbsp;·&nbsp; Saves</div>
                 </div>
               </div>
-              <a href="#" target="_blank" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
-                <img src="dy_cafe.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;transform:scale(1.65);display:block;">
+              <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7644735231031421925" target="_blank" class="concept-photo" style="display:block;width:120px;flex-shrink:0;position:relative;overflow:hidden;">
+                <img src="dy_lifestyle.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
               </a>
             </div>
           </div>
@@ -3724,7 +3730,7 @@ function goTo(idx) {
 }
 
 // Build-step system (auto-reveal items one-by-one within a slide)
-const SLIDE_BUILDS = { 'slide-9': '.p-attr', 'slide-10': '.p-attr', 'slide-11': '.p-attr', 'slide-12': '.p-attr' };
+const SLIDE_BUILDS = { 'slide-9': '.p-attr', 'slide-10': '.p-attr', 'slide-11': '.p-attr', 'slide-12': '.p-attr', 'slide-18': '.cc-anim', 'slide-19': '.cc-anim' };
 let buildStep = 0;
 let buildTimers = [];
 let slide13Col = 0;
@@ -3741,7 +3747,7 @@ function stopAutoBuilds() {
 }
 function resetBuilds() {
   stopAutoBuilds();
-  document.querySelectorAll('.p-attr').forEach(el => el.classList.remove('build-visible'));
+  document.querySelectorAll('.p-attr, .cc-anim').forEach(el => el.classList.remove('build-visible'));
   buildStep = 0;
   const s13 = document.getElementById('slide-13');
   s13.classList.remove('show-col-1','show-col-2','show-col-3');
@@ -3839,7 +3845,7 @@ function setMode(m) {
   document.getElementById('top-bar').classList.toggle('dark', m==='story');
   if (m === 'story') {
     // Reset all reveals so animation plays fresh each time
-    document.querySelectorAll('.reveal').forEach(el => el.classList.remove('visible'));
+    document.querySelectorAll('.reveal, .reveal-left').forEach(el => el.classList.remove('visible'));
     document.querySelectorAll('.ss-stagger-parent').forEach(el => el.classList.remove('staggered'));
     document.querySelectorAll('.ss-reveal-row').forEach(el => { el.classList.remove('visible'); el.style.transitionDelay = ''; });
     stQuantAnimated = false;
@@ -3862,7 +3868,7 @@ function animateStoryQuant() {
   });
 }
 function checkReveal() {
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+  document.querySelectorAll('.reveal:not(.visible), .reveal-left:not(.visible)').forEach(el => {
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight - 60) el.classList.add('visible');
   });

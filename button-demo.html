@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slide 15 — Layout Demos</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root { --gold:#b8935a; --ink:#111; }
+body { font-family:'Jost',sans-serif; background:#1a1a1a; padding:48px 40px; display:flex; flex-direction:column; gap:48px; -webkit-font-smoothing:antialiased; }
+
+.demo-label {
+  font-size:10px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase;
+  color:rgba(255,255,255,0.3); margin-bottom:12px;
+}
+.demo-wrap {
+  width:1080px; height:607px; position:relative; overflow:hidden; flex-shrink:0;
+  box-shadow:0 8px 40px rgba(0,0,0,0.5);
+}
+
+/* ────────────────────────────────────────────
+   SHARED SIDEBAR
+──────────────────────────────────────────── */
+.sidebar {
+  width:72px; flex-shrink:0; display:flex; flex-direction:column;
+  padding:18px 0 18px; align-items:center;
+  border-right:1px solid rgba(17,17,17,0.08);
+}
+.sidebar-tag {
+  font-size:7px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+  color:rgba(17,17,17,0.35); writing-mode:vertical-rl; transform:rotate(180deg);
+  margin-bottom:auto;
+}
+.sidebar-num {
+  font-size:36px; font-weight:700; color:rgba(17,17,17,0.07); line-height:1;
+  margin-bottom:auto;
+}
+.sidebar-brand {
+  font-size:7px; letter-spacing:0.12em; color:rgba(17,17,17,0.3);
+  writing-mode:vertical-rl; transform:rotate(180deg);
+}
+
+
+/* ══════════════════════════════════════════
+   OPTION A — Formula Flowchart
+   Light bg, equation as visual diagram
+══════════════════════════════════════════ */
+.a-wrap {
+  display:flex; flex-direction:row; width:100%; height:100%;
+  background:#f7f5f0;
+}
+.a-sidebar { background:#eeebe4; }
+.a-body {
+  flex:1; display:flex; flex-direction:column;
+  padding:28px 32px 24px; gap:0; min-width:0;
+}
+.a-title {
+  font-family:'Playfair Display',serif; font-size:26px; font-style:italic;
+  color:var(--gold); margin-bottom:4px;
+}
+.a-formula {
+  font-size:9px; font-weight:700; letter-spacing:0.05em; color:rgba(17,17,17,0.4);
+  margin-bottom:22px;
+}
+/* row 1: two input boxes + operator + output label */
+.a-flow { display:flex; flex-direction:column; gap:10px; flex:1; }
+.a-row1 {
+  display:flex; align-items:stretch; gap:0;
+}
+.a-box {
+  flex:1; background:#fff; border:1px solid rgba(17,17,17,0.1);
+  border-radius:6px; padding:14px 16px;
+  display:flex; flex-direction:column;
+}
+.a-box-label {
+  font-size:8px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:8px;
+}
+.a-box-row { display:flex; gap:8px; margin-bottom:6px; }
+.a-chip {
+  font-size:9px; font-weight:600; padding:4px 10px;
+  border-radius:20px; white-space:nowrap;
+}
+.a-chip-ins { background:rgba(184,147,90,0.12); color:var(--gold); }
+.a-chip-eth { background:rgba(17,17,17,0.07); color:var(--ink); }
+.a-chip-sub {
+  font-size:9px; color:rgba(17,17,17,0.45); line-height:1.6;
+}
+.a-op {
+  width:52px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:28px; font-weight:300; color:var(--gold); letter-spacing:-0.04em;
+}
+/* arrow connector */
+.a-arrow {
+  display:flex; align-items:center; justify-content:center;
+  padding:6px 0; color:var(--gold); font-size:18px;
+}
+/* row 2: three output boxes */
+.a-row2 { display:flex; gap:8px; }
+.a-out {
+  flex:1; border-radius:6px; padding:12px 14px;
+  display:flex; flex-direction:column; gap:4px;
+}
+.a-out-ns { background:var(--gold); }
+.a-out-bv { background:var(--ink); }
+.a-out-sv { background:var(--ink); }
+.a-out-label {
+  font-size:8px; font-weight:700; letter-spacing:0.2em;
+  text-transform:uppercase; margin-bottom:4px;
+}
+.a-out-ns .a-out-label { color:#fff; }
+.a-out-bv .a-out-label,.a-out-sv .a-out-label { color:var(--gold); }
+.a-out-body { font-size:9.5px; line-height:1.6; }
+.a-out-ns .a-out-body { color:rgba(255,255,255,0.85); }
+.a-out-bv .a-out-body,.a-out-sv .a-out-body { color:rgba(255,255,255,0.65); }
+
+
+/* ══════════════════════════════════════════
+   OPTION B — Dark / Light Split
+══════════════════════════════════════════ */
+.b-wrap {
+  display:flex; flex-direction:row; width:100%; height:100%;
+}
+.b-left {
+  width:380px; flex-shrink:0; background:#111;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:48px 40px;
+}
+.b-eyebrow {
+  font-size:8px; font-weight:700; letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:16px;
+}
+.b-title {
+  font-family:'Playfair Display',serif; font-size:36px; font-style:italic;
+  color:#fff; line-height:1.15; margin-bottom:20px;
+}
+.b-formula {
+  font-size:10px; font-weight:500; color:rgba(255,255,255,0.35);
+  line-height:1.8; letter-spacing:0.03em;
+}
+.b-formula strong { color:var(--gold); font-weight:700; }
+.b-divider {
+  width:1px; background:rgba(17,17,17,0.1); flex-shrink:0;
+}
+.b-right {
+  flex:1; background:#f7f5f0;
+  display:flex; flex-direction:column;
+  padding:28px 28px 24px; gap:8px; overflow:hidden;
+}
+.b-right-label {
+  font-size:8px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase;
+  color:rgba(17,17,17,0.3); margin-bottom:4px;
+}
+.b-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto; gap:6px; margin-bottom:8px;
+}
+.b-card {
+  background:#fff; border:1px solid rgba(17,17,17,0.07);
+  border-left:2px solid var(--gold);
+  border-radius:4px; padding:10px 12px;
+}
+.b-card-h {
+  font-size:8px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--ink); margin-bottom:5px;
+}
+.b-card-p { font-size:9.5px; color:rgba(17,17,17,0.6); line-height:1.6; }
+.b-row3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; }
+.b-out {
+  border-radius:4px; padding:9px 12px;
+}
+.b-out.gold { background:var(--gold); }
+.b-out.dark { background:var(--ink); }
+.b-out-h {
+  font-size:8px; font-weight:700; letter-spacing:0.16em;
+  text-transform:uppercase; margin-bottom:4px;
+}
+.b-out.gold .b-out-h { color:#fff; }
+.b-out.dark .b-out-h { color:var(--gold); }
+.b-out-p { font-size:9px; line-height:1.6; }
+.b-out.gold .b-out-p { color:rgba(255,255,255,0.82); }
+.b-out.dark .b-out-p { color:rgba(255,255,255,0.6); }
+
+
+/* ══════════════════════════════════════════
+   OPTION C — Vertical Circuit / Flow
+══════════════════════════════════════════ */
+.c-wrap {
+  display:flex; flex-direction:row; width:100%; height:100%;
+  background:#f7f5f0;
+}
+.c-sidebar { background:#eeebe4; }
+.c-body {
+  flex:1; display:flex; flex-direction:column;
+  padding:24px 28px 20px; gap:0; overflow:hidden;
+}
+.c-title {
+  font-family:'Playfair Display',serif; font-size:24px; font-style:italic;
+  color:var(--gold); margin-bottom:2px;
+}
+.c-sub {
+  font-size:8.5px; font-weight:600; color:rgba(17,17,17,0.35);
+  letter-spacing:0.06em; margin-bottom:16px;
+}
+/* circuit layout */
+.c-circuit { flex:1; display:flex; flex-direction:column; gap:0; }
+/* row: inputs */
+.c-inputs { display:flex; gap:8px; }
+.c-input-block {
+  flex:1; display:flex; flex-direction:column; gap:6px;
+}
+.c-input-label {
+  font-size:8px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase;
+  color:rgba(17,17,17,0.35); padding-left:12px;
+  border-left:2px solid rgba(17,17,17,0.12);
+}
+.c-input-cards { display:flex; gap:6px; }
+.c-icard {
+  flex:1; background:#fff; border:1px solid rgba(17,17,17,0.09);
+  border-radius:4px; padding:9px 11px;
+}
+.c-icard-h {
+  font-size:8px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:4px;
+}
+.c-icard-p { font-size:9px; color:rgba(17,17,17,0.58); line-height:1.6; }
+
+/* connector */
+.c-connector {
+  display:flex; align-items:center; justify-content:center;
+  padding:10px 0;
+  position:relative;
+}
+.c-connector-line {
+  position:absolute; left:50%; top:0; bottom:0;
+  width:1px; background:var(--gold); opacity:0.35;
+}
+.c-times {
+  background:#f7f5f0; border:1.5px solid var(--gold);
+  color:var(--gold); font-size:16px; font-weight:700;
+  width:36px; height:36px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  position:relative; z-index:1; letter-spacing:-0.04em;
+}
+/* outputs */
+.c-outputs { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; }
+.c-ocard { border-radius:5px; padding:11px 13px; }
+.c-ocard.ns { background:var(--gold); }
+.c-ocard.bv { background:var(--ink); }
+.c-ocard.sv { background:var(--ink); }
+.c-ocard-h {
+  font-size:8px; font-weight:700; letter-spacing:0.18em;
+  text-transform:uppercase; margin-bottom:5px;
+}
+.c-ocard.ns .c-ocard-h { color:#fff; }
+.c-ocard.bv .c-ocard-h,.c-ocard.sv .c-ocard-h { color:var(--gold); }
+.c-ocard-p { font-size:9.5px; line-height:1.6; }
+.c-ocard.ns .c-ocard-p { color:rgba(255,255,255,0.85); }
+.c-ocard.bv .c-ocard-p,.c-ocard.sv .c-ocard-p { color:rgba(255,255,255,0.65); }
+</style>
+</head>
+<body>
+
+<!-- ══ OPTION A ══ -->
+<div>
+  <div class="demo-label">Option A — Formula Flowchart（公式流程圖）</div>
+  <div class="demo-wrap">
+    <div class="a-wrap">
+      <div class="sidebar a-sidebar">
+        <div class="sidebar-tag">Part 04 · The Strategy</div>
+        <div class="sidebar-num">15</div>
+        <div class="sidebar-brand">East Meets Feed</div>
+      </div>
+      <div class="a-body">
+        <div class="a-title">Impact formula</div>
+        <div class="a-formula">NS / SV / BV &nbsp;=&nbsp; (Business Insight + Human Insight) &nbsp;×&nbsp; (Business Ethics + Human Ethics)</div>
+        <div class="a-flow">
+          <!-- row 1 -->
+          <div class="a-row1">
+            <!-- Insights box -->
+            <div class="a-box">
+              <div class="a-box-label">Insight layer</div>
+              <div class="a-box-row">
+                <span class="a-chip a-chip-ins">Business Insight</span>
+                <span class="a-chip a-chip-ins">Human Insight</span>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <div style="flex:1;">
+                  <div class="a-chip-sub">Cross-cultural creators are underserved. Bilingual dual-platform presence is a rare asset — content that sells recognition drives saves and shares.</div>
+                </div>
+                <div style="width:1px;background:rgba(17,17,17,0.08);flex-shrink:0;"></div>
+                <div style="flex:1;">
+                  <div class="a-chip-sub">Audiences don't envy her — they see themselves in her. "This could be my version too." Cultural identity is an entry point, not a barrier.</div>
+                </div>
+              </div>
+            </div>
+            <!-- × -->
+            <div class="a-op">×</div>
+            <!-- Ethics box -->
+            <div class="a-box">
+              <div class="a-box-label">Ethics layer</div>
+              <div class="a-box-row">
+                <span class="a-chip a-chip-eth">Business Ethics</span>
+                <span class="a-chip a-chip-eth">Human Ethics</span>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <div style="flex:1;">
+                  <div class="a-chip-sub">Sell real, lived-in moments — not perfect filters. Respect both cultures instead of reducing them to stereotypes.</div>
+                </div>
+                <div style="width:1px;background:rgba(17,17,17,0.08);flex-shrink:0;"></div>
+                <div style="flex:1;">
+                  <div class="a-chip-sub">Never force the audience to choose a side. Give both platform communities equal space to connect and belong.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- arrow -->
+          <div class="a-arrow">↓</div>
+          <!-- row 2: outputs -->
+          <div class="a-row2">
+            <div class="a-out a-out-ns">
+              <div class="a-out-label">New Stakeholders</div>
+              <div class="a-out-body">Audiences shift from passive viewers to active participants — co-creating the story through comments, saves, and shares.</div>
+            </div>
+            <div class="a-out a-out-bv">
+              <div class="a-out-label">Business Value</div>
+              <div class="a-out-body">Organically hits the 5,000 engagement target across platforms. Builds a sustainable growth engine for future brand partnerships.</div>
+            </div>
+            <div class="a-out a-out-sv">
+              <div class="a-out-label">Social Value</div>
+              <div class="a-out-body">Reduces either/or cultural narratives for overseas Chinese communities. Sets a brand-new, honest standard for cross-cultural content.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ OPTION B ══ -->
+<div>
+  <div class="demo-label">Option B — Dark / Light Split（暗底大字）</div>
+  <div class="demo-wrap">
+    <div class="b-wrap">
+      <!-- dark left -->
+      <div class="b-left">
+        <div class="b-eyebrow">Part 04 &nbsp;·&nbsp; The Strategy</div>
+        <div class="b-title">Impact<br>formula</div>
+        <div class="b-formula">
+          <strong>NS / SV / BV</strong><br>
+          = (Business Insight<br>
+          &nbsp;&nbsp;&nbsp;+ Human Insight)<br>
+          × (Business Ethics<br>
+          &nbsp;&nbsp;&nbsp;+ Human Ethics)
+        </div>
+      </div>
+      <div class="b-divider"></div>
+      <!-- light right -->
+      <div class="b-right">
+        <div class="b-right-label">Inputs</div>
+        <div class="b-grid">
+          <div class="b-card">
+            <div class="b-card-h">Business Insight</div>
+            <div class="b-card-p">Cross-cultural creators are underserved. Bilingual dual-platform presence is rare. Drive saves by selling recognition.</div>
+          </div>
+          <div class="b-card">
+            <div class="b-card-h">Human Insight</div>
+            <div class="b-card-p">Audiences don't envy her — they see themselves in her. Cultural identity is an entry point, not a barrier.</div>
+          </div>
+          <div class="b-card">
+            <div class="b-card-h">Business Ethics</div>
+            <div class="b-card-p">Sell real, lived-in moments — not perfect filters. Respect both cultures without stereotyping.</div>
+          </div>
+          <div class="b-card">
+            <div class="b-card-h">Human Ethics</div>
+            <div class="b-card-p">Never force the audience to choose a side. Give both communities equal space to belong.</div>
+          </div>
+        </div>
+        <div class="b-right-label">Outputs</div>
+        <div class="b-row3">
+          <div class="b-out gold">
+            <div class="b-out-h">New Stakeholders</div>
+            <div class="b-out-p">Passive viewers become active co-creators through comments, saves, and shares.</div>
+          </div>
+          <div class="b-out dark">
+            <div class="b-out-h">Business Value</div>
+            <div class="b-out-p">Hits 5,000 engagement target organically. Sustainable growth engine for brand partnerships.</div>
+          </div>
+          <div class="b-out dark">
+            <div class="b-out-h">Social Value</div>
+            <div class="b-out-p">Reduces either/or cultural narratives. Sets an honest standard for cross-cultural content.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ OPTION C ══ -->
+<div>
+  <div class="demo-label">Option C — Vertical Circuit（垂直電路）</div>
+  <div class="demo-wrap">
+    <div class="c-wrap">
+      <div class="sidebar c-sidebar">
+        <div class="sidebar-tag">Part 04 · The Strategy</div>
+        <div class="sidebar-num">15</div>
+        <div class="sidebar-brand">East Meets Feed</div>
+      </div>
+      <div class="c-body">
+        <div class="c-title">Impact formula</div>
+        <div class="c-sub">NS / SV / BV &nbsp;=&nbsp; (Business Insight + Human Insight) &nbsp;×&nbsp; (Business Ethics + Human Ethics)</div>
+        <div class="c-circuit">
+          <!-- inputs row -->
+          <div class="c-inputs">
+            <!-- insight block -->
+            <div class="c-input-block">
+              <div class="c-input-label">Insight Layer</div>
+              <div class="c-input-cards">
+                <div class="c-icard">
+                  <div class="c-icard-h">Business Insight</div>
+                  <div class="c-icard-p">Cross-cultural creators are underserved. Bilingual dual-platform presence is a rare asset. The real gap: content that sells recognition drives saves and shares.</div>
+                </div>
+                <div class="c-icard">
+                  <div class="c-icard-h">Human Insight</div>
+                  <div class="c-icard-p">Audiences don't envy her — they see themselves in her. "This could be my version too." Cultural identity is an entry point, not a barrier.</div>
+                </div>
+              </div>
+            </div>
+            <!-- ethics block -->
+            <div class="c-input-block">
+              <div class="c-input-label">Ethics Layer</div>
+              <div class="c-input-cards">
+                <div class="c-icard">
+                  <div class="c-icard-h">Business Ethics</div>
+                  <div class="c-icard-p">Sell real, lived-in moments — not perfect filters. Respect both cultures instead of reducing them to stereotypes.</div>
+                </div>
+                <div class="c-icard">
+                  <div class="c-icard-h">Human Ethics</div>
+                  <div class="c-icard-p">Never force the audience to choose a side. Give both platform communities equal space to connect and belong.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- connector -->
+          <div class="c-connector">
+            <div class="c-connector-line"></div>
+            <div class="c-times">×</div>
+          </div>
+          <!-- outputs -->
+          <div class="c-outputs">
+            <div class="c-ocard ns">
+              <div class="c-ocard-h">New Stakeholders</div>
+              <div class="c-ocard-p">Passive viewers become active co-creators — co-authoring the story through comments, saves, and shares.</div>
+            </div>
+            <div class="c-ocard bv">
+              <div class="c-ocard-h">Business Value</div>
+              <div class="c-ocard-p">Organically hits the 5,000 engagement target. Builds a sustainable growth engine for future brand partnerships.</div>
+            </div>
+            <div class="c-ocard sv">
+              <div class="c-ocard-h">Social Value</div>
+              <div class="c-ocard-p">Reduces either/or cultural narratives. Sets an honest, brand-new standard for cross-cultural content.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
