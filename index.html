@@ -559,6 +559,12 @@ html, body {
 /* ══════════════════════════
    GLASS BUTTONS
 ══════════════════════════ */
+.photo-zoom {
+  transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.photo-zoom:hover {
+  transform: scale(1.08);
+}
 .btn-glass, .btn-glass-lt {
   display: inline-flex; align-items: center; justify-content: center;
   gap: 10px; cursor: pointer; text-decoration: none;
@@ -844,6 +850,14 @@ html, body {
   .ss-header { padding: 36px 18px 24px !important; }
   .ssh-title  { font-size: 40px !important; }
   .ss-body    { padding: 20px 16px !important; }
+}
+@keyframes barRise {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+[data-s20b] {
+  transform-origin: bottom;
+  transform: scaleY(0);
 }
 </style>
 </head>
@@ -2501,14 +2515,14 @@ html, body {
       <div class="ph-slide-num-big">20</div>
       <div class="ph-sidebar-bottom">East Meets Feed</div>
     </div>
-    <div style="flex:1;display:flex;flex-direction:column;padding:46px 24px 14px;overflow:hidden;min-width:0;gap:9px;">
+    <div style="flex:1;display:flex;flex-direction:column;padding:40px 24px 18px;overflow:hidden;min-width:0;gap:7px;">
       <!-- header -->
       <div style="flex-shrink:0;">
         <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;">The Results</div>
         <div style="font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:var(--ink);line-height:1.1;">KPIs, Baseline &amp; Results</div>
       </div>
       <!-- compact KPI bar -->
-      <div style="background:#111;border-radius:7px;padding:9px 16px;display:flex;align-items:center;gap:0;flex-shrink:0;">
+      <div style="background:#111;border-radius:7px;padding:7px 16px;display:flex;align-items:center;gap:0;flex-shrink:0;">
         <div style="flex-shrink:0;padding-right:18px;border-right:1px solid rgba(255,255,255,0.08);">
           <div style="font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;color:rgba(255,255,255,0.28);margin-bottom:2px;">Goal</div>
           <div style="font-size:30px;font-weight:800;color:var(--gold);line-height:1;letter-spacing:-0.02em;">5,000</div>
@@ -2516,22 +2530,27 @@ html, body {
         </div>
         <div style="flex:1;display:flex;justify-content:space-around;padding:0 8px;">
           <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.25);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em;">Window</div><div style="font-size:10.5px;font-weight:700;color:#fff;">May 27 → Jun 27</div></div>
-          <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.25);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em;">Posts</div><div style="font-size:10.5px;font-weight:700;color:#fff;">18</div></div>
-          <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.25);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em;">Total Eng.</div><div style="font-size:10.5px;font-weight:700;color:#4ade80;">7,990</div></div>
-          <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.25);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em;">vs Goal</div><div style="font-size:10.5px;font-weight:700;color:#4ade80;">+59.8%</div></div>
+          <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.25);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em;">Posts</div><div style="font-size:10.5px;font-weight:700;color:#fff;">26</div></div>
+          <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.25);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em;">Total Eng.</div><div style="font-size:10.5px;font-weight:700;color:#4ade80;">8,584</div></div>
+          <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.25);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em;">vs Goal</div><div style="font-size:10.5px;font-weight:700;color:#4ade80;">+71.7%</div></div>
         </div>
       </div>
+      <!-- One-line conclusion -->
+      <div style="flex-shrink:0;text-align:center;padding:2px 0;">
+        <div style="font-size:11.5px;font-weight:600;color:rgba(17,17,17,0.42);letter-spacing:-0.01em;">1.7× over the 5,000 target &nbsp;·&nbsp; in 1 month</div>
+        <div style="font-size:7.5px;color:rgba(17,17,17,0.25);margin-top:3px;letter-spacing:0.04em;">7,342 Likes &nbsp;•&nbsp; 275 Comments &nbsp;•&nbsp; 658 Saves &nbsp;•&nbsp; 309 Shares &nbsp;•&nbsp; 1,317 New Followers</div>
+      </div>
       <!-- platform cards: day 0 → final -->
-      <div style="display:flex;gap:9px;flex:1;min-height:0;">
+      <div style="display:flex;gap:9px;flex-shrink:0;">
         <!-- DOUYIN -->
         <div style="flex:1.6;background:#111;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;">
           <div style="padding:9px 14px;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:7px;">
-            <div style="width:13px;height:13px;border-radius:3px;background:linear-gradient(135deg,#fe2c55,#000 50%,#25f4ee);flex-shrink:0;"></div>
+            <svg viewBox="0 0 24 24" width="15" height="15" style="flex-shrink:0;background:#000;border-radius:3px;"><path fill="#25f4ee" d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z" transform="translate(0.4,0)"/><path fill="#fe2c55" d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z" transform="translate(-0.4,0)"/><path fill="#fff" d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z"/></svg>
             <div style="font-size:9.5px;font-weight:700;color:#fff;">Douyin <span style="font-weight:400;color:rgba(255,255,255,0.3);font-size:8px;">@Xyjjj</span></div>
           </div>
-          <div style="flex:1;padding:14px 16px 12px;display:flex;flex-direction:column;gap:10px;">
+          <div style="flex:1;padding:16px 16px 10px;display:flex;flex-direction:column;gap:8px;">
             <!-- 3 bar charts — FIXED height so bars don't stretch -->
-            <div style="height:165px;display:flex;gap:14px;flex-shrink:0;">
+            <div style="flex:1;display:flex;gap:14px;min-height:100px;">
               <!-- Chart 1: 粉丝 Followers -->
               <div style="flex:1;display:flex;flex-direction:column;">
                 <div style="font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.38);margin-bottom:7px;flex-shrink:0;">粉丝 Followers</div>
@@ -2543,8 +2562,8 @@ html, body {
                   </div>
                   <!-- After: full height -->
                   <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;align-self:stretch;">
-                    <div style="font-size:11px;font-weight:800;color:var(--gold);letter-spacing:-0.01em;flex-shrink:0;">1,271</div>
-                    <div style="flex:1;width:18px;background:linear-gradient(to top,#9a7540,#c9a055);border-radius:4px 4px 0 0;"></div>
+                    <div style="font-size:11px;font-weight:800;color:var(--gold);letter-spacing:-0.01em;flex-shrink:0;" data-s20n="1271" data-s20f="1,271">1,271</div>
+                    <div style="flex:1;width:18px;background:linear-gradient(to top,#9a7540,#c9a055);border-radius:4px 4px 0 0;" data-s20b></div>
                   </div>
                 </div>
                 <div style="display:flex;gap:7px;padding-top:5px;">
@@ -2563,8 +2582,8 @@ html, body {
                   </div>
                   <!-- After: full height -->
                   <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;align-self:stretch;">
-                    <div style="font-size:11px;font-weight:800;color:#e0d0b0;letter-spacing:-0.01em;flex-shrink:0;">7,342</div>
-                    <div style="flex:1;width:18px;background:linear-gradient(to top,rgba(255,255,255,0.28),rgba(255,255,255,0.5));border-radius:4px 4px 0 0;"></div>
+                    <div style="font-size:11px;font-weight:800;color:#e0d0b0;letter-spacing:-0.01em;flex-shrink:0;" data-s20n="7342" data-s20f="7,342">7,342</div>
+                    <div style="flex:1;width:18px;background:linear-gradient(to top,rgba(255,255,255,0.28),rgba(255,255,255,0.5));border-radius:4px 4px 0 0;" data-s20b></div>
                   </div>
                 </div>
                 <div style="display:flex;gap:7px;padding-top:5px;">
@@ -2583,22 +2602,22 @@ html, body {
                   </div>
                   <!-- After: full height -->
                   <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;align-self:stretch;">
-                    <div style="font-size:11px;font-weight:800;color:#4ade80;letter-spacing:-0.01em;flex-shrink:0;">7,990</div>
-                    <div style="flex:1;width:18px;background:linear-gradient(to top,#0f8a47,#22c55e);border-radius:4px 4px 0 0;"></div>
+                    <div style="font-size:11px;font-weight:800;color:#4ade80;letter-spacing:-0.01em;flex-shrink:0;" data-s20n="8584" data-s20f="8,584">8,584</div>
+                    <div style="flex:1;width:18px;background:linear-gradient(to top,#0f8a47,#22c55e);border-radius:4px 4px 0 0;" data-s20b></div>
                   </div>
                 </div>
                 <div style="display:flex;gap:7px;padding-top:5px;">
                   <div style="flex:1;text-align:center;font-size:7px;color:rgba(255,255,255,0.2);">Day 0</div>
-                  <div style="flex:1;text-align:center;font-size:7px;font-weight:700;color:#4ade80;">After · +59.8%</div>
+                  <div style="flex:1;text-align:center;font-size:7px;font-weight:700;color:#4ade80;">After · +71.7%</div>
                 </div>
               </div>
             </div>
             <!-- Engagement breakdown chips -->
-            <div style="display:flex;gap:6px;flex-shrink:0;">
-              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:5px;padding:6px 8px;text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.3);margin-bottom:3px;">❤ Likes</div><div style="font-size:12px;font-weight:700;color:#fff;">6,748</div></div>
-              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:5px;padding:6px 8px;text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.3);margin-bottom:3px;">💬 Comments</div><div style="font-size:12px;font-weight:700;color:#fff;">275</div></div>
-              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:5px;padding:6px 8px;text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.3);margin-bottom:3px;">⭐ Saves</div><div style="font-size:12px;font-weight:700;color:#fff;">658</div></div>
-              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:5px;padding:6px 8px;text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.3);margin-bottom:3px;">↗ Shares</div><div style="font-size:12px;font-weight:700;color:#fff;">309</div></div>
+            <div style="display:flex;gap:6px;flex-shrink:0;margin-top:8px;">
+              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:5px;padding:6px 8px;text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.3);margin-bottom:3px;">❤ Likes</div><div style="font-size:12px;font-weight:700;color:#fff;" data-s20n="7342" data-s20f="7,342">7,342</div></div>
+              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:5px;padding:6px 8px;text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.3);margin-bottom:3px;">💬 Comments</div><div style="font-size:12px;font-weight:700;color:#fff;" data-s20n="275" data-s20f="275">275</div></div>
+              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:5px;padding:6px 8px;text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.3);margin-bottom:3px;">⭐ Saves</div><div style="font-size:12px;font-weight:700;color:#fff;" data-s20n="658" data-s20f="658">658</div></div>
+              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:5px;padding:6px 8px;text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.3);margin-bottom:3px;">↗ Shares</div><div style="font-size:12px;font-weight:700;color:#fff;" data-s20n="309" data-s20f="309">309</div></div>
             </div>
           </div>
           <div style="padding:7px 14px;background:rgba(184,147,90,0.1);border-top:1px solid rgba(184,147,90,0.15);text-align:center;">
@@ -2608,28 +2627,28 @@ html, body {
         <!-- INSTAGRAM -->
         <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;">
           <div style="padding:9px 14px;border-bottom:1px solid rgba(17,17,17,0.06);display:flex;align-items:center;gap:7px;">
-            <div style="width:13px;height:13px;border-radius:4px;background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);flex-shrink:0;"></div>
+            <svg viewBox="0 0 24 24" width="15" height="15" style="flex-shrink:0;border-radius:4px;"><defs><radialGradient id="ig-s20" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="5" fill="url(#ig-s20)"/><rect x="2.5" y="2.5" width="19" height="19" rx="4.5" fill="none" stroke="white" stroke-width="2.2"/><circle cx="12" cy="12" r="4.8" fill="none" stroke="white" stroke-width="2.1"/><circle cx="18" cy="6" r="1.5" fill="white"/></svg>
             <div style="font-size:9.5px;font-weight:700;color:var(--ink);">Instagram <span style="font-weight:400;color:rgba(17,17,17,0.35);font-size:8px;">@yujiaaa_xie</span></div>
           </div>
-          <div style="flex:1;padding:14px 14px 12px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;">
+          <div style="flex:1;padding:14px 14px 12px;display:flex;flex-direction:column;gap:12px;">
             <!-- Followers: text stat (bars would be 99% vs 100% — meaningless) -->
             <div style="background:rgba(17,17,17,0.03);border-radius:6px;padding:11px 14px;flex-shrink:0;">
               <div style="font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(17,17,17,0.35);margin-bottom:10px;">Followers</div>
-              <div style="display:flex;align-items:flex-end;gap:10px;">
+              <div style="display:flex;align-items:flex-start;gap:10px;">
                 <div>
-                  <div style="font-size:7px;color:rgba(17,17,17,0.3);margin-bottom:3px;">Day 0</div>
-                  <div style="font-size:22px;font-weight:700;color:rgba(17,17,17,0.28);line-height:1;">2,341</div>
+                  <div style="font-size:7px;color:rgba(17,17,17,0.3);margin-bottom:4px;">Day 0 <span style="color:rgba(17,17,17,0.22);">(5/27)</span></div>
+                  <div style="font-size:24px;font-weight:700;color:rgba(17,17,17,0.28);line-height:1;">2,341</div>
                 </div>
-                <div style="font-size:18px;color:rgba(17,17,17,0.15);padding-bottom:3px;">→</div>
+                <div style="font-size:16px;color:rgba(17,17,17,0.15);padding-bottom:2px;">→</div>
                 <div>
-                  <div style="font-size:7px;color:rgba(17,17,17,0.4);margin-bottom:3px;">After</div>
-                  <div style="font-size:26px;font-weight:800;color:var(--ink);line-height:1;">2,387</div>
+                  <div style="font-size:7px;color:rgba(17,17,17,0.4);margin-bottom:4px;">After <span style="color:rgba(17,17,17,0.28);">(6/28)</span></div>
+                  <div style="font-size:24px;font-weight:800;color:var(--ink);line-height:1;" data-s20n="2387" data-s20f="2,387">2,387</div>
                   <div style="font-size:9px;font-weight:700;color:var(--gold);margin-top:4px;">+46 &nbsp;·&nbsp; +2%</div>
                 </div>
               </div>
             </div>
             <!-- Top Reel Views — fixed-height bar chart -->
-            <div style="height:150px;display:flex;flex-direction:column;flex-shrink:0;">
+            <div style="flex:1;display:flex;flex-direction:column;min-height:80px;">
               <div style="font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(17,17,17,0.35);margin-bottom:7px;flex-shrink:0;">Top Reel Views</div>
               <div style="flex:1;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid rgba(17,17,17,0.08);">
                 <!-- Before: 0 (stub) -->
@@ -2639,8 +2658,8 @@ html, body {
                 </div>
                 <!-- After: full height gold bar -->
                 <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;align-self:stretch;">
-                  <div style="font-size:14px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;flex-shrink:0;">10.1K</div>
-                  <div style="flex:1;width:18px;background:linear-gradient(to top,#9a7540,#c9a055);border-radius:4px 4px 0 0;"></div>
+                  <div style="font-size:14px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;flex-shrink:0;" data-s20n="10100" data-s20f="10.1K">10.1K</div>
+                  <div style="flex:1;width:18px;background:linear-gradient(to top,#9a7540,#c9a055);border-radius:4px 4px 0 0;" data-s20b></div>
                 </div>
               </div>
               <div style="display:flex;gap:8px;padding-top:5px;">
@@ -2664,7 +2683,7 @@ html, body {
       <div class="ph-slide-num-big">21</div>
       <div class="ph-sidebar-bottom">East Meets Feed</div>
     </div>
-    <div style="flex:1;display:flex;flex-direction:column;padding:46px 24px 14px;overflow:hidden;min-width:0;gap:9px;">
+    <div style="flex:1;display:flex;flex-direction:column;padding:40px 24px 18px;overflow:hidden;min-width:0;gap:7px;">
       <!-- header -->
       <div style="flex-shrink:0;">
         <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;">The Results</div>
@@ -2697,8 +2716,8 @@ html, body {
             <div style="display:flex;align-items:center;gap:8px;background:rgba(184,147,90,0.1);border:1px solid rgba(184,147,90,0.2);border-radius:5px;padding:6px 10px;">
               <div style="font-size:10px;font-weight:800;color:var(--gold);width:14px;flex-shrink:0;">1</div>
               <div style="flex:1;min-width:0;">
-                <div style="font-size:8.5px;font-weight:700;color:#fff;">我擅长感受 却拙于表达</div>
-                <div style="font-size:7px;font-style:italic;color:rgba(255,255,255,0.45);margin-bottom:1px;">Good at feeling, bad at expressing</div>
+                <div style="font-size:9px;font-weight:700;color:#fff;">Good at feeling, bad at expressing</div>
+                <div style="font-size:7px;color:rgba(255,255,255,0.38);margin-bottom:1px;">我擅长感受 却拙于表达</div>
                 <div style="font-size:7px;color:rgba(255,255,255,0.35);">May 27 &nbsp;·&nbsp; ❤ 1,049 &nbsp;·&nbsp; ⭐ 119 &nbsp;·&nbsp; ↗ 82</div>
               </div>
               <div style="text-align:right;flex-shrink:0;">
@@ -2710,8 +2729,8 @@ html, body {
             <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border-radius:5px;padding:6px 10px;">
               <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,0.4);width:14px;flex-shrink:0;">2</div>
               <div style="flex:1;min-width:0;">
-                <div style="font-size:8.5px;font-weight:700;color:#fff;">一次又一次愿意出发 ✈️ 机场穿搭</div>
-                <div style="font-size:7px;font-style:italic;color:rgba(255,255,255,0.45);margin-bottom:1px;">Again &amp; again, ready to go ✈️ Airport OOTD</div>
+                <div style="font-size:9px;font-weight:700;color:#fff;">Again &amp; again, ready to go ✈️ Airport OOTD</div>
+                <div style="font-size:7px;color:rgba(255,255,255,0.38);margin-bottom:1px;">一次又一次愿意出发 ✈️ 机场穿搭</div>
                 <div style="font-size:7px;color:rgba(255,255,255,0.35);">Jun 26 &nbsp;·&nbsp; +543% vs prior &nbsp;·&nbsp; CTR 26.32%</div>
               </div>
               <div style="text-align:right;flex-shrink:0;">
@@ -2723,8 +2742,8 @@ html, body {
             <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border-radius:5px;padding:6px 10px;">
               <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,0.4);width:14px;flex-shrink:0;">3</div>
               <div style="flex:1;min-width:0;">
-                <div style="font-size:8.5px;font-weight:700;color:#fff;">关于幸福的七个关键词 ✨</div>
-                <div style="font-size:7px;font-style:italic;color:rgba(255,255,255,0.45);margin-bottom:1px;">7 Keywords on Happiness ✨</div>
+                <div style="font-size:9px;font-weight:700;color:#fff;">7 Keywords on Happiness ✨</div>
+                <div style="font-size:7px;color:rgba(255,255,255,0.38);margin-bottom:1px;">关于幸福的七个关键词 ✨</div>
                 <div style="font-size:7px;color:rgba(255,255,255,0.35);">Jun 21 &nbsp;·&nbsp; +530% vs prior &nbsp;·&nbsp; ❤ 903 &nbsp;·&nbsp; ⭐ 79</div>
               </div>
               <div style="text-align:right;flex-shrink:0;">
@@ -2736,8 +2755,8 @@ html, body {
             <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border-radius:5px;padding:6px 10px;">
               <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,0.35);width:14px;flex-shrink:0;">4</div>
               <div style="flex:1;min-width:0;">
-                <div style="font-size:8.5px;font-weight:700;color:rgba(255,255,255,0.75);">答案是不是总在忘记问题时才出现</div>
-                <div style="font-size:7px;font-style:italic;color:rgba(255,255,255,0.38);margin-bottom:1px;">Does the answer only appear when you forget the question?</div>
+                <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.75);">Does the answer only appear when you forget the question?</div>
+                <div style="font-size:7px;color:rgba(255,255,255,0.32);margin-bottom:1px;">答案是不是总在忘记问题时才出现</div>
                 <div style="font-size:7px;color:rgba(255,255,255,0.28);">Jun 5 &nbsp;·&nbsp; ❤ 1,032 &nbsp;·&nbsp; ⭐ 91 &nbsp;·&nbsp; ↗ 20</div>
               </div>
               <div style="text-align:right;flex-shrink:0;">
@@ -2749,8 +2768,8 @@ html, body {
             <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.03);border-radius:5px;padding:6px 10px;">
               <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,0.22);width:14px;flex-shrink:0;">5</div>
               <div style="flex:1;min-width:0;">
-                <div style="font-size:8.5px;font-weight:700;color:rgba(255,255,255,0.5);">世界上有个特别幸福的人</div>
-                <div style="font-size:7px;font-style:italic;color:rgba(255,255,255,0.32);margin-bottom:1px;">There is someone in this world who is truly blessed</div>
+                <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.5);">There is someone in this world who is truly blessed</div>
+                <div style="font-size:7px;color:rgba(255,255,255,0.28);margin-bottom:1px;">世界上有个特别幸福的人</div>
                 <div style="font-size:7px;color:rgba(255,255,255,0.22);">Jun 15 &nbsp;·&nbsp; Caption completion 96.3% &nbsp;·&nbsp; Comment rate 3.1%</div>
               </div>
               <div style="text-align:right;flex-shrink:0;">
@@ -2833,17 +2852,17 @@ html, body {
           <div style="font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.3);">The Finding</div>
           <div style="font-size:11px;font-weight:700;color:#fff;line-height:1.35;">封面点击率<br>Cover CTR</div>
           <div style="font-size:8.5px;color:rgba(255,255,255,0.45);line-height:1.7;">On Douyin, the cover thumbnail controls whether the algorithm pushes your post to the next wave of users. High CTR = more distribution = more followers.</div>
-          <div style="margin-top:auto;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);border-radius:6px;padding:10px 12px;text-align:center;">
+          <div style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);border-radius:6px;padding:10px 12px;text-align:center;">
             <div style="font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(74,222,128,0.7);margin-bottom:3px;">Campaign Peak CTR</div>
             <div style="font-size:34px;font-weight:800;color:#4ade80;line-height:1;">66.67%</div>
             <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:3px;">永远太远了 · Jun 12<br>Night NYC atmospheric shot</div>
           </div>
         </div>
         <!-- Panel 2: Low CTR -->
-        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;">
+        <div style="flex:1;background:#fff;border:1px solid rgba(17,17,17,0.08);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;overflow:hidden;">
           <div style="font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(17,17,17,0.35);">Generic Covers — Low CTR</div>
           <div style="font-size:10px;font-weight:700;color:var(--ink);line-height:1.3;">Bright / daytime / carousel<br>lose the click</div>
-          <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+          <div style="display:flex;flex-direction:column;gap:6px;">
             <div style="display:flex;align-items:center;gap:8px;background:rgba(17,17,17,0.03);border-radius:5px;padding:7px 10px;">
               <div style="flex:1;"><div style="font-size:8.5px;font-weight:600;color:var(--ink);">周末纽约下午</div><div style="font-size:7.5px;color:rgba(17,17,17,0.45);">Daytime restaurant · Jun 13</div></div>
               <div style="font-size:15px;font-weight:800;color:rgba(17,17,17,0.35);">4.35%</div>
@@ -2857,13 +2876,18 @@ html, body {
               <div style="font-size:15px;font-weight:800;color:rgba(17,17,17,0.35);">8.57%</div>
             </div>
           </div>
-          <div style="font-size:8px;color:rgba(17,17,17,0.35);border-top:1px solid rgba(17,17,17,0.06);padding-top:7px;">Bright / daytime / carousel posts avg 4–9% CTR</div>
+          <div style="font-size:8px;color:rgba(17,17,17,0.35);border-top:1px solid rgba(17,17,17,0.06);padding-top:7px;flex-shrink:0;">Bright / daytime / carousel posts avg 4–9% CTR</div>
+          <div style="flex:1;border-radius:6px;overflow:hidden;min-height:0;">
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7651858099527956645" target="_blank" style="display:block;width:100%;height:100%;">
+              <img src="dy_daytime_coffee.png" class="photo-zoom" style="width:100%;height:100%;object-fit:cover;object-position:center 72%;display:block;filter:brightness(0.92);">
+            </a>
+          </div>
         </div>
         <!-- Panel 3: High CTR -->
-        <div style="flex:1;background:#111;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;">
+        <div style="flex:1;background:#111;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;overflow:hidden;">
           <div style="font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);">Mood Covers — High CTR</div>
           <div style="font-size:10px;font-weight:700;color:#fff;line-height:1.3;">Night / golden light /<br>strong subject clicks</div>
-          <div style="display:flex;flex-direction:column;gap:6px;flex:1;">
+          <div style="display:flex;flex-direction:column;gap:6px;">
             <div style="display:flex;align-items:center;gap:8px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.15);border-radius:5px;padding:7px 10px;">
               <div style="flex:1;"><div style="font-size:8.5px;font-weight:600;color:#fff;">永远太远了</div><div style="font-size:7.5px;color:rgba(255,255,255,0.4);">Night NYC OOTD · Jun 12</div></div>
               <div style="font-size:15px;font-weight:800;color:#4ade80;">66.67%</div>
@@ -2877,7 +2901,12 @@ html, body {
               <div style="font-size:15px;font-weight:800;color:var(--gold);">26.32%</div>
             </div>
           </div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.28);border-top:1px solid rgba(255,255,255,0.06);padding-top:7px;">Night mood / golden light = 26–67% CTR</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.28);border-top:1px solid rgba(255,255,255,0.06);padding-top:7px;flex-shrink:0;">Night mood / golden light = 26–67% CTR</div>
+          <div style="flex:1;border-radius:6px;overflow:hidden;min-height:0;">
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7650757120480990138" target="_blank" style="display:block;width:100%;height:100%;">
+              <img src="dy_night_nyc_ootd.png" class="photo-zoom" style="width:100%;height:100%;object-fit:cover;object-position:center 48%;display:block;">
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -4005,9 +4034,9 @@ html, body {
             </div>
             <div style="flex:1;display:flex;justify-content:space-around;padding:0 6px;">
               <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.22);margin-bottom:1px;">Window</div><div style="font-size:10px;font-weight:700;color:#fff;">May 27 → Jun 27</div></div>
-              <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.22);margin-bottom:1px;">Posts</div><div style="font-size:10px;font-weight:700;color:#fff;">18</div></div>
-              <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.22);margin-bottom:1px;">Total Eng.</div><div style="font-size:10px;font-weight:700;color:#4ade80;">7,990</div></div>
-              <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.22);margin-bottom:1px;">vs Goal</div><div style="font-size:10px;font-weight:700;color:#4ade80;">+59.8%</div></div>
+              <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.22);margin-bottom:1px;">Posts</div><div style="font-size:10px;font-weight:700;color:#fff;">26</div></div>
+              <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.22);margin-bottom:1px;">Total Eng.</div><div style="font-size:10px;font-weight:700;color:#4ade80;">8,584</div></div>
+              <div style="text-align:center;"><div style="font-size:7px;color:rgba(255,255,255,0.22);margin-bottom:1px;">vs Goal</div><div style="font-size:10px;font-weight:700;color:#4ade80;">+71.7%</div></div>
             </div>
           </div>
           <!-- Platform cards: day 0 → final -->
@@ -4015,7 +4044,7 @@ html, body {
             <!-- DOUYIN -->
             <div style="flex:1.5;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;">
               <div style="padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:6px;">
-                <div style="width:11px;height:11px;border-radius:2px;background:linear-gradient(135deg,#fe2c55,#000 50%,#25f4ee);flex-shrink:0;"></div>
+                <svg viewBox="0 0 24 24" width="12" height="12" style="flex-shrink:0;background:#000;border-radius:2px;"><path fill="#25f4ee" d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z" transform="translate(0.4,0)"/><path fill="#fe2c55" d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z" transform="translate(-0.4,0)"/><path fill="#fff" d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.78a4.85 4.85 0 01-1.07-.09z"/></svg>
                 <div style="font-size:9px;font-weight:700;color:#fff;">Douyin <span style="font-weight:400;color:rgba(255,255,255,0.3);font-size:7.5px;">@Xyjjj</span></div>
               </div>
               <div style="padding:10px 12px 8px;display:flex;flex-direction:column;gap:7px;">
@@ -4050,17 +4079,17 @@ html, body {
                     <div style="font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.3);margin-bottom:4px;">Engagement</div>
                     <div style="flex:1;display:flex;align-items:flex-end;gap:3px;">
                       <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;"><div style="font-size:7px;color:rgba(255,255,255,0.3);">~100</div><div style="width:12px;height:2px;background:rgba(255,255,255,0.18);border-radius:1px 1px 0 0;"></div></div>
-                      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;align-self:stretch;"><div style="font-size:8px;font-weight:700;color:#4ade80;flex-shrink:0;">7,990</div><div style="flex:1;width:12px;background:#4ade80;border-radius:1px 1px 0 0;min-height:4px;opacity:0.7;"></div></div>
+                      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;align-self:stretch;"><div style="font-size:8px;font-weight:700;color:#4ade80;flex-shrink:0;">8,584</div><div style="flex:1;width:12px;background:#4ade80;border-radius:1px 1px 0 0;min-height:4px;opacity:0.7;"></div></div>
                     </div>
                     <div style="display:flex;gap:3px;padding-top:3px;border-top:1px solid rgba(255,255,255,0.07);margin-top:2px;">
                       <div style="flex:1;text-align:center;font-size:6.5px;color:rgba(255,255,255,0.2);">Day 0</div>
-                      <div style="flex:1;text-align:center;font-size:6.5px;font-weight:700;color:#4ade80;">+59.8%</div>
+                      <div style="flex:1;text-align:center;font-size:6.5px;font-weight:700;color:#4ade80;">+71.7%</div>
                     </div>
                   </div>
                 </div>
                 <!-- breakdown chips -->
                 <div style="display:flex;gap:5px;">
-                  <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:3px;padding:3px 5px;text-align:center;"><div style="font-size:6.5px;color:rgba(255,255,255,0.28);">❤ Likes</div><div style="font-size:10px;font-weight:700;color:#fff;">6,748</div></div>
+                  <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:3px;padding:3px 5px;text-align:center;"><div style="font-size:6.5px;color:rgba(255,255,255,0.28);">❤ Likes</div><div style="font-size:10px;font-weight:700;color:#fff;">7,342</div></div>
                   <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:3px;padding:3px 5px;text-align:center;"><div style="font-size:6.5px;color:rgba(255,255,255,0.28);">💬 Comments</div><div style="font-size:10px;font-weight:700;color:#fff;">275</div></div>
                   <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:3px;padding:3px 5px;text-align:center;"><div style="font-size:6.5px;color:rgba(255,255,255,0.28);">⭐ Saves</div><div style="font-size:10px;font-weight:700;color:#fff;">658</div></div>
                   <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:3px;padding:3px 5px;text-align:center;"><div style="font-size:6.5px;color:rgba(255,255,255,0.28);">↗ Shares</div><div style="font-size:10px;font-weight:700;color:#fff;">309</div></div>
@@ -4073,7 +4102,7 @@ html, body {
             <!-- INSTAGRAM -->
             <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;">
               <div style="padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:6px;">
-                <div style="width:11px;height:11px;border-radius:3px;background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);flex-shrink:0;"></div>
+                <svg viewBox="0 0 24 24" width="12" height="12" style="flex-shrink:0;border-radius:3px;"><defs><radialGradient id="ig-st20" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="5" fill="url(#ig-st20)"/><rect x="2.5" y="2.5" width="19" height="19" rx="4.5" fill="none" stroke="white" stroke-width="2.2"/><circle cx="12" cy="12" r="4.8" fill="none" stroke="white" stroke-width="2.1"/><circle cx="18" cy="6" r="1.5" fill="white"/></svg>
                 <div style="font-size:9px;font-weight:700;color:#fff;">Instagram</div>
               </div>
               <div style="padding:10px 12px 8px;display:flex;flex-direction:column;gap:7px;">
@@ -4105,6 +4134,11 @@ html, body {
                 </div>
               </div>
             </div>
+          </div>
+          <!-- One-line conclusion -->
+          <div style="text-align:center;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.07);">
+            <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.38);letter-spacing:-0.01em;">1.7× over the 5,000 target &nbsp;·&nbsp; in 1 month</div>
+            <div style="font-size:7.5px;color:rgba(255,255,255,0.2);margin-top:5px;letter-spacing:0.04em;">7,342 Likes &nbsp;•&nbsp; 275 Comments &nbsp;•&nbsp; 658 Saves &nbsp;•&nbsp; 309 Shares &nbsp;•&nbsp; 1,317 New Followers</div>
           </div>
         </div>
       </div>
@@ -4213,7 +4247,7 @@ html, body {
           </div>
           <!-- Before / After -->
           <div style="font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.3);margin-bottom:8px;">What We Changed — Cover Style</div>
-          <div style="display:flex;gap:10px;">
+          <div style="display:flex;gap:10px;margin-bottom:14px;">
             <div style="flex:1;background:rgba(255,255,255,0.04);border-radius:6px;padding:12px 14px;">
               <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.45);margin-bottom:8px;">Generic / Bright → Low CTR</div>
               <div style="display:flex;flex-direction:column;gap:5px;">
@@ -4228,6 +4262,19 @@ html, body {
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 8px;background:rgba(74,222,128,0.04);border-radius:4px;"><span style="font-size:9px;color:rgba(255,255,255,0.6);">前奏太好听了 (golden hr)</span><span style="font-size:13px;font-weight:700;color:var(--gold);">50%</span></div>
                 <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 8px;background:rgba(74,222,128,0.03);border-radius:4px;"><span style="font-size:9px;color:rgba(255,255,255,0.6);">Airport (+689% vs prior)</span><span style="font-size:13px;font-weight:700;color:var(--gold);">26.32%</span></div>
               </div>
+            </div>
+          </div>
+          <!-- Cover photo examples -->
+          <div style="display:flex;gap:10px;height:220px;">
+            <div style="flex:1;border-radius:8px;overflow:hidden;">
+              <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7651858099527956645" target="_blank" style="display:block;width:100%;height:100%;">
+                <img src="dy_daytime_coffee.png" class="photo-zoom" style="width:100%;height:100%;object-fit:cover;object-position:center 52%;display:block;filter:brightness(0.92);">
+              </a>
+            </div>
+            <div style="flex:1;border-radius:8px;overflow:hidden;">
+              <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7650757120480990138" target="_blank" style="display:block;width:100%;height:100%;">
+                <img src="dy_night_nyc_ootd.png" class="photo-zoom" style="width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;">
+              </a>
             </div>
           </div>
         </div>
@@ -4336,7 +4383,29 @@ function goTo(idx) {
     String(cur+1).padStart(2,'0')+' / '+DECK.length+' — '+SEC[DECK[cur].sec];
   document.getElementById('progress-bar').style.width = (cur/(DECK.length-1)*100)+'%';
   if (cur === SLIDE5_IDX) setTimeout(animateQuant, 120);
+  if (DECK[cur].id === 'slide-20') setTimeout(animateSlide20, 150);
   startAutoBuilds();
+}
+
+function animateSlide20() {
+  const s = document.getElementById('slide-20');
+  if (!s) return;
+  const bars = s.querySelectorAll('[data-s20b]');
+  bars.forEach(b => { b.style.animation = 'none'; b.style.transform = 'scaleY(0)'; void b.offsetWidth; });
+  bars.forEach((b, i) => setTimeout(() => {
+    b.style.transform = '';
+    b.style.animation = 'barRise 1.4s cubic-bezier(0.16,1,0.3,1) forwards';
+  }, 100 + i * 200));
+  s.querySelectorAll('[data-s20n]').forEach(el => {
+    const target = +el.getAttribute('data-s20n');
+    const final = el.getAttribute('data-s20f') || target.toLocaleString();
+    const dur = 1500, t0 = Date.now();
+    const tick = setInterval(() => {
+      const p = Math.min((Date.now()-t0)/dur, 1);
+      el.textContent = Math.round(target*(1-Math.pow(1-p,3))).toLocaleString();
+      if (p >= 1) { clearInterval(tick); el.textContent = final; }
+    }, 16);
+  });
 }
 
 // Build-step system (auto-reveal items one-by-one within a slide)
