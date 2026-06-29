@@ -568,6 +568,14 @@ html, body {
 .photo-zoom:hover {
   transform: scale(1.08);
 }
+/* ── Concentric circle ring pulses ── */
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+.ring-outer { animation: ringPulse 4.4s ease-in-out infinite 0s; }
+.ring-mid   { animation: ringPulse 3.8s ease-in-out infinite 0.55s; }
+.ring-inner { animation: ringPulse 3.2s ease-in-out infinite 1.1s; }
 /* ── Slide 17 animations ── */
 @keyframes s17SlideIn {
   from { opacity:0; transform:translateX(-24px); }
@@ -2127,9 +2135,9 @@ html, body {
         <div style="font-size:8px;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Brand Philosophy</div>
         <!-- concentric circles -->
         <div style="position:relative;width:170px;height:170px;flex-shrink:0;margin:0 auto 12px;">
-          <div style="position:absolute;inset:0;border-radius:50%;background:rgba(200,193,180,0.35);"></div>
-          <div style="position:absolute;inset:22px;border-radius:50%;background:rgba(184,147,90,0.22);"></div>
-          <div style="position:absolute;inset:48px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;">
+          <div class="ring-outer" style="position:absolute;inset:0;border-radius:50%;background:rgba(200,193,180,0.35);"></div>
+          <div class="ring-mid" style="position:absolute;inset:22px;border-radius:50%;background:rgba(184,147,90,0.22);"></div>
+          <div class="ring-inner" style="position:absolute;inset:48px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;">
             <div style="font-size:7.5px;font-weight:700;text-transform:uppercase;color:#fff;text-align:center;letter-spacing:0.05em;line-height:1.4;">Recognition<br>Not Envy</div>
           </div>
           <div style="position:absolute;top:30px;left:-30px;font-size:7px;font-weight:700;text-transform:uppercase;color:rgba(17,17,17,0.45);line-height:1.4;text-align:center;width:72px;">A Chinese-<br>New Yorker<br>Both Worlds</div>
@@ -3975,9 +3983,9 @@ html, body {
             <div>
               <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">Brand Philosophy</div>
               <div style="position:relative;width:160px;height:160px;margin:0 auto 20px;">
-                <div style="position:absolute;inset:0;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
-                <div style="position:absolute;inset:22px;border-radius:50%;background:rgba(184,147,90,0.15);"></div>
-                <div style="position:absolute;inset:48px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;">
+                <div class="ring-outer" style="position:absolute;inset:0;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
+                <div class="ring-mid" style="position:absolute;inset:22px;border-radius:50%;background:rgba(184,147,90,0.15);"></div>
+                <div class="ring-inner" style="position:absolute;inset:48px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;">
                   <div style="font-size:7px;font-weight:700;text-transform:uppercase;color:#fff;text-align:center;letter-spacing:0.05em;line-height:1.4;">Recognition<br>Not Envy</div>
                 </div>
                 <div style="position:absolute;top:28px;left:-28px;font-size:7px;font-weight:600;text-transform:uppercase;color:rgba(255,255,255,0.35);line-height:1.4;text-align:center;width:68px;">A Chinese-<br>New Yorker<br>Both Worlds</div>
