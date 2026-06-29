@@ -567,6 +567,15 @@ html, body {
 .photo-zoom:hover {
   transform: scale(1.08);
 }
+/* ── Slide 17 animations ── */
+@keyframes s17SlideIn {
+  from { opacity:0; transform:translateX(-24px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+.s17-col { opacity:0; }
+#slide-17.active .s17-col:nth-child(1) { animation: s17SlideIn 0.85s cubic-bezier(0.25,0.46,0.45,0.94) 0.15s forwards; }
+#slide-17.active .s17-col:nth-child(2) { animation: s17SlideIn 0.85s cubic-bezier(0.25,0.46,0.45,0.94) 0.42s forwards; }
+#slide-17.active .s17-col:nth-child(3) { animation: s17SlideIn 0.85s cubic-bezier(0.25,0.46,0.45,0.94) 0.69s forwards; }
 /* ── Slide 24 animations ── */
 .s24-header { opacity:0; transform:translateY(-12px); transition:opacity 0.45s ease, transform 0.45s ease; }
 .s24-arc    { opacity:0; transform:translateY(8px); transition:opacity 0.4s ease, transform 0.4s ease; transition-delay:0.08s; }
@@ -2181,7 +2190,7 @@ html, body {
     </div>
     <div style="flex:1;display:flex;flex-direction:row;overflow:hidden;min-width:0;">
       <!-- LEFT: Behavioral Planner — expanded with detailed stage cards -->
-      <div style="flex:1.8;display:flex;flex-direction:column;padding:40px 16px 12px;border-right:1px solid rgba(17,17,17,0.08);overflow:hidden;min-width:0;">
+      <div class="s17-col" style="flex:1.5;display:flex;flex-direction:column;padding:40px 16px 12px;border-right:1px solid rgba(17,17,17,0.08);overflow:hidden;min-width:0;">
         <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;">The Activation</div>
         <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
           <div style="font-family:'Playfair Display',serif;font-size:15px;font-style:italic;color:var(--ink);line-height:1.2;white-space:nowrap;">Behavioral Planner</div>
@@ -2241,8 +2250,23 @@ html, body {
           </div>
         </div>
       </div>
+      <!-- MIDDLE: Photo examples -->
+      <div class="s17-col" style="flex:0.7;display:flex;flex-direction:column;padding:40px 10px 12px;border-right:1px solid rgba(17,17,17,0.08);overflow:hidden;min-width:0;gap:8px;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;flex-shrink:0;">Content in Action</div>
+        <div style="font-family:'Playfair Display',serif;font-size:11px;font-style:italic;color:var(--ink);line-height:1.2;margin-bottom:4px;flex-shrink:0;">Two lives, one frame</div>
+        <div style="flex:1;border-radius:6px;overflow:hidden;min-height:0;">
+          <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7650757120480990138" target="_blank" style="display:block;width:100%;height:100%;">
+            <img src="s17_night_street.png" class="photo-zoom" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;">
+          </a>
+        </div>
+        <div style="flex:1;border-radius:6px;overflow:hidden;min-height:0;">
+          <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7644790456819197541" target="_blank" style="display:block;width:100%;height:100%;">
+            <img src="s17_work_desk.png" class="photo-zoom" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
+          </a>
+        </div>
+      </div>
       <!-- RIGHT: Content Pillars table — compact -->
-      <div style="flex:1;display:flex;flex-direction:column;padding:40px 14px 12px;overflow:hidden;min-width:0;">
+      <div class="s17-col" style="flex:1;display:flex;flex-direction:column;padding:40px 14px 12px;overflow:hidden;min-width:0;">
         <div style="font-size:9px;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Content Pillars</div>
         <div style="font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--ink);line-height:1.2;margin-bottom:8px;">Needstate → Delivery → Action</div>
         <div style="border:1px solid rgba(17,17,17,0.1);border-radius:5px;overflow:hidden;display:flex;flex-direction:column;width:100%;margin:auto 0;">
@@ -4033,6 +4057,16 @@ html, body {
               <div style="width:22px;height:22px;border-radius:50%;background:rgba(184,147,90,0.15);border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gold);">5</div>
               <div><div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;">Returning / Advocacy</div><div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.5;">Comment prompts, friend-tag captions, recurring series. KPI: Repeat engagement → comments → tags → shares.</div></div>
             </div>
+          </div>
+          <!-- Content in Action photos -->
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Content in Action</div>
+          <div style="display:flex;gap:10px;margin-bottom:24px;height:220px;">
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7650757120480990138" target="_blank" style="flex:1;border-radius:8px;overflow:hidden;display:block;">
+              <img src="s17_night_street.png" class="photo-zoom" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;">
+            </a>
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAHqwW_iV49JcvdCOwp0aIUYShwwsueX6_mGVabM3KNSL-7oaShsCfQD6a54KVxmL5?from_tab_name=main&modal_id=7644790456819197541" target="_blank" style="flex:1;border-radius:8px;overflow:hidden;display:block;">
+              <img src="s17_work_desk.png" class="photo-zoom" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
+            </a>
           </div>
           <!-- Content Pillars table -->
           <div style="font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Content Pillars</div>
