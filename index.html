@@ -4713,7 +4713,7 @@ function resetQuant() {
 }
 const SLIDE5_IDX = DECK.findIndex(d => d.id === 'slide-5');
 
-function goTo(idx) {
+function goTo(idx, skipHash) {
   if (idx < 0 || idx >= DECK.length) return;
   if (cur === SLIDE5_IDX && idx !== SLIDE5_IDX) resetQuant();
   resetBuilds();
@@ -4725,6 +4725,7 @@ function goTo(idx) {
   document.getElementById('tb-info').textContent =
     String(cur+1).padStart(2,'0')+' / '+DECK.length+' — '+SEC[DECK[cur].sec];
   document.getElementById('progress-bar').style.width = (cur/(DECK.length-1)*100)+'%';
+  if (!skipHash) history.replaceState(null, '', '#' + DECK[cur].id);
   if (cur === SLIDE5_IDX) setTimeout(animateQuant, 120);
   if (DECK[cur].id === 'slide-21') setTimeout(animateSlide20, 150);
   if (DECK[cur].id === 'slide-15') {
@@ -5001,7 +5002,9 @@ document.getElementById('story-mode').addEventListener('scroll', checkReveal);
   });
 })();
 
-goTo(0);
+const _hashId = location.hash.slice(1);
+const _hashIdx = _hashId ? DECK.findIndex(d => d.id === _hashId) : -1;
+goTo(_hashIdx >= 0 ? _hashIdx : 0, _hashIdx >= 0);
 </script>
 <script>
 function seamlessLoop(idA, idB) {
